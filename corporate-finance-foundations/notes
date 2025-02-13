@@ -89,10 +89,16 @@ Facilitators:
 
 Facilitators bring together those who need money, with those who have money.
 
-Finance look at the ecosystem and see how they interact with each other.
+Finance looks at the ecosystem and sees how they interact with each other.
 But it's more than that.
 
 Risk: Uncertainty about what will happen in the future.
+
+"People need to be paid to accept RISK"
+
+savings account < 1% returns
+bonds ~4% returns
+index funds ~10% returns
 
 Future: variability of possible outcomes
 - it can go well
@@ -103,12 +109,17 @@ Risk in Finance:
 - Pricing Risk
 
 Risk is the likelihood of a BAD OUTCOME:
-- Any step forward involve risk of things not going as planned
-- Some risks can't be avoided (car insurance companies)
-- Some risks can be avoided (duo deligence, history background check)
+- Any step forward involves the risk of things not going as planned
+- Some risks can't be avoided (car insurance companies, price the risk into the premiums they charge)
+- Some risks can be avoided (duo diligence, history background check)
 
 The concept of DIVERSIFICATION ASSISTS COMPANIES AND INVESTORS in MANAGING RISKS
 DIVERSIFICATION is just a way of saying: don't put all of your eggs in one basket.
+
+Diversification financial assets
+Diversification of products (Apple example: phones, tablets, computers, cloud services)
+
+DIVERSIFICATION reduces RISK
 
 Work to REDUCE risk or PRICE risk:
 
@@ -119,14 +130,14 @@ everybody.
 
 CAPM
 - Investors are Risk averse, so you have to pay them to accept risk.
-- Some risks can be eliminated to through diversification.
+- Some risks can be eliminated through diversification.
 - Beta Risk - cannot be eliminated through diversification
   
-  bp = Cov(rp, rb)  (Company's return and Market's returns)
-       -----------
-         Var(rb)    (Variance of Market Return)
+  (Beta)  bp = Cov(rp, rb)  (Company's return and Market's returns)
+           -----------
+             Var(rb)    (Variance of Market Return)
 
-If you can't eliminate that risk, it needs to be priced
+If you CAN'T ELIMINATE that risk, it needs to be PRICED
 
 Beta helps measuring the higher expected return.
 
@@ -135,17 +146,51 @@ Cash has a beta (b) of zero.
 1 dollar bill (disregard inflation and foreign currency fluctuation)
 investment in the dollar bill is immune to fluctuation in broad economic forces,
 
-If Market is UP 15%, My Portifolio is also UP 15%, that means Beta == 1
+If Market is UP 15%, My Portifolio is also UP 15%, that means Beta = 1
 
-Home building industry has a beta of > 1. When economy goes HOT, home builders get RED HOT.
-When economy cools, the home building gets "downright cold".
-Little movements in the broader economy results in a big movement in the house building economy.
+Home building industry has a beta of > 1. When the economy goes HOT, home builders get RED HOT.
+When the economy cools, the home building gets "downright cold".
+Little movements in the broader economy result in a big movement in the house-building economy.
 
-That's reflect mathematically, home building with Beta > 1.
+That's reflected mathematically, home building with Beta > 1.
 Beta measures Market-Wide risk (you cannot manage), used as one important input in
-measuring an investment expected return.
+measuring an investment's expected return.
 
+QUESTION: What companies or financial assets are considered to have a negative Beta?
+QUESTION: Does gold have a negative beta or a beta close to zero?
 
+Risk-free Rate
 
+The return an investor would expect from absolute risk-free investment over a specific
+period of time.
+For a given level of risk, what is the expected return OVER AND ABOVE the RISK-FREE RATE (The baseline)
+an investor require?
 
+Lenmoney to the most trustworthy organization on the planet -> (at least) build the inflation into the
+interest rate charged. Time: a dollar now worth more than a dollar 1 year from now.
 
+Risk-Free Rate (Benchmark / Baseline) = Expected Inflation + Time Value of Money
+* it's not the same over time and not the same over individual country
+* forecasted inflation
+(Normally at 5% worldwide (a year?) if inflation is higher it will be > 5%)
+(Can go to 15% as shown by the history)
+
+Equity Investment (Shares) higher returns = higher risk
+* Returns > Risk-Free Rate, therefore needs to have a premium associated with it
+Equity Risk Premium -> Extra amount you expect to earn on your investment bc you're investing in risky assets
+Stock investing (over many years in US) = 10% - 11% a year.
+Stock investing - Risk Free Rate = Equity Risk Premium
+11% - 5% = 6%
+Evaluating Alternative Investments needs to be benchmarked against Risk-Free Rate and Equity Investments
+
+Netflix Expected Returns (CAPM)
+Risk-Free Rate + (Equity Risk Premium * Beta Risk)
+5% + (6% * 1.58) = 5% + 9.5% = 14.5%
+NOTE: Get the updated list of Estimated Beta for companies)
+
+Walmart (CAPM)
+Risk-Free Rate + (Equity Risk Premium * Beta Risk)
+5% + (6% * 1.58) = 5% + 3.2% = 8.2%
+//////////////////////////
+CAPM -> Return on investment should be greater than the risk-free rate plus an equity risk premium.
+//////////////////////////
