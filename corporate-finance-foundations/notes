@@ -179,7 +179,7 @@ Equity Investment (Shares) higher returns = higher risk
 * Returns > Risk-Free Rate, therefore needs to have a premium associated with it
 Equity Risk Premium -> Extra amount you expect to earn on your investment bc you're investing in risky assets
 Stock investing (over many years in US) = 10% - 11% a year.
-Stock investing - Risk Free Rate = Equity Risk Premium
+Stock investing - Risk-Free Rate = Equity Risk Premium
 11% - 5% = 6%
 Evaluating Alternative Investments needs to be benchmarked against Risk-Free Rate and Equity Investments
 
@@ -192,5 +192,45 @@ Walmart (CAPM)
 Risk-Free Rate + (Equity Risk Premium * Beta Risk)
 5% + (6% * 1.58) = 5% + 3.2% = 8.2%
 //////////////////////////
-CAPM -> Return on investment should be greater than the risk-free rate plus an equity risk premium.
+CAPM -> Return on investment should be greater than the risk-free rate plus an <asset name here> risk premium.
 //////////////////////////
+
+CAPITAL STRUCTURE: The mix between owner investment and long-term borrowing
+The video discusses how the mix of borrowing and owner investment is used to finance an asset
+(like a house or a company) impacts its value.
+Risk and Tax Implications: A smaller mortgage reduces the risk of financial distress,
+while a larger mortgage can provide tax benefits through interest deductions
+("If you can't make the mortgage payments, eventually you'll lose the house").
+Impact on Value: The total value of an asset can be influenced by how it is financed, highlighting the importance of capital structure in corporate finance.
+
+These points illustrate the balance between risk and benefits in financing decisions, which is crucial in corporate finance.
+
+Does CAPITAL STRUCTURE impact the value of the company? (Important for Corporate Finance)
+- in a "perfect world", no
+- in the real world: YES, when there are cost and friction
+With income tax being a KEY FACTOR
+
+Investment Method: Loans of $200M
+Payments to Lender Considered: Interest (Interest Expense)
+Tax Deductible: YES
+
+Investment Method: Owning invests $200M
+Payments to Lender Considered: Dividends
+Tax Deductible: NO
+
+"Too much debt (increases the pressure for performance) -> Too much interest -> Doesn't allow the company to slip (company bankruptcy)"
+Bankruptcy -> Costly due to legal fees
+
+////////////////////////////
+OPTIMAL CAPITAL STRUCTURE -> Some borrowing (but not too much because of the risk of financial distress) -> Tax Deduction
+////////////////////////////
+
+
+
+
+
+
+
+
+
+
