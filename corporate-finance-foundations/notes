@@ -332,4 +332,114 @@ to accomplish a facility refurbishment.
 What is the minimum amount the project needs to return at the end of the year?
 75M * (1.0 * 0.08) = 75M + 6M = 81M
 QUESTION: What about Risk-Free Rate?
+QUESTION: How WACC can be plugged into CAPM?
 
+Securities
+Bond vs Stock
+Stock -> Ownership of a company (equity)
+Bonds -> Loan made to a company (debt) (IOU)
+
+Pure Debt - Interest payments mandatory (Payment amount is fixed, Loans needs to be repaid)
+Pure Equity - Dividend payments are optional (Variable, not needed to be paid/repaid)
+
+Ownership vs. Loan: Stocks represent ownership in a corporation (equity),
+while bonds represent a loan made to the corporation (debt).
+Payments: Interest payments on bonds are mandatory and fixed,
+whereas dividend payments on stocks are optional and variable.
+Repayment: Bonds have a maturity date and must be repaid,
+while stocks do not require repayment of the initial investment.
+Bankruptcy Priority: In case of bankruptcy, bondholders are paid first,
+and stockholders receive any remaining assets.
+
+Purpose of Stock Markets: Stock markets are places, either physical or virtual,
+where people can trade stocks. Examples include the New York Stock Exchange and NASDAQ.
+Social Value: Stock markets provide a platform for trading used shares,
+which encourages initial investments in companies by providing liquidity and the ability to sell shares in the future.
+The analogy with the Used Car Market: Just like a used car market makes it easier to buy new cars,
+the existence of a stock market makes it more likely for people to invest in stocks,
+knowing they can sell them later if needed.
+
+Bonds, various types:
+- Sovereign Bonds - Government Bonds issued by countries
+- Municipal Bonds - (Sub sovereign bonds, issued by cities, provinces, states, or gov agencies)
+- Corporate Bonds - (Issued by companies, about 30% of all bonds are issued by companies)
+- Asset-Backed Bonds - Assets like company's account receivable, home mortgages)
+
+Securitization: Asset-backed bonds are created through securitization,
+where cash flows from assets like mortgages or accounts receivable are bundled to back the bonds.
+
+Public debt: company bonds publicly traded
+Private debt: most companies' loans occur through private debt, borrowed directly from a bank or group of banks
+"Bonds are traded over the counter" 10 of thousands of companies issuing bonds. (Individually traded by a broker)
+Not as volatile as stocks.
+
+Bond complexity - one company may have multiple different bonds with characteristics such as:
+- Maturity date
+- Interest Rate
+- Collateral privilege
+
+Market Dynamics: Share prices are determined by the interactions of buyers and sellers in the market,
+similar to how prices for goods like milk or gasoline are set.
+Influencing Factors: New information about a company's future sales, net income,
+overall economic trends, industry events, political stability,
+and investor confidence can cause share prices to change.
+Benefits and Costs of Going Public: Being publicly traded can make it easier to raise
+capital and boost a company's reputation, but it also comes with increased regulation and
+potential loss of control for the founders.
+
+"The new shareholders may have different ideas about how the company should be run.
+So there are both benefits and costs associated with being a publicly traded company.
+The vast majority of companies in the world are not publicly traded. For example,
+in the United States, there are 4,000 companies that are publicly traded and 15 million companies that are not."
+
+Initial public offering (IPO): Microsoft
+
+- When a company offers its shares to the public for the first time, the event is called an IPO,
+or Initial Public Offering. Because there is no active buying and selling before the shares are listed publicly,
+an initial price must be set just to get things going. This initial price is set by the listing company and its financial advisors.
+Let's take a look at an example of a company that went public a little more than 30 years ago.
+Microsoft went public on March 13th, 1986. The company had been operating since 1975 as a privately held company.
+A number of employees had been given shares as part of their compensation, but there was no market in which to trade those shares.
+Now, in 1985, the year before the IPO, Microsoft had earnings per share of $1.10. At the time of Microsoft's IPO,
+there were several other software companies that were already publicly trading. Those companies, on average,
+were trading at a PE ratio, or price to earnings ratio, of about 15. In other words, the market values of these
+companies were about 15 times as large as those company's most recent annual net income. >>>>> Okay,
+so what is a reasonable estimate of the initial value of Microsoft Shares,
+given that the company's most recent earnings per share was $1.10. That initial estimate,
+which founder Bill Gates and his financial advisors used, was $16.50 per share, computed as $1.10 earnings per share,
+multiplied by the industry average PE ratio of 15. Okay, so this is an initial rough estimate,
+but would investors buy the shares at that $16.50 price? <<<<<<< Bill Gates and his investment advisors did what companies
+always do as they're preparing to go public, they conducted a road show. They went around the world and gave presentations
+about Microsoft to large investors, mutual funds, pension funds, and so forth. They told these large investors that
+the initial price per share estimate was $16.50, and asked them if they would be willing to invest at that price.
+And at that $16.50 price, lots of people wanted to buy Microsoft shares. Now, who suffers if the initial share price is too low?
+Well, the original shareholders, such as the founders, Bill Gates and his partner Paul Allen, they are not fully compensated
+for their work in creating the company. Alright, let's look at the other side. What's the danger if the initial price is too high?
+Well, then nobody wants to buy these overpriced shares. The IPO shares are said to be undersubscribed.
+This results in bad publicity. So, what happened with the Microsoft IPO? Given the positive feedback from the roadshow,
+Bill Gates and his investment advisors decided to set the initial share price at $21 a share,
+a bit of an increase over the initial $16.50 number computed using the PE ratio. Well,
+the Microsoft shares proved to be an instant success in the market. At the end of the first day of trading,
+the share price was up to $27.75, about a 30% increase in one day. Contrast this with Uber's recent IPO.
+Uber went public at $45 per share on May 10th, 2019. Their stock price dropped on day one, and then one month
+later they were selling at around $41 per share. About a 10% drop for the month. Hey, not all IPOs win.
+The IPO price is set using accounting data, industry data, and the investor interest uncovered during the roadshow.
+Once the shares are trading in the market, the interactions of buyers and sellers determine the price.
+So, back to Microsoft. What is the current price of those Microsoft shares that sold for $21 in the IPO? Well,
+those shares have been multiplied in a process called stock splits. So each original share is now equal to 288 shares.
+As of June 19th, 2019, the aggregate price of those shares is now about $39,600. From the $21 IPO price up to now,
+$39,600. Not bad.
+
+Setting the Initial Price: Microsoft's initial share price was estimated based on its earnings per share and the industry average price-to-earnings (PE) ratio.
+Roadshow: Bill Gates and his advisors conducted a roadshow to gauge investor interest and adjust the initial share price accordingly.
+IPO Outcome: The initial share price was set at $21, and by the end of the first trading day, it increased to $27.75, showing a successful IPO.
+
+/////////////////////
+Time Value of Money: A dollar today is worth more than a dollar in the future due to the potential earning capacity.
+This concept is crucial in evaluating long-term projects.
+Capital Budgeting: This process involves evaluating long-term investments and projects,
+considering the time value of money to determine their worth.
+Interest Rate Example: Using an interest rate of 10%, the video illustrates how the present
+value of a long-term investment (like a machine producing $1 per year for a billion years)
+is calculated to be significantly lower than its total future value.
+/////////////////////
