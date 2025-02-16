@@ -51,10 +51,42 @@ namespace Experiments1
       Console.WriteLine($"INFO: 0b1101_1110_1001_1010 == {b:X}");
     }
 
+    static string getDesc()
+    {
+      return "INFO: This is a description";
+    }
+    static void testCoelescing()
+    {
+      string? desc = null;
+      Console.WriteLine(desc ?? "INFO: desc is null");
+      try
+      {
+        Console.WriteLine(desc ?? throw new ArgumentNullException("desc",
+            "desc cannot be null")); // NEW!!!
+      }
+      catch (Exception ex)
+      {
+        Console.WriteLine($"ERROR: First Attempt ({ex})");
+      }
+      try
+      {
+        Console.WriteLine(desc ?? getDesc());
+      }
+      catch (Exception ex)
+      {
+        // this is never thrown
+        Console.WriteLine($"ERROR: Second Attempt ({ex})");
+      }
+      Console.WriteLine($"INFO: desc == [{desc}]");
+      Console.WriteLine(desc ??= "Default value"); //NEW!!!
+      Console.WriteLine($"INFO: desc == [{desc}]");
+    }
+
     static void Main(string[] args)
     {
       Program.testIndexing();
       Program.testLiteralNumberImprovements();
+      Program.testCoelescing();
       Console.WriteLine("END.");
     }
   }
