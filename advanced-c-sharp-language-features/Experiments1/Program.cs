@@ -38,7 +38,6 @@ namespace Experiments1
         Console.WriteLine($"ERROR: {ex}"); 
       }
     }
-
     static void testLiteralNumberImprovements()
     {
       int d = 123_456;
@@ -49,11 +48,6 @@ namespace Experiments1
       Console.WriteLine($"INFO: 1_234.5f == {f}");
       Console.WriteLine($"INFO: 0xAB_CD_EF == {x:X}");
       Console.WriteLine($"INFO: 0b1101_1110_1001_1010 == {b:X}");
-    }
-
-    static string getDesc()
-    {
-      return "INFO: This is a description";
     }
     static void testCoelescing()
     {
@@ -81,12 +75,37 @@ namespace Experiments1
       Console.WriteLine(desc ??= "Default value"); //NEW!!!
       Console.WriteLine($"INFO: desc == [{desc}]");
     }
+    static void testDesconstruction()
+    {
+      var (close, low, high) = getPriceByTicker("AAPL");
+      Console.WriteLine($"INFO ('AAPL'): close = {close}, low = {low}, high = {high}");
+      (close, _, _) = getPriceByTicker("MSFT");
+      Console.WriteLine($"INFO ('MSFT'): close = {close}");
+    }
+
+    static string getDesc()
+    {
+      return "INFO: This is a description";
+    }
+
+    static (decimal, decimal, decimal) getPriceByTicker(string ticker)
+    {
+      switch (ticker)
+      {
+        case "AAPL":
+          return (123.45m, 120.01m, 130.12m);
+        case "MSFT":
+          return (498.2m, 491.34m, 503.45m);     
+      }
+      return (-1m, -1m, -1m);
+    }
 
     static void Main(string[] args)
     {
       Program.testIndexing();
       Program.testLiteralNumberImprovements();
       Program.testCoelescing();
+      Program.testDesconstruction();
       Console.WriteLine("END.");
     }
   }
