@@ -2,8 +2,37 @@
 
 namespace Experiments1
 {
-  class Program
+  class Exchange
   {
+    private string _name { set; get; }
+    private string _symbol { set; get; }
+    private int _seccount { set; get; }
+
+    public Exchange(string name, string symbol, int seccount)
+    {
+      _name = name;
+      _symbol = symbol;
+      _seccount = seccount;
+    }
+
+    public void Deconstruct(out string name, out string symbol, out int seccount)
+    {
+      name = _name;
+      symbol = _symbol;
+      seccount = _seccount;
+    }
+
+    public void Deconstruct(out string name, out string symbol)
+    {
+      name = _name;
+      symbol = _symbol;
+    }
+
+    public void Deconstruct(out string name, out int seccount)
+    {
+      name = _name;
+      seccount = _seccount;
+    }
     static void testIndexing()
     {
       var logname = nameof(testIndexing); 
@@ -75,12 +104,29 @@ namespace Experiments1
       Console.WriteLine(desc ??= "Default value"); //NEW!!!
       Console.WriteLine($"INFO: desc == [{desc}]");
     }
-    static void testDesconstruction()
+    static void testDeconstruction()
     {
       var (close, low, high) = getPriceByTicker("AAPL");
       Console.WriteLine($"INFO ('AAPL'): close = {close}, low = {low}, high = {high}");
       (close, _, _) = getPriceByTicker("MSFT");
       Console.WriteLine($"INFO ('MSFT'): close = {close}");
+
+      Exchange exchange1 = new Exchange("NASDAQ", "NDAQ", 8234);
+      Exchange exchange2 = new Exchange("NYSE", "NYSE", 9234);
+
+      var exchanges = new Exchange[] { exchange1, exchange2 };
+
+      /*Array.ForEach( exchanges, (e) =>
+      { 
+        (_, var symbol, var seccount) = e;
+        Console.WriteLine($"INFO: symbol = {symbol}, seccount = {seccount}");
+      });*/
+      exchanges.Select( (exchance, index) => (exchance, index)).
+        ToList().ForEach( (record) =>
+      { 
+        (_, var symbol, var seccount) = record.exchance;
+        Console.WriteLine($"INFO({record.index + 1}): symbol = {symbol}, seccount = {seccount}");
+      });
     }
 
     static string getDesc()
@@ -102,10 +148,10 @@ namespace Experiments1
 
     static void Main(string[] args)
     {
-      Program.testIndexing();
-      Program.testLiteralNumberImprovements();
-      Program.testCoelescing();
-      Program.testDesconstruction();
+      Exchange.testIndexing();
+      Exchange.testLiteralNumberImprovements();
+      Exchange.testCoelescing();
+      Exchange.testDeconstruction();
       Console.WriteLine("END.");
     }
   }
