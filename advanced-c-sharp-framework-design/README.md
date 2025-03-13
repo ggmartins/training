@@ -18,7 +18,7 @@ that handles complicated systems and even renders logic critical for your applic
 - Good frameworks should be self-contained and easily shareable, with minimal dependencies on other libraries.
 - When designing a framework: create a goal and try to find the simplest solution to achieve it. Don't try to reinvent the wheel.
 
-## 1.2 Conde encapsulation
+## 1.2 Code encapsulation
 
 - Encapsulation: Encapsulation is used to hide the values or state of a structured data object inside a class, preventing unauthorized access.
   It simplifies external interactions and protects the data within your framework.
@@ -36,3 +36,44 @@ Modularity through Interfaces: Interfaces help create a modular framework by pro
 easily extended and enhanced.
 Extending Functionality: By implementing these interfaces in concrete classes, you can extend the framework's functionality while maintaining clean
 and organized code. The example of MyClass shows how to implement both ISave and ILoad interfaces and add custom methods.
+
+```csharp
+public interface ISave
+{
+   public void Save(string s);
+}
+public interface ILoad
+{
+   public string Load();
+}
+
+public class MyClass: ISave, ILoad
+{
+   public void CustomMethod()
+   {
+      //Custom Logic
+   }
+   public void Save(string s)
+   {
+   }
+   public string Load()
+   {
+   }
+}
+```
+
+```csharp
+
+public interface IMyClassIO: ISave, ILoad
+{
+   public void CustomMethod()
+   {
+      //Custom Logic
+   }
+}
+
+public class MyClass: IMyClassIO
+{
+   ... //same as MyClass
+}
+```
