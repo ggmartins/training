@@ -77,3 +77,33 @@ public class MyClass: IMyClassIO
    ... //same as MyClass
 }
 ```
+## 1.4 Modular Classes
+While frameworks are generally designed to solve a specific task or collection of tasks, you should try to capture more edge cases.
+What are the questions you should try to answer early on in a framework's development process? Does the framework do what others need?
+What happens when someone needs to do X, Y, and Z, and how do you plan to account for it? Can it scale? Can your framework scale to
+the needs of the users, or are you building a tool that is not flexible? And finally, can it be extended? Can users extend what you've done,
+and build on top of it easily? Here are some tips for building modular classes. 
+
+### 1.4.1 Use interfaces.
+Does your class implement any type of interface? Interfaces allow you to interchange with other classes. So if a developer needs to create a
+custom class with its own logic, but still work within your framework, they can adopt the interface your framework requires.
+### 1.4.2 Do your classes support extending?
+Is the class sealed, or do you expect developers to extend it? Are you using virtual in your public and protected method scopes? 
+### 1.4.3 Do you have abstract classes?
+Are you creating abstract classes and base classes as a layer of foundation, or is the
+class a concrete implementation with no inheritance? You should be building basic classes that other classes in your framework extend on, so if 
+developers need to create new classes, they can use the abstract or the base class as a starting point instead of having to implement all of the
+business logic from scratch by implementing an interface.
+### 1.4.4 Do you have utilities?
+What kind of utility classes do you provide? Are they singletons or can they be extended?
+### 1.4.5 Do you have Primitive classes?
+What are the primitive classes of your framework? Are they enough, and can they be used outside of the framework,
+or are they closely tied to the intended use case? What are the basic classes of data that your framework requires,
+and are these useful enough for developers as is, or should they have to provide their own primitive classes?
+### 1.4.6 Sharing the code
+Are you sharing the code of your framework, and do you intend others to extend it beyond its original design? Or would you rather keep it
+private? Take some time to answer these questions and refer back to them while you architect your framework's code. I find that just like
+creating a business plan for a company, you should have a mission statement for the framework itself. This mission statement should outline the
+intended use of the framework, and what you expect of it over time. Define what you think makes the framework successful, and what are the 
+things that your framework is trying to solve? As you build out the code base and add functionality, check your mission statement and see that
+you're staying true to your vision for the framework.
