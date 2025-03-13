@@ -1,7 +1,6 @@
 
 # 1. Framework Design
 
-
 ## 1.1 Designing frameworks
 What is a framework?
 A software framework in computer programming is an abstraction in which common code provides a generic
@@ -18,7 +17,7 @@ that handles complicated systems and even renders logic critical for your applic
 - Good frameworks should be self-contained and easily shareable, with minimal dependencies on other libraries.
 - When designing a framework: create a goal and try to find the simplest solution to achieve it. Don't try to reinvent the wheel.
 
-## 1.2 Code encapsulation
+## 1.2 Code Encapsulation
 
 - Encapsulation: Encapsulation is used to hide the values or state of a structured data object inside a class, preventing unauthorized access.
   It simplifies external interactions and protects the data within your framework.
@@ -107,3 +106,7 @@ creating a business plan for a company, you should have a mission statement for 
 intended use of the framework, and what you expect of it over time. Define what you think makes the framework successful, and what are the 
 things that your framework is trying to solve? As you build out the code base and add functionality, check your mission statement and see that
 you're staying true to your vision for the framework.
+
+# 2. Extending Frameworks
+# 3. Hosting Code
+# 4. Continuous Integration
