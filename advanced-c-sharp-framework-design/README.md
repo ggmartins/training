@@ -151,4 +151,86 @@ public interface IAction
 ```
 
 # 3. Hosting Code
+
+## 3.1 Share Framework
+- Clean API Architecture: Ensure that all public-facing methods are easy to understand, use, and implement in other developers' codebases.
+- Documentation: Thoroughly document your APIs with examples to make them easy to use.
+- Clear Functionality: Clearly define what your framework does, the problems it solves, and how it improves other developers' codebases.
+- Sharing Options: Share your framework through dynamic link libraries (DLLs), NuGet packages, or hosting it online on platforms like GitHub.
+- Build more than one framework as needed, limit the dependencies, don't create a monster that tries to solve everything.
+- Shared Project (Visual Studio)
+- NuGet
+## 3.2 Hosting framework
+- Github, Gitlab, Bitbucket
+- Track bugs
+- See progress
+- Allow contributions
+- opensource.org
+## 3.3 Documenting Framework
+- Use /// (create auto-summary)
+- Importance of Documentation: Proper documentation is crucial for the adoption and usability of your framework.
+  Well-documented public APIs are essential.
+- XML-style Commenting: Use XML-style comments in Visual Studio by typing three forward slashes above a class or method.
+  This generates an XML template for documentation.
+- Benefits of Documentation: Documenting code helps other developers understand and use your framework,
+  and it also serves as a reminder for yourself about the design and functionality of your code.
+## 3.4 Setting up github
+- .github folder with
+- ISSUE_TEMPLATE -> bug_report.md
+- CODE_OF_CONDUCT.md
+- CONTRIBUTING.md
 # 4. Continuous Integration
+## 4.1 What is CI?
+- Automation: CI automates the building, testing, and deployment of your code, ensuring consistency and reducing human error.
+- Integration with GitHub: CI can be integrated with GitHub to trigger builds and tests automatically when code is pushed or checked in.
+- Tools and Systems: There are several CI tools available, such as Travis CI, Azure Pipelines, and GitHub Actions,
+which helps in creating custom workflows and ensuring code stability.
+- Custom CI: Nodejs gulp
+## 4.2 Custom build scripts
+- `dotnet publish -r osx-x64 -p:PublishSingleFile=true -p:SelfContained=true -p:PublishTrimmed=true -o ./Release/dist`
+- `dotnet pack` (for NuGet)
+- gulp script (nodejs)
+- `npm init`
+- `npm i -s gulp` and `npm -i -s gulp`
+- `gulpfile.js`
+```javascript
+const gulp = require("gulp")
+const shell = require("gulp-shell")
+
+gulp.task(
+  'default',
+  gulp.series(
+     [
+       shell.task("dotnet pack -o ./Release/")
+     ]
+  )
+)
+```
+## 4.3 Using Github Actions
+- Actions live inside `.github/workflows/`
+- `.github/workflows/main.yaml`
+```yaml
+name: Any Name
+on:
+  push:
+     branches:
+        - main
+jobs:
+  create-release:
+    name: main release
+    runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-dotnet@v1
+      with:
+         dotnet-version: 8.0
+    - uses: actions/node@v1
+    - run: |
+       npm install
+       gulp
+    - uses: actions/upload-artefacts@v3
+      with:
+        name: mycoolname
+        path: ./Releases
+```
+    
