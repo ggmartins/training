@@ -39,11 +39,11 @@ and organized code. The example of MyClass shows how to implement both ISave and
 ```csharp
 public interface ISave
 {
-   public void Save(string s);
+   void Save(string s);
 }
 public interface ILoad
 {
-   public string Load();
+   string Load();
 }
 
 public class MyClass: ISave, ILoad
@@ -65,7 +65,7 @@ public class MyClass: ISave, ILoad
 
 public interface IMyClassIO: ISave, ILoad
 {
-   public void CustomMethod()
+   void CustomMethod()
    {
       //Custom Logic
    }
@@ -108,5 +108,47 @@ things that your framework is trying to solve? As you build out the code base an
 you're staying true to your vision for the framework.
 
 # 2. Extending Frameworks
+
+## 2.1 Create indepedent modules
+
+- Understand the Use Cases: Clearly define what problems your framework solves to ensure its focus is narrow and useful.
+- Identify Gaps: Recognize what your framework doesn't solve and how developers might address these gaps.
+- Design for Extensibility: Use virtual methods, interfaces, and base/abstract classes to allow others to extend and customize your framework.
+- Self-Contained Modules: Ensure modules are self-contained and clean up dependencies to make them portable and reusable.
+- Continuous Improvement: Use your own framework in projects to identify and fix bugs and missing features.
+- Some of the best frameworks were pulled out from existing projects
+- Clean dependencies, make it self contained and reintroduce the framework back into the project
+- Git submodules
+- Independent to be portable
+
+## 2.2 Enforce an architecture pattern
+
+- Create a consistent API and design pattern
+- <b>Consistent</b> API, Classes and Interfaces
+- Action Design pattern
+  - Extend the Abstract Action Class
+  - Override the Name Property
+  - Add their own logic to the overridden Execute method
+ 
+```csharp
+public abstract class Action
+{
+   public virtual string Name => "";
+   public virtual void Execute(string[] args)
+   {
+      throw new Exception("Nothing to execute")
+   }
+}
+```
+Now becomes =>
+```csharp
+public interface IAction
+{
+   string Name => "";
+   void Execute(string[] args)
+}
+
+```
+
 # 3. Hosting Code
 # 4. Continuous Integration
