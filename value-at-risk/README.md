@@ -1,5 +1,5 @@
-https://www.youtube.com/watch?v=92WaNz9mPeY&ab_channel=MITOpenCourseWare
-https://www.youtube.com/watch?v=9HD6xo2iO1g&ab_channel=WallStreetQuants
+* https://www.youtube.com/watch?v=92WaNz9mPeY&ab_channel=MITOpenCourseWare
+* https://www.youtube.com/watch?v=9HD6xo2iO1g&ab_channel=WallStreetQuants
 # Value-at-Risk
 (Ken Abbott, Morgan Stanley)
 
