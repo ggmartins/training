@@ -92,13 +92,7 @@ Who is this schmuck?<br>
 I don’t know, but I think I just came.<br>
 ♪ Ah. ♪<br>
 [CASH REGISTER DINGS]<br>
-[♪♪♪]<br><div class="code-block code-block-2" style="margin: 8px auto; text-align: center; display: block; clear: both;">
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8776076002137888" crossorigin="anonymous"></script>
-<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-8776076002137888" data-ad-slot="4706926029"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script></div>
-
+[♪♪♪]<br>
 MAN [OVER P.A.]: Approaching Downtown Crossing. Doors will open on the right. Change here for the Red Line, Green Line, SL5 and bus connections. Next and last stop, Downtown Crossing.<br>
 [♪♪♪]<br>
 Uh, Ruby. Ruby, right?<br>
@@ -148,13 +142,7 @@ Kitty.<br>
 Man, you don’t even own a house.<br>
 It’s got a ton of short interest, which is artificially… You got a one-year-old.<br>
 …pushing the price down. Jesus, bro.<br>
-You never bet against Wall Street.<br><div class="code-block code-block-3" style="margin: 8px auto; text-align: center; display: block; clear: both;">
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8776076002137888" crossorigin="anonymous"></script>
-<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-8776076002137888" data-ad-slot="4706926029"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script></div>
-
+You never bet against Wall Street.<br>
 Wall Street gets it wrong all the time.<br>
 Look at ’08. That was a one-off, Kitty.<br>
 These guys, they have all the money and the fancy degrees and the political juice in the world, and they get it wrong all the time.<br>
@@ -204,13 +192,7 @@ What? Did Briggsy make you jumpy? A little.<br>
 What was his argument? He didn’t have one.<br>
 Well… He just said it was a reckless bet.<br>
 He said, “You’re putting your money in the next Blockbuster.”<br>
-Enough. Fuck Briggsy.<br><div class="code-block code-block-4" style="margin: 8px auto; text-align: center; display: block; clear: both;">
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8776076002137888" crossorigin="anonymous"></script>
-<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-8776076002137888" data-ad-slot="4706926029"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script></div>
-
+Enough. Fuck Briggsy.<br>
 Babe, you literally know more about this damn company than you know about me.<br>
 It’s true.<br>
 And because of you, I know more about this company than I know about myself.<br>
@@ -260,13 +242,7 @@ Uh, we’re gonna come back to them at the end.<br>
 Here’s what I want to talk about.<br>
 Uh, I’m gonna pick a stock and talk about why I think it’s interesting.<br>
 And that stock is…<br>
-…GameStop.<br><div class="code-block code-block-5" style="margin: 8px auto; text-align: center; display: block; clear: both;">
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8776076002137888" crossorigin="anonymous"></script>
-<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-8776076002137888" data-ad-slot="4706926029"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script></div>
-
+…GameStop.<br>
 [CHUCKLES] Uh…<br>
 I know it’s a polarizing stock and some of you are probably gonna tune out of the stream right now when you hear I’m bullish on GameStop, but I am.<br>
 You can see it is now the biggest position by far in the Roaring Kitty portfolio.<br>
@@ -316,13 +292,7 @@ It’s a bullshit way for rich people to get richer.<br>
 He posts his balance sheets and everything.<br>
 WallStreetBets is going crazy over this.<br>
 Who? It’s an Internet forum.<br>
-Uh-huh.<br><div class="code-block code-block-6" style="margin: 8px 0; clear: both;">
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8776076002137888" crossorigin="anonymous"></script>
-<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-8776076002137888" data-ad-slot="4706926029"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script></div>
-
+Uh-huh.<br>
 On Reddit. Oh, see. No, no, no.<br>
 I’m not gonna do this with you.<br>
 The last time you brought up Reddit, it was just all these oil paintings of Donald Trump on horseback.<br>
@@ -372,14 +342,7 @@ Morning, Marcos.<br>
 Shit. Yo, what’s– Hey, Brad.<br>
 Yo, um, I was wondering if I could get an advance on my pay.<br>
 I can run it up the chain, but with all the cutbacks, that’s unlikely.<br>
-Oh, hey, you could do the employee TikTok contest.<br><div class="code-block code-block-7" style="margin: 8px 0; clear: both;">
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8776076002137888" crossorigin="anonymous"></script>
-<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-8776076002137888" data-ad-slot="4706926029"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script></div>
-
-You do a lip sync, you win ten labor hours.<br>
+Oh, hey, you could do the employee TikTok contest.<br>You do a lip sync, you win ten labor hours.<br>
 Yeah, man, totally.<br>
 That’s dope.<br>
 I was thinking “Savage.”<br>
@@ -428,13 +391,7 @@ You guys have been talking about it.<br>
 Thesis grounded in the fundamentals, but I’m not–<br>
 But to– I mean, today, I mean, I’m… I’m starting to feel a little squeezy, right?<br>
 Starting to feel a little squeezy. Honk.<br>
-I mean, hello. Okay. All right, all right.<br><div class="code-block code-block-9" style="margin: 8px 0; clear: both;">
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8776076002137888" crossorigin="anonymous"></script>
-<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-8776076002137888" data-ad-slot="4706926029"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script></div>
-
+I mean, hello. Okay. All right, all right.<br>
 I need a drink. I need a drink.<br>
 Now, a lot of you are accusing me of talking a big game.<br>
 CAROLINE [UPSTAIRS]: Keith? But…<br>
