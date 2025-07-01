@@ -56,3 +56,51 @@ EDM is a SASS that can run in the cloud or on-prem.
 | Trading Systems |  | Sales & MArketing |  | Risk Systems    |  | Analytics System  |
 +-----------------+  +-------------------+  +-----------------+  +-------------------+
 ```
+## 1.1 Standard EDM Processing Flow
+
+EDM essentially provides Extract, Transform and Load (ETL) functionality. 
+```
++----------------------------------------------------------------------------+
+ \   LOAD: Data Flow Process -> 1.Source, 2.Sequence, 3.Target              /
+  +------------------------------------------------------------------------+
+   \  DATA TYPE: Data Flow Sequence -> Data Typing checks                 /
+     +-------------------------------------------------------------------+
+      \ TRANSFORM ALIGN: text data -> typed data (validate CUSIP/ISIN) /
+        +-------------------------------------------------------------+
+         \ PREMATCH: Data Flow Sequence steps perform pre-match val / (Validate and Transform)
+          +--------------------------------------------------------+
+           \  CONSOLIDATION: (Optional) use Data Contructor to    / merge feeds.
+             +---------------------------------------------------+
+                                     |
+                              +-------------+ Sources are matched and unique Cadis
+                              |    MATCH    | IDs are assigned by the Core Matcher
+                              +-------------+ Matched IDs are enriched on to related entities such as Prices, Trades and Positions.
+                                     |
+             +---------------------------------------------------+
+           /  SOURCE VALIDATION: Data Inspector validates source  \ alignment.
+          +--------------------------------------------------------+
+        /  MASTERING: Business Inspection Framework: Master Gold Copy\ is built using hierarchy rules in data contructor.
+       +--------------------------------------------------------------+
+     /  MASTER VALIDATION: Data Inspector performs vertical / horizontal\ Master Validation
+    +--------------------------------------------------------------------+
+   / TARGET TRANSFORMATION: Data Contructor creates Master Data into target\ tables ready for exporting (Mapping Tables).
+  +-------------------------------------------------------------------------+
+/  EXPORT: Target Data is exported by Data Porter                            \
++-----------------------------------------------------------------------------+
+
+```
+
+### 1.1.1 LOAD Data Flow Process
+### 1.1.2 DATA TYPE Data Floe Sequence
+### 1.1.3 TRANSFORM ALIGN Data Flow Process
+Data is aligned to house standards using mapping tables; e.g. currencies mapped to ISO 4217 Currency Codes.
+### 1.1.4 PREMATCH Data Flow Sequence
+### 1.1.5 CONSOLIDATION Data Constructor
+### 1.1.6 MATCH Core Matcher
+### 1.1.7 SOURCE VALIDATION Data Inspector
+### 1.1.8 MASTERING Data Contructor
+### 1.1.9 MASTER VALIDATION Data Inspector
+### 1.1.10 TARGET TRANSFORMATION Data Contructor
+### 1.1.11 EXPORT Data Porter
+
+          
