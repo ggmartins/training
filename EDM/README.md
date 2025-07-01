@@ -11,7 +11,11 @@
                      +------------------+       Consistent & Fully Audited Env
                                                 Greater Control
                                                 Ongoing compliance
-                                                Transparency 
+                                                Transparency
+
+Customers are able to streamline front, middle and back office operations and create
+consistent versions of data in a fully audited and transparent environment.
+The transparency of where data has come from, who has touched it, what rules were applied is ensured by EDM’s data lineage. 
 ```
 
 * Data governance: Creates a single version of the truth, data stewardship of data assets and a transparent audit trail.
