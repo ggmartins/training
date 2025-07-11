@@ -102,5 +102,36 @@ Data is aligned to house standards using mapping tables; e.g. currencies mapped 
 ### 1.1.9 MASTER VALIDATION Data Inspector
 ### 1.1.10 TARGET TRANSFORMATION Data Contructor
 ### 1.1.11 EXPORT Data Porter
+# 2. API
+## 2.1 Required Concepts
+### 2.1.1 Always On
+Always-On solutions are preloaded into memory on the application server,
+so that EDM can begin processing data as quickly as possible by reducing individual component-level startup times.
+This guide explains how this functionality works and contains the following sections
+#### 2.1.1.1 Use Cases
+The most common application of an Always-On solution will be:
+- Intraday solutions that are called multiple times throughout the business day.
+- Solutions invoked from the UI.
+- Solutions where optimal processing time is considered to be crucial.
+#### 2.1.1.2 Installation Requirements
+
+It is mandatory to install the *EDM Process Launcher Windows Service* on the *Application Server* for Always-On solutions,
+even if you are not using a Process Launcher component.
+Please refer to the EDM Services Installation Guide for further instructions on how to configure the EDM Services.
+
+It is also mandatory to configure the *EDM Process Launcher REST API* on the Application Server for Always-On solutions,
+which are run through the API. Please refer to the Process Launcher REST API guide to ensure the API is properly configured.
+
+When the Process Launcher Windows Service starts up, any solutions that have been designated as Always-On will be preloaded into memory on the application server. To confirm that any Always-On solutions have successfully loaded, you may refer to the database view CADIS.vwServiceLog or the appropriate service log file commonly stored in the EDM temporary files location (e.g. C:\Users\windows.user\AppData\Local\MarkitEDM Temporary Files\Log).
+
+#### 2.1.1.3 Solution Designation
+In order for a solution to be preloaded into memory on service start, any appropriate solutions will need to be designated
+as Always-On in the EDM thick-client application.
+
+With the Solution open in the EDM thick-client application, you can access the component Properties via the tool bar icon.
+The Solution Properties dialog allows you to select the Always On Solution checkbox to designate the Solution as such.
+
+(System Properties with Always On Solution marked)
+
 
           
