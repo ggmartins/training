@@ -893,7 +893,7 @@ Cloud Apps need to:
 - scale reliably
 - handle dynamic workloads
 
-## 6.1 Containnerized Solutions (az-204)
+## 6.1 Containerized Solutions (az-204)
 
 ### 6.1.1 Creating and Managing Container Images for Solutions
 
@@ -903,6 +903,35 @@ Cloud Apps need to:
 - Stand-alone piece of executable software
 - Not a VM
 - Docker, Docker Swarm, Podman, CoreOS, Singularity/Apptainer, Kubernetes,
+- Consistency, Flexibility, Efficiency, Simplicity
+- Containers are immutable
+- Container Image, Container Instance, Container Registry (storage and share), Container Engine
+
+#### 6.1.1.2 ACR Azure Container Registry
+
+What it is:
+- Managed Service
+- Based on Docker Registry 2.2
+- Store and Manage Container Images
+- Integration with Azure Services like App Service, ACI, AKS, ACA
+  
+Key Features:
+- Basic Tier (less storage, less performance (throughput))
+- Standard Tier (minimum for prod apps)
+- Premium Tier (Network capabilities, bring your own keys to encrypt containers images at rest, multi-geo)
+- Security Access using Microsoft Entra ID (az cli or docker commands/compatible)
+- Docker-compatible containers
+- Automated image builds via ACR
+- Also store Helm charts and images build usig OCI (open container initiative)
+
+Login into Registry:
+```
+az acr login --name <registryname>
+docker push <loginserver>/image
+docker run <loginserver>/<image>
+```
+
+
 
 ### 6.1.2 Publishing an Image to ACR Azure Container Registry
 
@@ -918,4 +947,4 @@ Cloud Apps need to:
 
 # 8. Blob Storage (az-204)
 
-# 9. Azure Security
+# 9. Azure Security (az-204)
