@@ -577,7 +577,7 @@ One option for managing Azure Active Directory is to use Azure AD sync(opens in 
 
 App developers may also use Azure AD to implement single sign on, as described in the documentation(opens in a new tab). https://docs.microsoft.com/azure/active-directory/develop/
 
-# 3. Azure DevOps
+# 3. Azure DevOps Intro
 
 - It's cloud platform and language agnostic, it can be integrated with AWS, GCP and other clouds.
 
@@ -887,3 +887,35 @@ az group create --location eastus --name rg_azdevops
 az ad sp create-for-rbac -n sp_azdevops --role Contributor --scopes /subscriptions/[REDACTED]/resourceGroups/rg_azdevops_[REDACTED]
 ```
 
+# 6. Azure Compute (az-204)
+
+Cloud Apps need to:
+- scale reliably
+- handle dynamic workloads
+
+## 6.1 Containnerized Solutions (az-204)
+
+### 6.1.1 Creating and Managing Container Images for Solutions
+
+#### 6.1.1.1 Container
+
+- Lightweight OS-Level Virtualization Method
+- Stand-alone piece of executable software
+- Not a VM
+- Docker, Docker Swarm, Podman, CoreOS, Singularity/Apptainer, Kubernetes,
+
+### 6.1.2 Publishing an Image to ACR Azure Container Registry
+
+### 6.1.3 Running Containers with ACI Azure Container Instances
+
+### 6.1.4 Running Containers with ACA Azure Container Apps
+
+## 6.2 Azure App Service Web Apps (az-204)
+
+## 6.3 Azure Functions (az-204)
+
+# 7. Azure CosmosDB (az-204)
+
+# 8. Blob Storage (az-204)
+
+# 9. Azure Security
