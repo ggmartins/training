@@ -916,26 +916,50 @@ What it is:
 - Integration with Azure Services like App Service, ACI, AKS, ACA
   
 Key Features:
-- Basic Tier (less storage, less performance (throughput))
-- Standard Tier (minimum for prod apps)
-- Premium Tier (Network capabilities, bring your own keys to encrypt containers images at rest, multi-geo)
+- Basic Tier (less storage, less performance (throughput), public)
+- Standard Tier (minimum for prod apps, only public)
+- Premium Tier (Network capabilities, bring your own keys to encrypt containers images at rest, multi-geo, public or private)
 - Security Access using Microsoft Entra ID (az cli or docker commands/compatible)
 - Docker-compatible containers
 - Automated image builds via ACR
 - Also store Helm charts and images build usig OCI (open container initiative)
 
-Login into Registry:
-```
-az acr login --name <registryname>
-docker push <loginserver>/image
-docker run <loginserver>/<image>
-```
 
 
 
 ### 6.1.2 Publishing an Image to ACR Azure Container Registry
 
+Login into Registry:
+```
+az login
+az acr login --name <registryname>
+docker push <loginserver>/image:tag
+docker run <loginserver>/<image:tag>
+
+az login
+docker tag test-iamge <yourcrregistryname.azurecr.io/test-image:v1>
+docker push yourcrregistryname.azurecr.io/test-image:v1
+```
 ### 6.1.3 Running Containers with ACI Azure Container Instances
+- fast startup times
+- managed service, no need to set up VMs
+- hypervisor level security
+- custom sizes
+- persistent storage with azure files
+- linux and windows containers
+- VNet Isolation (private IP or public with dns)
+- batch processing / microservices
+- vertical scalins is easy: ask how much CPU and RAM
+(can become problematic to spin up / tier down with same image and repeat/reproduce) Not as consistent as AKS
+
+#### 6.1.3.1 Container Groups
+```
++----------------------------------------------------------+
+|  Port 80 (Public)            Port 1433 (Private)         |
+|  demo.azurecr.io/app1:v1     demo.azurecr.io/app2:v1     |
+|                                                       CR |
++----------------------------------------------------------+
+```
 
 ### 6.1.4 Running Containers with ACA Azure Container Apps
 
