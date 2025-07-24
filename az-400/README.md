@@ -941,10 +941,10 @@ docker tag test-iamge <yourcrregistryname.azurecr.io/test-image:v1>
 docker push yourcrregistryname.azurecr.io/test-image:v1
 ```
 ### 6.1.3 Running Containers with ACI Azure Container Instances
-- fast startup times
+- fast startup times <------
+- custom sizes <------
 - managed service, no need to set up VMs
 - hypervisor level security
-- custom sizes
 - persistent storage with azure files
 - linux and windows containers
 - VNet Isolation (private IP or public with dns)
@@ -959,9 +959,54 @@ docker push yourcrregistryname.azurecr.io/test-image:v1
 |  demo.azurecr.io/app1:v1     demo.azurecr.io/app2:v1     |
 |                                                       CR |
 +----------------------------------------------------------+
+BFF !!
 ```
 
 ### 6.1.4 Running Containers with ACA Azure Container Apps
+
+- serverless platform
+- allows you to maintain LESS infrastructure and still be able to scale (at higher cost)
+- provides infrastructure to orchestrate a containerized workloads
+- focus on features and not in the infrastructure
+- split traffic based on multiple versions of the application (blue/green)
+- can integrate with KEDAS-scalers and Dappers and other with azure services, acr, kv, analytics
+
+### 6.1.5 ACI vs ACA
+
+```
++--------------+------------------------------------------------------------------------------------------------------+
+|              | ACI                                               | ACA                                              |
++------------------------------------------------------------------+--------------------------------------------------+
+| Use Case:    | Lightweight, quick-to-deploy containers           | Full-featured microservice hosting with          |
+|              | for simple tasks;                                 | built-in scaling                                 |
++------------------------------------------------------------------+--------------------------------------------------+
+| Abstraction  | Low – infrastructure-level container              | High – app-level abstraction, focus on app logic,|
+| Level:       | management                                        | not infra                                        |
++------------------------------------------------------------------+--------------------------------------------------+
+| Ingress\     | Exposed via public IP or VNet (manual setup)      | Built-in HTTPS ingress with custom domains       |
+| Networking   |                                                   | support                                          |
++---------------------------------------------------------------------------------------------------------------------+
+| Scaling      | Manual (no-autoscaling)                           | Built-in autoscaling (CPU, memory, HTTP requests,|
+|              |                                                   | events)                                          |
++---------------------------------------------------------------------------------------------------------------------+
+| HTTPS / TLS  | Not automatic - must be done via reverse proxy    | Built-in HTTPS support, managed certificates     |
+| support:     | (eg. nginx + cert )                               | (via Azure Front Door or custom certs)           |
++---------------------------------------------------------------------------------------------------------------------+
+| Custom       | Not natively supported                            | Supported – can map and use managed or           |
+| Domains:     |                                                   | uploaded TLS certs                               |
++---------------------------------------------------------------------------------------------------------------------+
+| Pricing      | Per-second billing                                | Pay-as-you-go, includes scaling to zero          |
+| Granularity  |                                                   |                                                  |
++---------------------------------------------------------------------------------------------------------------------+
+| Event-driven | Not supported directly                            | Built-in support for Dapr, KEDA, and event       |
+| architecture |                                                   | triggers                                         |
++---------------------------------------------------------------------------------------------------------------------+
+| Dev-friendly | Minimal                                           | GitHub Actions integration, revisions, traffic   |
+| features     |                                                   | splitting                                        |
++---------------------------------------------------------------------------------------------------------------------+
+
+
+```
 
 ## 6.2 Azure App Service Web Apps (az-204)
 
