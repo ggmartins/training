@@ -160,7 +160,7 @@ which allows edits to take place on the data displayed within the Data Manager a
 +--------+-------------------------------------+
 | PUST   | /api/datagenerator/{name}/data/{id} |
 +--------+-------------------------------------+
-
+```
 ### 2.3.1 Data Generator Functions
 TBD
 Every DG Functions is associated with a data source.
@@ -240,5 +240,6 @@ eg. GET edmtest.example.com/api/datagenerator/Ops%20Transactions
 
 
           
+
 
 
