@@ -133,5 +133,59 @@ The Solution Properties dialog allows you to select the Always On Solution check
 
 (System Properties with Always On Solution marked)
 
+## 2.2 Data Proccess API
+## 2.3 Data Generator API
+```
++--------+-------------------------------------+
+| Method | Path                                |
++--------+-------------------------------------+
+| GET    | /api/datagenerator                  |
++--------+-------------------------------------+
+| GET    | /api/datagenerator/{name}           |
++--------+-------------------------------------+
+| GET    | /api/datagenerator/{name}/data      |
++--------+-------------------------------------+
+| POST   | /api/datagenerator/{name}/data      |
++--------+-------------------------------------+
+| DELETE | /api/datagenerator/{name}/data/{id} |
++--------+-------------------------------------+
+| PUST   | /api/datagenerator/{name}/data/{id} |
++--------+-------------------------------------+
+```
+### 2.3.1 /api/datagenerator
+This request returns the definitions of the subset of permitted Data Generator functions for which the API client user has minimal 'Open' Console Group permission. 
+Use <b>limit & offset</b> to control pagination.<b>x-total-count</b> gives the total number of records.
+```json
+[
+ {
+  "Name" : "BookList",
+  "Enabled": true,
+  "Parameters": [],
+  "Fields": [
+    {
+      "Name": "BookID",
+      "IllustratedName": "Book ID",
+      "Type": "Integer (32 bit)",
+      "KeyField": true,
+      "HasDecodes":true
+    },
+    {
+      "Name": "BookName",
+      "IllustratedName": "Book Name -",
+      "Type": "Text",
+      "KeyField": false,
+      "HasDecodes":true
+    },
+    ...
+  ]
+ },
+ ...
+]
+```
+
+
+
+
 
           
+
