@@ -193,7 +193,8 @@ When setting and creating a new row in the inbox, any columns with their default
 
 Users can also select whether error dialogues should be suppressed, unsaved warnings should be hidden,
 CTRL+C copies formatted values and custom context menu items should be added to the inbox grid.
-```
+
+
 ### 2.3.3 DG API End-Points
 
 #### 2.3.3.1 GET /api/datagenerator
@@ -240,6 +241,7 @@ eg. GET edmtest.example.com/api/datagenerator/Ops%20Transactions
 
 
           
+
 
 
 
