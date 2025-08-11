@@ -135,6 +135,15 @@ The Solution Properties dialog allows you to select the Always On Solution check
 
 ## 2.2 Data Proccess API
 ## 2.3 Data Generator API
+
+The Data Generator is a universal data maintenance and inquiry tool, which can be configured to display and allow editing of data items from any EDM database table or view.
+The Data Generator grid's appearance can be customized using Data Illustrators, and user-entered data can be validated using Rule Builders.
+Permission to edit can be set at the user level or field level, and it is possible to control whether data rows can be added or deleted.
+
+A Data Generator comprises a Data Generator Function (the configuration part) and a Data Generator Inbox (the display part),
+and the Data Generator Function can be configured as an input source to a Data Manager Function,
+which allows edits to take place on the data displayed within the Data Manager according to the parameters set within the Data Generator.
+
 ```
 +--------+-------------------------------------+
 | Method | Path                                |
@@ -151,8 +160,43 @@ The Solution Properties dialog allows you to select the Always On Solution check
 +--------+-------------------------------------+
 | PUST   | /api/datagenerator/{name}/data/{id} |
 +--------+-------------------------------------+
+
+### 2.3.1 Data Generator Functions
+TBD
+Every DG Functions is associated with a data source.
+
+### 2.3.2 Data Generator Inbox
+
+The Generator Inbox allows users to view and maintain a selection of rows from a table, as configured in the Generator Function described above. 
+
+How the Data Generator Inbox displays and how the user can interact with it depends on the options selected in the Generator Inbox Grid UI element in the thick client.
+
+The options allow users to select the Data Generator on which to base the grid, whether the Data Generator's Add / Edit / Delete permissions should be overridden for this Element,
+and to display field action buttons in the inbox grid.
+
+As EDM uses a web-based UI, the default items per page can be set so that (for example) they reduce network traffic.
+
+Users can also choose whether to show the full Data Generator toolbar, or to hide it unless the inbox grid is zoomed to full screen.
+The specific buttons that will be visible on the toolbar can be individually enabled (the "Filter" option can no longer be disabled as of EDM v17.1).
+
+The option to make double-clicking the grid cause the Next button to be triggered on the Workflow is also available.
+This emulates a drill-down from a row on the grid into another Page in the Workflow.
+
+If no Quick Search is selected, the Quick searched defined in the Data Generator function will be available for the end-user's use,
+just like they would be in EDM. If a Quick Search is picked in the Element definition, then the quick search is fixed, and the user will not be able to select a different one.
+The parameters from the selected Quick Search are added to the input parameters however, allowing the values to be controlled by other Workflow Elements.
+This facility is used to provide a programmable filter for an inbox grid, for example to be used to show some search results.
+
+When the 'Default values for new rows' option is selected, all the inbox columns are presented with the option to be able to flag which ones should have default values.
+Any selected to have default values will create a new input parameter. This can then be set in the Workflow designer.
+When setting and creating a new row in the inbox, any columns with their default value set will be populated on the Inbox grid.
+
+Users can also select whether error dialogues should be suppressed, unsaved warnings should be hidden,
+CTRL+C copies formatted values and custom context menu items should be added to the inbox grid.
 ```
-### 2.3.1 /api/datagenerator
+### 2.3.3 DG API End-Points
+
+#### 2.3.3.1 GET /api/datagenerator
 This request returns the definitions of the subset of permitted Data Generator functions for which the API client user has minimal 'Open' Console Group permission. 
 Use <b>limit & offset</b> to control pagination.<b>x-total-count</b> gives the total number of records.
 ```json
@@ -182,10 +226,19 @@ Use <b>limit & offset</b> to control pagination.<b>x-total-count</b> gives the t
  ...
 ]
 ```
+#### 2.3.3.2 GET /api/datagenerator/{name}
+
+This request returns the definition of the specified Data Generator function.
+If the API client does not have permissions to the specified function, this is indicated in the API response body.
+
+eg. GET edmtest.example.com/api/datagenerator/Ops%20Transactions
+
+#### 2.3.3.3 GET /api/datagenerator/{name}/data
 
 
 
 
 
           
+
 
