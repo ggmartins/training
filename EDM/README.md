@@ -237,11 +237,48 @@ eg. GET edmtest.example.com/api/datagenerator/Ops%20Transactions
 #### 2.3.3.3 GET /api/datagenerator/{name}/data
 
 
+# 3. EDM Test Harness
 
+Framework for running CADIS process agent. Knobs for:
+* set up test environment for each test in the form of _initialization actions_.
+  - Compare results of the process that run:
+    - database tables that have been populated as a result of the test
+    - files that have been produced (through finalizing actions
+  - it can run any executable component, eg:
+    - data porter inspector  matching a constructor
+    - data flow
+    - full solution
+    - sulution of solutions
 
-
-          
-
-
-
-
+```
++-------------------------------------------+    +-------------------------------------------+
+| Client Machine                            |    | File Server                +-------------+|
+|                                           |    |                          +-------------+ ||
+|  +----------------------+                 |    | +-------------------+  +-------------+ | ||
+|  | Input Files          |                 |    | | QATesting\        |  | Package     | | ||
+|  | +----------------------+  <------+----------+ | AutomatedTesting\ |  | Test Data   | | ||
+|  | | Output Files         |         |     |    | | Test Cases XXXX   |  | DB Scripts  | | ||
+|  | |                      |         |     |    | +-------------------+  | DB Params   | | ||
+|  | |                      |         |     |    |                        |             | | ||
+|  +-|                      |         |     |    |                        | Expected    | | +|
+|    |                      |         |     |    |                        | Results     | +  |
+|    +----------------------+         |     |    |                        +-------------+    |
+|   ______                            |     |    +-------------------------------------------+
+|  /      \ <-- Test Harness ---------+     |
+|  \______/     EDM Database                |
+|                                           |
+|   +-------------------------------+       |    +-------------------------------------------+
+|   |      Test Harness App         | <----------+ Test Config (DB Server)                   |
+|   +-------------------------------+       |    |   ______                                  |
+|                                           |    |  /      \                                 |
+|   +--------------------+     +-----------+|    |  \______/                                 |
+|   | Working Files      |     | Test      ||    +-------------------------------------------+
+|   | +-------------------+    | Harness   ||
+|   | | Program Files     |    | Config    ||
+|   + | +------------------+   | XML       ||
+|     | | Log Files        |    \__________||
+|     + |                  |                |
+|       |                  |                |
+|       +------------------+                |
++-------------------------------------------+
+```
