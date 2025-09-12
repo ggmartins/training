@@ -239,7 +239,7 @@ eg. GET edmtest.example.com/api/datagenerator/Ops%20Transactions
 
 # 3. EDM Test Harness
 
-Test Harness—a framework for running the CADI process agent and validating results through repeatable,
+Test Harness—a framework for running the CADIS process agent and validating results through repeatable,
 automated tests. Knobs for:
 * set up test environment for each test in the form of _initialization actions_.
   - Compare results of the process that run:
@@ -309,3 +309,4 @@ automated tests. Knobs for:
 - Runs against a new/clean database for repeatability.
 - Produces a human-readable log (shows actions, command line used, timings).
 - Example run: multiple tests—some pass, one comparison fails, one exceeds SLA (warning).
+
