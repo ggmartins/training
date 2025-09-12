@@ -239,7 +239,8 @@ eg. GET edmtest.example.com/api/datagenerator/Ops%20Transactions
 
 # 3. EDM Test Harness
 
-Framework for running CADIS process agent. Knobs for:
+Test Harness—a framework for running the CADI process agent and validating results through repeatable,
+automated tests. Knobs for:
 * set up test environment for each test in the form of _initialization actions_.
   - Compare results of the process that run:
     - database tables that have been populated as a result of the test
@@ -249,6 +250,7 @@ Framework for running CADIS process agent. Knobs for:
     - data flow
     - full solution
     - sulution of solutions
+* The harness standardizes how packages/processes are executed and verified, supporting CI workflows.
 
 ```
 +-------------------------------------------+    +-------------------------------------------+
@@ -282,3 +284,28 @@ Framework for running CADIS process agent. Knobs for:
 |       +------------------+                |
 +-------------------------------------------+
 ```
+
+## 3.1 How it works
+
+- Initialize a clean test environment (optional scripts).
+- Import package (e.g., an EDM case).
+- Execute process (via the CADI process agent).
+- Compare outputs (file and/or database comparisons).
+- Finalize/teardown.
+
+### 3.1.1 Test organization & execution
+
+- Tests are grouped (nested groups supported).
+- Can run a whole group (cascades to subgroups) or individual tests.
+- Command-line friendly → suitable for continuous integration (trigger after builds).
+- Each test uses a simple folder layout: input data, packages, expected results, init scripts.
+### 3.1.2 Results & statuses (four checks)
+- Package import: success/failure.
+- Process run: executed or not.
+- Comparisons: pass/fail against expected data.
+- SLA timing: warns if runtime exceeds a specified limit.
+
+### 3.1.3 General Operation
+- Runs against a new/clean database for repeatability.
+- Produces a human-readable log (shows actions, command line used, timings).
+- Example run: multiple tests—some pass, one comparison fails, one exceeds SLA (warning).
