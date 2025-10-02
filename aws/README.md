@@ -7,8 +7,8 @@
 
 Core mental model: how AWS “feels” vs Azure:
 
-- Tenant vs. Org: Azure:
-  - AAD tenant → Management Groups → Subscriptions → Resource Groups → Resources
+- Tenant vs. Org:
+  - Azure: AAD tenant → Management Groups → Subscriptions → Resource Groups → Resources
   - AWS: Organizations → OUs → Accounts (hard isolation boundary) → Regions/AZs → VPCs → Resources
 - Tip: Think “many small AWS accounts” instead of “one subscription with many RGs.”
 - Identity & auth: Azure AD + RBAC → AWS IAM roles/policies + IAM Identity Center (SSO). Assume roles, don’t pass keys.
@@ -57,5 +57,6 @@ Technologies involved:
 ### 2.2.3 Data Engineer
 
 ### 2.2.4 Machine Learning Engineer
+
 
 
