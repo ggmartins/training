@@ -15,6 +15,12 @@ Core mental model: how AWS “feels” vs Azure:
 - Policy & governance: Azure Policy/Blueprints → AWS Service Control Policies (SCPs) + AWS Config + Organizations.
 - Networking: VNet/peering/vWAN → VPC/peering/Transit Gateway. Security groups are stateful; NACLs are stateless.
 
+Org & identity you’ll set up first:
+
+- AWS Organizations: Create OUs (e.g., security/, sandbox/, workloads/) and accounts per env (dev/test/prod).
+- IAM Identity Center (SSO): Connect to your IdP (Entra ID works) → Permission Sets → Users assume roles in accounts.
+- Guardrails: (Service Control Policies) SCPs (deny root access key, deny non-approved regions, require tagging), AWS Config + conformance packs, CloudTrail org-trail.
+
 # 2. AWS Certifications
 
 ## 2.1 Basic
@@ -50,13 +56,28 @@ Technologies involved:
 - Deployment: Gain insights into AWS deployment services like CloudFormation, AWS SAM, CodeDeploy, and Elastic Beanstalk, and how to deploy applications effectively.
 - Troubleshooting and Optimization: Learn how to monitor and optimize AWS applications using services like AWS X-Ray and DynamoDB.
 
-### 2.2.2 Solution Architect
+### 2.2.2 Solutions Architect
 
 ### 2.2.3 SysOps Administrator
 
 ### 2.2.3 Data Engineer
 
 ### 2.2.4 Machine Learning Engineer
+
+## 2.3 Professional
+
+### 2.3.1 DevOps Engineer
+
+### 2.3.2 Solutions Architect
+
+## 2.4 Specialty
+
+### 2.4.1 Machine Learning
+
+### 2.4.2 Security
+
+### 2.4.3 Advanced Networking
+
 
 
 
