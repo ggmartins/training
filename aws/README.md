@@ -1,6 +1,104 @@
 # 1. AWS Intro
 
-# 1.1 Coming from Azure
+- On-demand delivery of compute, storage, database and IT resources
+- pay-as-you-go
+- provision the exact type and size of computing resources you need
+- instant access to resources through friedly interface
+
+Private Cloud:
+
+- Cloud services used by a single organization
+- Complete Control
+- Security for sensitive apps
+- Meet specific business needs
+
+Public Cloud:
+
+- AWS, Azure, GCP
+- Cloud resources owned and operated by a third-party cloud service provider delivered over the internet
+- Five characteristics:
+  - On demand self service - user provision resources without help from providers
+  - Broad network access - resources can be accessed by a diverse network
+  - multi-tenancy and resource pooling
+    - multiple customers can share the same infrastructure and apps with security and privacy
+    - multiple customers are serviced from the same physical resources
+  - rapid elasticity and scalability - automatically and quick acquire and dispose resources when needed, easily scale on demand
+  - immediate access
+  - measured resources
+- Six advantages:
+  - no up front cost, trade CAPEX (capital expense) for OPEX (operational expense)
+    - Pay on demand, don't own hardware
+  - benefit from massive economy of scale
+    - prices are reduced as AWS is more efficient due to the large scale
+  - stop guessing capacity
+    - scale based on actual measured capacity
+  - increase speed and agility
+  - no money on data center maintenaince
+  - go global in minutes
+- In other words:
+  - Flexibility: change resources type when needed
+  - Cost-effectiveness: pay-as-you-go, for what you use
+  - Scalability: accommodate larger workloads by adding more nodes or upgrading existing hw
+  - Elasticity: ability to scale-out or scale-in when needed
+  - High availability and fault-tolerance: build across data centers / availability zones
+  - Agility: rapidly develop, test and launch software applications
+
+Hybrid Cloud:
+- Keep some servers on-prem
+- Extend capabilities to the cloud
+- Control over sensitive assent on prem
+- flexibility and cost effectiveness of the cloud
+
+# 1.1 Types of Cloud Computing
+
+- IaaS Infrastructure as a Service - building blocks of cloud IT (eg EC2):
+  - network,
+  - computers,
+  - storage etc.
+  - Highest Level of Flexibility
+  - Easy parallel with traditional on-premises IT
+- PaaS Platform as a Service (eg. Elastic Beanstalk):
+  - No need to manage underlaying infrastructure
+  - Focus on deploying and managing applications 
+- SaaS Software as a Service: (ex. Rekognition for ML)
+  - Complete software that runs on the cloud.
+
+```
+On-Prem                IaaS                   PaaS                   SaaS
++-----------------+    +-----------------+    +-----------------+    +-----------------+
+| Applications*   |    | Applications*   |    | Applications*   |    | Applications+   |
++-----------------+    +-----------------+    +-----------------+    +-----------------+
+| Data*           |    | Data*           |    | Data*           |    | Data+           |
++-----------------+    +-----------------+    +-----------------+    +-----------------+
+| Runtime*        |    | Runtime*        |    | Runtime+        |    | Runtime+        |
++-----------------+    +-----------------+    +-----------------+    +-----------------+
+| Middleware*     |    | Middleware*     |    | Middleware+     |    | Middleware+     |
++-----------------+    +-----------------+    +-----------------+    +-----------------+
+| OS*             |    | OS+             |    | OS+             |    | OS+             |
++-----------------+    +-----------------+    +-----------------+    +-----------------+
+| Virtualization* |    | Virtualization+ |    | Virtualization+ |    | Virtualization+ |
++-----------------+    +-----------------+    +-----------------+    +-----------------+
+| Servers*        |    | Servers+        |    | Servers+        |    | Servers+        |
++-----------------+    +-----------------+    +-----------------+    +-----------------+
+| Storage*        |    | Storage+        |    | Storage+        |    | Storage+        |
++-----------------+    +-----------------+    +-----------------+    +-----------------+
+| Networking*     |    | Networking+     |    | Networking+     |    | Networking+     |
++-----------------+    +-----------------+    +-----------------+    +-----------------+
+
+(*) Unmanaged
+(+) Managed
+```
+# 1.2 Pricing
+
+3 pricing fundamentals in pay-as-you-go:
+
+- Compute - pay for compute time
+- Storage - pay for the data stored (size) in the cloud
+- Networking - pay for data transferred OUT (not in)
+(solves the expensive issue of traditional IT)
+
+
+# 1.3 Coming from Azure
 
 Core mental model: how AWS “feels” vs Azure:
 
@@ -311,6 +409,7 @@ Skills in:
 ### 2.4.2 Security
 
 ### 2.4.3 Advanced Networking
+
 
 
 
