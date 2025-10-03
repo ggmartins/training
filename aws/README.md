@@ -49,7 +49,7 @@ Hybrid Cloud:
 - Control over sensitive assent on prem
 - flexibility and cost effectiveness of the cloud
 
-# 1.1 Types of Cloud Computing
+## 1.1 Types of Cloud Computing
 
 - IaaS Infrastructure as a Service - building blocks of cloud IT (eg EC2):
   - network,
@@ -88,7 +88,7 @@ On-Prem                IaaS                   PaaS                   SaaS
 (*) Unmanaged
 (+) Managed
 ```
-# 1.2 Pricing
+## 1.2 Pricing
 
 3 pricing fundamentals in pay-as-you-go:
 
@@ -98,7 +98,7 @@ On-Prem                IaaS                   PaaS                   SaaS
 (solves the expensive issue of traditional IT)
 
 
-# 1.3 Coming from Azure
+## 1.3 Coming from Azure
 
 Core mental model: how AWS “feels” vs Azure:
 
@@ -409,6 +409,7 @@ Skills in:
 ### 2.4.2 Security
 
 ### 2.4.3 Advanced Networking
+
 
 
 
