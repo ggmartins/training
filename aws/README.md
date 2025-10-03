@@ -24,6 +24,19 @@ Org & identity you’ll set up first:
 
 ### 2.1.1 Cloud Practioner
 
+Covering 40 out of 200+ AWS services. Example question:
+- Which AWS Service simplify DB migration to AWS?
+  - A. AWS Storage Gateway <- We'll learn
+  - B. AWS Database Migration Services <- We'll learn
+  - C. Amazon EC2 <- We'll learn
+  - D. Amazon AppStream 2.0 <- distractor (over 200 services in AWS)
+ 
+https://explore.skillbuilder.aws/learn/course/external/view/elearning/I4050/aws-certified-cloud-practitioner-official-practice-question-set-clf-c02-english
+
+https://skillbuilder.aws/search?searchText=aws-certified-cloud-practitioner-official-practice-question-set-clf-c02-english&showRedirectNotFoundBanner=true
+
+https://aws.amazon.com/free
+
 ### 2.1.2 AI Practioner
 
 ## 2.2 Associate
@@ -298,6 +311,7 @@ Skills in:
 ### 2.4.2 Security
 
 ### 2.4.3 Advanced Networking
+
 
 
 
