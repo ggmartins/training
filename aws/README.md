@@ -110,6 +110,22 @@ Core mental model: how AWS “feels” vs Azure:
 - Policy & governance: Azure Policy/Blueprints → AWS Service Control Policies (SCPs) + AWS Config + Organizations.
 - Networking: VNet/peering/vWAN → VPC/peering/Transit Gateway. Security groups are stateful; NACLs are stateless.
 
+```
++---------------------------+
+| AWS Organizations         |
++---------------------------+
+| OU Organization Unit      |
++---------------------------+
+| Accounts (Hard Isolation) |
++---------------------------+
+| AZ Availability Zone      |
++---------------------------+
+| VPCs                      |
++---------------------------+
+| Resources                 |
++---------------------------+
+```
+
 Org & identity you’ll set up first:
 
 - AWS Organizations: Create OUs (e.g., security/, sandbox/, workloads/) and accounts per env (dev/test/prod).
@@ -409,6 +425,7 @@ Skills in:
 ### 2.4.2 Security
 
 ### 2.4.3 Advanced Networking
+
 
 
 
