@@ -1017,3 +1017,9 @@ BFF !!
 # 8. Blob Storage (az-204)
 
 # 9. Azure Security (az-204)
+
+# 10. Fabric
+
+One Lake rules all. One lake per tenant.
+
+
