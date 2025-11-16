@@ -97,8 +97,16 @@ On-Prem                IaaS                   PaaS                   SaaS
 - Networking - pay for data transferred OUT (not in)
 (solves the expensive issue of traditional IT)
 
+## 1.3 Global Services
 
-## 1.3 Coming from Azure
+- AWS Regions
+- AWS Availability Zones
+- AWS Data Centers
+- AWS Edge Locations / Point of presence
+
+https://infrastructure.aws
+
+## 1.4 Coming from Azure
 
 Core mental model: how AWS “feels” vs Azure:
 
@@ -425,6 +433,7 @@ Skills in:
 ### 2.4.2 Security
 
 ### 2.4.3 Advanced Networking
+
 
 
 
