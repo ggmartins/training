@@ -1,0 +1,16 @@
+podman run -it --name terraform1 \
+  --hostname terraform \
+  --restart=always \
+  -v /Users/gm2026/terraform:/terraform \
+  -p 8000:80 \
+  -p 8080:8080 \
+  -p 8081:8081 \
+  -p 9991:8001 \
+  -p 9992:8002 \
+  -p 9993:8003 \
+  -p 9994:8004 \
+  -p 9995:8005 \
+  -p 9996:8006 \
+  -p 9997:8007 \
+  -p 9998:8008 \
+  -d ubuntu bash
