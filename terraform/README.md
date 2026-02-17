@@ -12,7 +12,7 @@ The infrastructure should be able to be applied multiple times producing the sam
 
 Infrastructure is in the code that can be uderstood by devs
 
-# 1.1 Terraform
+## 1.1 Terraform
 
 - manages infra entire life cycle
 - hashcorp's tool
@@ -34,7 +34,7 @@ Infrastructure is in the code that can be uderstood by devs
 - HCL Hashcorp Configuration Language
    - HCL DOES NOT support user-defined functions (only built-in funcs)
 
-# 1.2 Other Benefits
+## 1.2 Other Benefits
 
 - Easily recreate systems
 - Repeatable Process
@@ -108,11 +108,11 @@ JSON also possible, but not considered to be best practices.
 Golden Images: images formatted and twicked to serve company's policies.
 Ofter produced with packer.
 
-# 2.1 use `-h` for the help system
+## 2.1 use `-h` for the help system
 
 `terraform -h init` or `terraform init -h`
 
-# 2.2 init
+## 2.2 init
 
 This command will automatically download community-based providers plugins.
 Use with `-upgrade` to upgrade dependencies, install the latest models etc.
@@ -121,22 +121,22 @@ selections it made during init. Next time `init` is ran, it'll reuse the
 selections. (Don't manually modify the lock file).
 
 
-# 2.3 fmt
+## 2.3 fmt
 
-# 2.4 validate
+## 2.4 validate
 
 Use `-json` to produce a validation output readable by other systems (automation).
 
 
-# 2.5 plan
+## 2.5 plan
 
 Use `-out=infra1.plan` to record the plan file. It does not fix any code.
 
-# 2.6 apply
+## 2.6 apply
 
 Use `-replace=aws_resource...` to reestablish a resource.
 
-# 2.7 destroy
+## 2.7 destroy
 
 # 3. Workflow
 
@@ -156,7 +156,7 @@ Work on your Project SCOPE.
 - dependencies between resources
 - can be local or remote (s3, gcs, azure blob storage, etc)
 
-# 4.1 Backup state file
+## 4.1 Backup state file
 
 This is a backup of state file of when the infra was running.
 
@@ -165,11 +165,11 @@ This is a backup of state file of when the infra was running.
 
 # 6 tf advanced commands
 
-# 6.1 show
+## 6.1 show
 
 Human-readable output of state or plan file.
 
-# 6.2 output
+## 6.2 output
 
 Show output variables from state file. Use `-raw` to show things like
 ip address for automation.
