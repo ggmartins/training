@@ -174,19 +174,19 @@ Human-readable output of state or plan file.
 Show output variables from state file. Use `-raw` to show things like
 ip address for automation.
 
-# 6.3 import
+## 6.3 import
 
 Import existing infra to tf state file.
 
-# 6.4 taint
+## 6.4 taint
 
 Mark a resource for recreation on next apply.
 
-# 6.5 graph
+## 6.5 graph
 
 Generate a visual graph of resources.
 
-# 6.6 state
+## 6.6 state
 
 Use `state list` to list the resources.
 Use `state show aws_key_pair.connector` for details on resource.
