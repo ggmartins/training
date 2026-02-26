@@ -455,7 +455,7 @@ Most high-speed trading or low-latency market-data infrastructure uses:
 
 ## 3.1 SQS Simple Queue Service
 
-Simple, not used for low/mid f latency, fully managed queue for decoupling workers (jobs/tasks). Easiest ops, good for serverless and background jobs, limited replay/ordering. Once the messages is consumed from the queue, only one consumer gets to process it..
+Simple, not used for low/mid f latency, good for 1 to 1 async comm. Fully managed queue for decoupling workers (jobs/tasks). Easiest ops, good for serverless and background jobs, limited replay/ordering. Once the messages is consumed from the queue, only one consumer gets to process it..
 
 Vs Kafka: managed event log/stream for high-throughput, ordered, replayable event pipelines and multiple independent consumers. More powerful, more to operate/tune.
 
@@ -530,10 +530,35 @@ Because:
 - All subscribers get a copy of the message guaranteed
 - Subscribers may be out of service = message lost
 - Subscribers may establish a queue for preventing message loss
+- Filters at the receiving side.
 
-## 3.3 SNS + SQS Pattern
+## 3.3 EventBridge
+
+Similar to SNS, but provide built-in integration to external services.
+
+### 3.3.1 Message Bus
+
+- Same idea as topics. 
+
+### 3.3.2 Events
+
+- Can be messages like in SNS but can also be events that happen within AWS like an EC2 instance
+going down.
+- Can be integrated with services like pageduty, shopify, datadog, etc
+(don't need to write custom code)
+
+### 3.3.3 Rules
+
+- Match incoming events and sends them to the target for processing (maximum of five targets ?).
+
+### 3.3.4 Targets
+
+- Targets, duh.
+
+## 3.4 SNS + SQS Pattern
 
 <img width="1400" height="510" alt="image" src="https://github.com/user-attachments/assets/0dc6d641-5877-42df-b04c-74b52529f427" />
+
 
 
 
