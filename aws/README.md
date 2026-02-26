@@ -455,7 +455,7 @@ Most high-speed trading or low-latency market-data infrastructure uses:
 
 ## 3.1 SQS Simple Queue Service
 
-Simple, not used for low/mid f latency, fully managed queue for decoupling workers (jobs/tasks). Easiest ops, good for serverless and background jobs, limited replay/ordering.
+Simple, not used for low/mid f latency, fully managed queue for decoupling workers (jobs/tasks). Easiest ops, good for serverless and background jobs, limited replay/ordering. Once the messages is consumed from the queue, only one consumer gets to process it..
 
 Vs Kafka: managed event log/stream for high-throughput, ordered, replayable event pipelines and multiple independent consumers. More powerful, more to operate/tune.
 
@@ -490,8 +490,50 @@ Choose MSK/Kafka if you need:
 - B) Custom Consumer (EC2, ECS, EKS, on-prem, Fargate)
   - You write the polling code defining WaitTimeSeconds=20 for polling
 
+## 3.2 SNS Simple Notification Service
 
+Also called pubsub (pattern). Push based, fan out, no polling. Good for things like market data fan-out.
+SNS is good for:
 
+Also good for:
+- Publishing alerts
+- Triggering asynchronous pipelines
+- Immediate Lambda triggers
+- Notifying multiple subsystems of state changes
+- Kicking off ETL ingestion / index recompute jobs
+- Orchestrating microservices
+
+SNS is NOT good for:
+- Order processing
+- Event ordering
+- State machines
+- Exactly-once processing
+- Durable pipelines
+- Market tick ingestion (except as notifier)
+
+Because:
+- SNS has at-most-once delivery for some endpoints (not all).
+- SNS is not a durable storage system.
+- SNS does not retain messages unless backed by SQS.
+
+### 3.2.1 Topic
+
+- Theme based (orders, click events, log events)
+- Do not hold polls for messages
+- Can have very hight throughput of inserts
+
+### 3.2.2 Messages
+- Arbitrary data, like, json blobs
+
+### 3.2.3 PubSub
+- Push takes milliseconds
+- All subscribers get a copy of the message guaranteed
+- Subscribers may be out of service = message lost
+- Subscribers may establish a queue for preventing message loss
+
+## 3.3 SNS + SQS Pattern
+
+<img width="1400" height="510" alt="image" src="https://github.com/user-attachments/assets/0dc6d641-5877-42df-b04c-74b52529f427" />
 
 
 
