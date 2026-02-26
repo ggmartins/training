@@ -434,8 +434,61 @@ Skills in:
 
 ### 2.4.3 Advanced Networking
 
+# 3. Messaging Services
 
+Most high-speed trading or low-latency market-data infrastructure uses:
 
+- Kafka / MSK
+  - Push-based via consumer group polling (but tight + low-latency)
+  - Millisecond-level delivery
+  - Replay + retention
+  - Partition-level ordering
+  - Much higher throughput
+  - Much more predictable latency
+- Redis Streams
+  - Microsecond reads
+  - Persistent or ephemeral
+  - Great for order routing pipelines
+- NATS / JetStream
+  - Ultra-low latency messaging (sub-millisecond)
+- In-memory queues (C++/Java trading engines)
+
+## 3.1 SQS Simple Queue Service
+
+Simple, not used for low/mid f latency, fully managed queue for decoupling workers (jobs/tasks). Easiest ops, good for serverless and background jobs, limited replay/ordering.
+
+Vs Kafka: managed event log/stream for high-throughput, ordered, replayable event pipelines and multiple independent consumers. More powerful, more to operate/tune.
+
+Choose SQS if you want:
+- Fire-and-forget task queues for workers/Lambda (image processing, ETL jobs, webhooks → worker).
+- Minimal ops: no brokers/partitions to plan, scales automatically.
+- Dead-letter queues, visibility timeouts, simple backoff/retries built in.
+- Pay-per-request economics at modest throughput.
+- Integration with serverless (Lambda event source mappings, Step Functions) and simple IAM auth.
+
+Choose MSK/Kafka if you need:
+- Replay and long-term retention of events for new consumers/audits.
+- Strict per-key ordering with high throughput/low latency.
+- Multiple independent consumer groups processing the same topic differently.
+- Stream processing (Kafka Streams, ksqlDB, Flink) and exactly-once semantics (idempotent producers + transactions).
+- Large messages/throughput, backpressure control, and fine-grained batching.
+
+### 3.1.1 Queues
+- Can be provisioned through iac
+- Hold messages
+- Order not guaranteed by default
+- Owned by subscribers, not publishers
+- If fifo'd configured: limit to publishing ~100 messages per second
+### 3.1.2 Messages
+- Can be any time: blob, image, json, etc
+- Limited Size cap
+### 3.1.3 Polling
+- SQS is a pull-based messaging system
+- There is "no push" mechanism built into SQS itself
+- A) Lambda → SQS integration (Managed Poller: AWS runs an internal poller for you)
+  - AWS manages a fleet of long pollers behind the scenes.
+- B) Custom Consumer (EC2, ECS, EKS, on-prem, Fargate)
+  - You write the polling code defining WaitTimeSeconds=20 for polling
 
 
 
