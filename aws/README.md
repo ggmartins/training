@@ -559,6 +559,8 @@ going down.
 
 <img width="1400" height="510" alt="image" src="https://github.com/user-attachments/assets/0dc6d641-5877-42df-b04c-74b52529f427" />
 
+## 3.4 MSK Managed Streaming Kafka
+
 
 
 
