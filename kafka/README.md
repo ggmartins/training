@@ -77,6 +77,21 @@ Slots (offset) in the partition that holds the messages
 
 ### 1.1.8 Message
 
+```
++------------------------+
+| Message                |
+| +--------------------+ |
+| | Key          test1 | |
+| +--------------------+ |
+| | Timestamp  1742004 | |
+| +--------------------+ |
+| | Offset           1 | |
+| +--------------------+ |
+| | Value  {"name":".. | |
+| +--------------------+ |
++------------------------+
+```
+
 ## 1.2 APIs (Clients)
 
 ### 1.2.1 Admin API
@@ -90,4 +105,5 @@ Slots (offset) in the partition that holds the messages
 ## 1.6 Kafka Connect: Near Real-Time Data Pipeline
 
 ## 1.7 Stream Processing and Kafka Related Technologies
+
 
