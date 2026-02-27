@@ -106,4 +106,9 @@ Slots (offset) in the partition that holds the messages
 
 ## 1.7 Stream Processing and Kafka Related Technologies
 
+# 2. Managing Kafka
+
+https://www.freecodecamp.org/news/stop-managing-kafka-manually-a-guide-to-kafka-ui-and-cruise-control/
+
+
 
