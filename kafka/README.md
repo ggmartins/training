@@ -47,7 +47,7 @@ Book: Designing Event Driven Systems: Concepts and Patterns.. Ben Stopford
 - offer scalability through data distributions
 - resiliency via replication (multiple brokers)
 
-### 1.1.2 Zookeepers (TB phased out)
+### 1.1.2 Zookeepers & KRaft(TB phased out)
 
 - Maintain operational meta deta about brokers
 
@@ -80,6 +80,12 @@ Slots (offset) in the partition that holds the messages
 ```
 +------------------------+
 | Message                |
+| +--------------------+ |
+| | Header             | |
+| | +----------------+ | |
+| | | Topic          | | |
+| | | Partition      | | |
+| | +----------------+ | |
 | +--------------------+ |
 | | Key          test1 | |
 | +--------------------+ |
