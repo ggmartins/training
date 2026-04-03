@@ -118,6 +118,8 @@ https://www.freecodecamp.org/news/stop-managing-kafka-manually-a-guide-to-kafka-
 
 # 3. AWS MKS (Managed Kafka Services)
 
+https://docs.aws.amazon.com/msk/latest/developerguide/msk-provisioned.html
+
 https://www.youtube.com/watch?v=5WaIgJwYpS8&list=PLhr1KZpdzukd2EuSB1F9zoWMTwinTkqVn
 
 Reference Code:
