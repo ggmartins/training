@@ -116,5 +116,28 @@ Slots (offset) in the partition that holds the messages
 
 https://www.freecodecamp.org/news/stop-managing-kafka-manually-a-guide-to-kafka-ui-and-cruise-control/
 
+# 3. AWS MKS (Managed Kafka Services)
 
+https://www.youtube.com/watch?v=5WaIgJwYpS8&list=PLhr1KZpdzukd2EuSB1F9zoWMTwinTkqVn
 
+Reference Code:
+```
+https://github.com/ggmartins/dataengbb/tree/master/kafka
+
+wget https: //archive.apache.org/dist/katka/2.6.2/kafka_2.12-2.6.2.tgz
+tar -xzf kafka_2.12-2.6.2.tgz
+aws kafka list-clusters
+
+/nome/ec2-user/kafka_2.12-2.6.2/bin/katka-topics.sh create --bootstrap-server b-1.msk101.h90rjq.c10.kafka.us-west2.amazonaws.com:9092,
+b-3.msk101.h90rjq.c10.kafka.us ... --replication-factor 3 —-partitions 1 --topic MSK101Topic
+
+/nome/ec2-user/kafka_2.12-2.6.2/bin/katka-topics.sh —-bootstrap-server b-1.msk101.h9orjq.c10.kafka.us-west-2.amazonaws.com:9092,
+b3.msk101.h9orjq.c10.kafka.us—west-2.amazonaws.com:9092, b-2.msk101.h9orjq.c10.kafka.us-west-2.amazonaws.com:9092 list
+
+/home/ec2-user/kafka_2.12-2.6.2/bin/kafka-console-producer.sh —-bootstrap-server b-1.msk101.h90rjq.c1@.kafka.us-west-2.amazonaws.com: 9092,
+b-3.msk101.h90rjq.c1@.kafka.us—west-2.amazonaws.com:9092,b-2.msk101.h9orjq.c10.kafka.us-west-2.amazonaws.com:9092 —topic MSK101Topic
+
+Consume from Topic
+/home/ec2-user /kafka_2.12-2.6.2/bin/kafka-console-consumer.sh —-bootstrap-server ... —topic MSK101Topic --from-beginning
+
+```
