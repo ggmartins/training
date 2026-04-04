@@ -1,0 +1,15 @@
+/Users/gmartins/crsp/training/advanced-c-sharp-language-features/Experiments2/obj/Debug/net9.0/Experiments2.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gmartins/crsp/training/advanced-c-sharp-language-features/Experiments2/obj/Debug/net9.0/Experiments2.AssemblyInfoInputs.cache
+/Users/gmartins/crsp/training/advanced-c-sharp-language-features/Experiments2/obj/Debug/net9.0/Experiments2.AssemblyInfo.cs
+/Users/gmartins/crsp/training/advanced-c-sharp-language-features/Experiments2/obj/Debug/net9.0/Experiments2.csproj.CoreCompileInputs.cache
+/Users/gmartins/crsp/training/advanced-c-sharp-language-features/Experiments2/obj/Debug/net9.0/Experiments2.sourcelink.json
+/Users/gmartins/crsp/training/advanced-c-sharp-language-features/Experiments2/bin/Debug/net9.0/Experiments2
+/Users/gmartins/crsp/training/advanced-c-sharp-language-features/Experiments2/bin/Debug/net9.0/Experiments2.deps.json
+/Users/gmartins/crsp/training/advanced-c-sharp-language-features/Experiments2/bin/Debug/net9.0/Experiments2.runtimeconfig.json
+/Users/gmartins/crsp/training/advanced-c-sharp-language-features/Experiments2/bin/Debug/net9.0/Experiments2.dll
+/Users/gmartins/crsp/training/advanced-c-sharp-language-features/Experiments2/bin/Debug/net9.0/Experiments2.pdb
+/Users/gmartins/crsp/training/advanced-c-sharp-language-features/Experiments2/obj/Debug/net9.0/Experiments2.dll
+/Users/gmartins/crsp/training/advanced-c-sharp-language-features/Experiments2/obj/Debug/net9.0/refint/Experiments2.dll
+/Users/gmartins/crsp/training/advanced-c-sharp-language-features/Experiments2/obj/Debug/net9.0/Experiments2.pdb
+/Users/gmartins/crsp/training/advanced-c-sharp-language-features/Experiments2/obj/Debug/net9.0/Experiments2.genruntimeconfig.cache
+/Users/gmartins/crsp/training/advanced-c-sharp-language-features/Experiments2/obj/Debug/net9.0/ref/Experiments2.dll
