@@ -14,7 +14,6 @@ from pathlib import Path
 from pprint import pformat as pf
 from datetime import date
 
-
 def singleton(cls):
     instances = {}
     def get_instance(*args, **kwargs):
@@ -61,16 +60,15 @@ class ETFMember:
         right = bisect_right(etfdata, date_end, key=lambda d: d['buydate'].date())
         return etfdata[left:right]
 
-
     def __repr__(self):
         return pf(self._byetf)
 
 def test_etfmember_load():
-    etfmember = ETFMember(list(Path("./").rglob("cs_X_queryetf_*.csv")))
+    etfmember = ETFMember(list(Path("./").rglob("cs_X_queryetf_data*.csv")))
     print(etfmember)
 
 def test_etfmember_query():
-    etfmember = ETFMember(list(Path("./").rglob("cs_X_queryetf_*.csv")))
+    etfmember = ETFMember(list(Path("./").rglob("cs_X_queryetf_data*.csv")))
     result = list(etfmember.query("SPY", date(2023, 1, 1), date(2024, 12, 31)))
     tickers = [r["ticker"] for r in result]
     print(tickers)
