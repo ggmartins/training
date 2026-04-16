@@ -120,14 +120,65 @@ Prerequisits
 
 ### 2.2.1 Data Flow
 
-- drag Other Sources -> Flat File *Source* into data flow
+- Drag Other Sources -> Flat File *Source* into data flow
   - 2 arrows (blue: data flow normal reading, red: data flow error ocurrence)
 
-- drag Other Sources -> ADO (ActiveX Data Object) NET *Destination*
+- Drag Other Sources -> ADO (ActiveX Data Object) NET *Destination*
   - 1 red arrow (only red: for handling errors, no blue since we can't data direct destination)
 
 - Flat File Connection Manager inside the Connection Manager tab
 
+### 2.2.2 Importing Multiple Files
+
+Look at SSIS Toolbox -> Containers
+
+- For Loop Container
+- Foreach Loop Container
+- Sequence Container
+
+Drag Foreach Loop Container into Control Flow
+
+- General
+- Collection
+- Variable Mappings
+- Expressions
+
+Foreach File Enumerator. But also common use: <br>
+Foreach ADO.NET Schema Rowset Enumerator (loop over all tables or rows)<br>
+
+Foreach Loop Container:
+
+- Select Foreach File Enumerator
+- Foreach Loop Container -> Edit -> Collection -> Choose source folder, file pattern *.csv
+- Foreach Loop Container -> Edit -> Variables Mapping -> Add Variable -> Select scope, Name: FilePath, Name space: User (String), Value [Leave Empty] (User::FilePath)
+- Flat File Connection -> Properties -> Expressions (Property Expressions Editor)
+
+Select *ConnectionString* property to change it dynamically -> Expression box: Drag from "System Variables" User::FilePath
+<br>
+<br>
+Expression Builder Window (Similar to execel functions)
 
 
 
+### 2.2.3 Exporting Results into a Flat File
+
+- Drag Foreach Loop Container into Control Flow
+- Edit Foreach Loop Container and change for Foreach SMO Enumerator 
+
+Foreach SMO Enumerator -> Iterate over databases, schema, tables and treat it as programmable objects<br>
+<br>
+Select SMO Enumerator
+- Objects (Prepopulate option)
+- Names (table names)
+- URNs
+<br>
+- Variable Mappings (map to variable to use in expressions)
+
+Foreach Loop Container -> Execute Process Task (Drag into)
+
+- Select Process -> Executable (Select SQLCMD.exe to run T-SQL)
+- Select Expression -> Arguments (Property) User::TableName
+Expression in double quotes:<br>
+```
+"-d Test -E -o \"C:\\User\\user1\\Desktop\\\" + @[User::TableName] + ".csv\" -Q \"SET NOCOUNT ON; SELECT * FROM Test.dbo.[" + @[User::TableName] + "]\" -s \",\" -W"
+```
