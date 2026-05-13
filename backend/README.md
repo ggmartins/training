@@ -3,7 +3,7 @@
 # 2. REST API
 
 
-# 2.1 Common Methods
+## 2.1 Common Methods
 
 Old way: GET/POST. Examples:
 
@@ -40,14 +40,14 @@ or any data at all. Use request body.
 - HEAD localhost:3333/posts/1 (to know if the URL exists or NOT)
 - OPTIONS
 
-# 2.1.1 Headers
+### 2.1.1 Headers
 
 HTTPS headers are key-value pairs of metadata sent between a client (browser) and a server, transmitting crucial information about a request or response, such as content type, caching behavior, and security policies. 
 
 - Accept-Language: en
 
 
-# 2.1.2 Status Code
+### 2.1.2 Status Code
 
 - https://www.webfx.com/web-development/glossary/http-status-codes/
 - https://developers.cloudflare.com/support/troubleshooting/http-status-codes/
@@ -72,11 +72,11 @@ In a nutshell:
 
 # 3 Typical Flows
 
-# 3.1 Long time to process (>1min)
+## 3.1 Long time to process (>1min)
 
 <img width="449" height="482" alt="image" src="https://github.com/user-attachments/assets/376c776f-2a33-40d8-b1aa-c91e16b9bc27" />
 
-# 3.2 Pagination results
+## 3.2 Pagination results
 
 This is done via query params filters
 
@@ -84,7 +84,7 @@ This is done via query params filters
 - GET /orders?limit=50&offset=50
 - GET /orders?limit=50&offset=100
 
-# 3.2.1 Cursor Pagination vs Offset
+### 3.2.1 Cursor Pagination vs Offset
 
 Cursor pagination uses a pointer to the last item from the previous page.
 
@@ -136,7 +136,7 @@ LIMIT 50;
 
 `Always enforce a maximum page size.`
 
-# 3.2.2 Lazy Loading
+### 3.2.2 Lazy Loading
 
 Lazy loading improves initial performance, but if implemented carelessly it can create N+1 queries or excessive API calls. Use batching, joins, prefetching, or include parameters where appropriate.
 
