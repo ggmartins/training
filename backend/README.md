@@ -65,7 +65,9 @@ In a nutshell:
 
 418 
 
+# Typical Flows
 
+<img width="449" height="482" alt="image" src="https://github.com/user-attachments/assets/376c776f-2a33-40d8-b1aa-c91e16b9bc27" />
 
 
 
