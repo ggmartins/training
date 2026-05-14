@@ -1020,6 +1020,152 @@ BFF !!
 
 # 10. Fabric
 
+Data and data tools problems:
+
+- Chaotic scenario of siloed, redundent data and numerous transformations
+- Data tools fragmented into:
+```
+Azure Data Factory        -> ingestion / pipelines
+Azure Data Lake Storage   -> raw lake storage
+Synapse Spark             -> big data engineering
+Synapse SQL pools         -> data warehouse
+Power BI                  -> reporting / semantic model
+Azure ML                  -> machine learning
+Kusto / Data Explorer     -> real-time analytics
+Purview                  -> governance
+```
+
+
+
+One platform. 
+One security/governance layer.
+One data lake: OneLake.
+One billing/capacity model.
+Many workloads on top.
+
+- Lake house: Can have structure, semi-structured and unstructured data.
+- Warehouse: schema structured data
+
 One Lake rules all. One lake per tenant.
+
+## 10.1 Fabric Capacity
+
+Serverless capacity (eg, F16, F64, F128) in a specific region (eg North Central US) usually for one for business unit. A Fabric Capacity is a dedicated or provisioned compute allocation measured in Capacity Units, usually abbreviated as CUs. Microsoft says throttling happens when operations consume more CU seconds than the capacity SKU allows.
+
+Capacity = pool of compute
+CU = unit of compute power
+CU seconds = compute consumed over time
+
+- https://azure.microsoft.com/en-us/pricing/details/microsoft-fabric/
+- https://www.microsoft.com/en-us/microsoft-fabric/capacity-estimator
+
+
+### 10.1.1 Workspace within Fabric Capacity
+
+### 10.1.2 Azure Data Lake Storage Account (ADLSGen2)
+
+Created as needed in Fabric
+
+#### 10.1.2.1 ADLSGen2 API SDK
+
+
+
+### 10.1.3 Delta Tables Parquet Files
+
+Read same format can be read everywhere. It uses Delta Log format as Metadata
+Timetravel - look at the data state the past.
+
+#### 10.1.3.1 Delta Lake V-Ordering
+
+V-Ordering is a Microsoft Fabric write-time optimization for Parquet files used by Delta tables. It reorganizes the internal Parquet layout using sorting, row-group distribution, dictionary encoding, and compression so Fabric engines can scan data faster. It is especially valuable for read-heavy Gold-layer tables consumed by Power BI Direct Lake, SQL analytics endpoint, and Warehouse. The tradeoff is slower writes, so it is usually avoided for Bronze/raw/write-heavy tables and enabled selectively for serving-layer tables. It complements Delta optimizations like compaction, Z-Ordering, Liquid Clustering, VACUUM, and partitioning.
+
+```
+| Scenario                        | Use V-Order? | Reason                                       |
+| ------------------------------- | -----------: | -------------------------------------------- |
+| Power BI Direct Lake Gold table |          Yes | Best read performance for semantic models    |
+| SQL endpoint reporting table    |          Yes | Better analytical reads                      |
+| Fabric Warehouse table          |  Usually yes | Warehouse storage is optimized for analytics |
+| Bronze raw ingestion table      |   Usually no | Prioritize fast writes                       |
+| Streaming/event landing table   |   Usually no | Low latency writes matter                    |
+| Spark-only intermediate table   |   Usually no | Spark may not benefit enough                 |
+| Daily refreshed dimension table |          Yes | Read many times, write rarely                |
+| Temporary staging table         |           No | Not worth the write cost                     |
+```
+
+Not indexes but:
+
+- Database index: Creates an extra lookup structure to find rows faster.
+
+- V-Ordering: Rewrites/reorganizes the Parquet file layout so scans are faster.
+
+
+- Normal Parquet write:
+  Rows are written mostly based on ingestion/order of processing.
+
+- V-Ordered Parquet write:
+  Rows and column segments are arranged to improve compression,
+  dictionary encoding, row-group layout, and scan efficiency.
+
+Good for:
+
+- Gold-layer fact tables
+- Gold-layer dimension tables
+- Tables used by Power BI Direct Lake
+- Tables queried frequently through SQL endpoint
+- Tables scanned repeatedly by dashboards
+- Tables with many repeated values that compress well
+
+Avoid or delay V-Order for:
+
+- Bronze ingestion tables
+- Raw landing tables
+- High-frequency streaming ingestion
+- Spark-to-Spark transformation pipelines
+- Temporary staging tables
+- Write-heavy ETL/ELT workloads
+- Tables rarely queried by Power BI or SQL
+
+
+#### 10.1.3.2 Delta Lake Z-Ordering
+
+Z-Ordering improves this by rewriting files so rows with similar values are colocated, making min/max ranges more useful. The open-source Delta Lake docs describe Z-Ordering as colocating related information in the same set of files, which Delta then uses for data skipping.
+
+Z-Order clusters related values for selective filters, while V-Order optimizes Parquet layout for read efficiency across Fabric engines.
+
+```
+| Optimization      | Main purpose                                      | Helps with                                        |
+| ----------------- | ------------------------------------------------- | ------------------------------------------------- |
+| **V-Ordering**    | Optimize Parquet layout/encoding for faster reads | General scan efficiency, compression, Direct Lake |
+| **Z-Ordering**    | Colocate related values for better skipping       | Selective filters on chosen columns               |
+| **Compaction**    | Reduce small files                                | File open/list overhead                           |
+| **Partitioning**  | Folder-level pruning                              | Coarse filtering                                  |
+| **Data skipping** | Skip files based on statistics                    | Predicate filtering                               |
+```
+
+### 10.1.4 Iceberg format
+
+Snowflake can natively use One Lake for the storage of the data. TBD
+Apache xtable to convert iceberg <-> delta parquet
+
+### 10.1.5 Mirror and Caching
+
+### 10.1.6 Dataflow Gen2
+
+
+### 10.1.7 Task Flow
+
+TBD https://www.youtube.com/watch?v=GbxVsi94DrE&t=169s
+
+### 10.2 Item examples
+
+- Lakehouse
+- Warehouse
+- Notebook
+- Mirror
+
+
+
+
+
 
 
