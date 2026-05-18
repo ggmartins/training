@@ -191,6 +191,12 @@ Account for Security, Privacy and Accessibility
 
 <img width="676" height="441" alt="image" src="https://github.com/user-attachments/assets/d81b0d5b-c409-49c0-9e11-67f90056be6b" />
 
+3 Pillars of API sec
+
+- Governance: Developing secure APIs
+- Monitoring: Detect threats in production
+- Testing: Identify and fix vulnerabilities before production
+
 ### 4.2.1 API1: Broken Object Level Authorization (BOLA)
 
 What it is?
