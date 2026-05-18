@@ -193,7 +193,7 @@ Account for Security, Privacy and Accessibility
 
 3 Pillars of API sec
 
-- Governance: Developing secure APIs
+- Governance: Establish consistency and structure on developing secure APIs
 - Monitoring: Detect threats in production
 - Testing: Identify and fix vulnerabilities before production
 
