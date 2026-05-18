@@ -174,7 +174,7 @@ flaws like:
 
 Account for Security, Privacy and Accessibility
 
-# 4.1 Regulation Landscape
+## 4.1 Regulation Landscape
 
 - SOCs
 - PCI DSS 4.0 (Payment Card Industry Data Security Standard) - Global (payment card data) - Does your app process credit card/payments?
@@ -188,6 +188,8 @@ Account for Security, Privacy and Accessibility
 - APPI (Act on the Protection of Personal Information) - Japan
 
 ## 4.2 OWASP Top 10
+
+<img width="676" height="441" alt="image" src="https://github.com/user-attachments/assets/d81b0d5b-c409-49c0-9e11-67f90056be6b" />
 
 ### 4.2.1 API1: Broken Object Level Authorization (BOLA)
 
@@ -212,11 +214,11 @@ Coinbase: missing logic for validation check:
 - Check price/quantity
 - It was't checking asset id (change: ETH -> BTC)
 
-# 4.2.2 API2: Broken User Authentication
+### 4.2.2 API2: Broken User Authentication
 
-# 4.2.3 API3: Excessive Data Exposure
+### 4.2.3 API3: Excessive Data Exposure
 
-# 4.2.4 API4: Lack of Resources & Rate Limiting
+### 4.2.4 API4: Lack of Resources & Rate Limiting
 
-# 4.2.5 API5: Broken Function Level Authorization
+### 4.2.5 API5: Broken Function Level Authorization
 
