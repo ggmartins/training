@@ -158,3 +158,65 @@ or batching:
 
 In GraphQL/DataLoader-style systems, batching is commonly used to avoid N+1.
 
+# 4. API Sec
+
+API endpoints development must be protected against known vulnerabilities and common
+flaws like:
+
+- Over-permissioning - Not following least privilege policy
+- Too much info - Returning more information than it's required
+- Access to unauthorized content
+- Expose login flaws
+- Brute-force attacks - No rate limiting or account lockout
+- Injection flaws - No input validation or sanitization
+- Insecure direct object references - No access control checks on object references
+- And More
+
+Account for Security, Privacy and Accessibility
+
+# 4.1 Regulation Landscape
+
+- SOCs
+- PCI DSS 4.0 (Payment Card Industry Data Security Standard) - Global (payment card data) - Does your app process credit card/payments?
+- CCPA (California Consumer Privacy Act) - California, USA
+- HIPAA (Health Insurance Portability and Accountability Act) - USA (healthcare)
+- FedRAMP (Goverment Data)
+- GDPR (General Data Protection Regulation) - European Union
+
+- LGPD (Lei Geral de Proteção de Dados) - Brazil
+- PIPEDA (Personal Information Protection and Electronic Documents Act) - Canada
+- APPI (Act on the Protection of Personal Information) - Japan
+
+## 4.2 OWASP Top 10
+
+### 4.2.1 API1: Broken Object Level Authorization (BOLA)
+
+What it is?
+
+- Broken Authorization refers to the flaws in logic/rules governing access
+- Most common in damaging API vulnerability
+- Very difficult to detect in runtime
+- Critical to test for BOLA in pre-production
+
+Examples:
+- Significant risk of data Loss
+- Can a user A, access user B information?
+- Fraudulent Transactions
+
+#### 4.2.1.1 API1 Example:
+
+Coinbase: missing logic for validation check:
+
+- Check user authorization
+- Check account id
+- Check price/quantity
+- It was't checking asset id (change: ETH -> BTC)
+
+# 4.2.2 API2: Broken User Authentication
+
+# 4.2.3 API3: Excessive Data Exposure
+
+# 4.2.4 API4: Lack of Resources & Rate Limiting
+
+# 4.2.5 API5: Broken Function Level Authorization
+
