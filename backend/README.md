@@ -32,7 +32,7 @@ Optionality| Usually mandatory|  Usually Optional
 - POST localhost:3333/users/123/posts + Request Body (create a post, NOT idempotent by default)
 
 Should not encode (encodeURIComponent("my params. ")) any sensitive data,
-or any data at all. Use request body.
+or any data at all. Use request body. Can use Idempotent Key for become idempotent.
 
 - PUT localhost:3333/posts/1 + Request Body (update a post, idempotent)
 - PATCH localhost:3333/posts/1/title + Request Body (update an INFO of that post)
@@ -69,14 +69,25 @@ In a nutshell:
 - 418 "not compatible"
 - 404 Not found.
 
+# 3 System Design Practices
 
-# 3 Typical Flows
+## 3.1 4 Pillars of Good System Design
 
-## 3.1 Long time to process (>1min)
+### 3.1.1 Escalability
+
+### 3.1.2 Maintainability
+
+### 3.1.3 Efficiency
+
+### 3.1.4 Reliability
+
+# 4 Typical Flows
+
+## 4.1 Long time to process (>1min)
 
 <img width="449" height="482" alt="image" src="https://github.com/user-attachments/assets/376c776f-2a33-40d8-b1aa-c91e16b9bc27" />
 
-## 3.2 Pagination results
+## 4.2 Pagination results
 
 This is done via query params filters
 
@@ -84,7 +95,7 @@ This is done via query params filters
 - GET /orders?limit=50&offset=50
 - GET /orders?limit=50&offset=100
 
-### 3.2.1 Cursor Pagination vs Offset
+### 4.2.1 Cursor Pagination vs Offset
 
 Cursor pagination uses a pointer to the last item from the previous page.
 
@@ -136,7 +147,7 @@ LIMIT 50;
 
 `Always enforce a maximum page size.`
 
-### 3.2.2 Lazy Loading
+### 4.2.2 Lazy Loading
 
 Lazy loading improves initial performance, but if implemented carelessly it can create N+1 queries or excessive API calls. Use batching, joins, prefetching, or include parameters where appropriate.
 
@@ -158,7 +169,7 @@ or batching:
 
 In GraphQL/DataLoader-style systems, batching is commonly used to avoid N+1.
 
-# 4. API Sec
+# 5. API Sec
 
 API endpoints development must be protected against known vulnerabilities and common
 flaws like:
@@ -174,7 +185,7 @@ flaws like:
 
 Account for Security, Privacy and Accessibility
 
-## 4.1 Regulation Landscape
+## 5.1 Regulation Landscape
 
 - SOCs
 - PCI DSS 4.0 (Payment Card Industry Data Security Standard) - Global (payment card data) - Does your app process credit card/payments?
@@ -187,7 +198,7 @@ Account for Security, Privacy and Accessibility
 - PIPEDA (Personal Information Protection and Electronic Documents Act) - Canada
 - APPI (Act on the Protection of Personal Information) - Japan
 
-## 4.2 OWASP Top 10
+## 5.2 OWASP Top 10
 
 <img width="676" height="441" alt="image" src="https://github.com/user-attachments/assets/d81b0d5b-c409-49c0-9e11-67f90056be6b" />
 
@@ -197,7 +208,7 @@ Account for Security, Privacy and Accessibility
 - Monitoring: Detect threats in production
 - Testing: Identify and fix vulnerabilities before production
 
-### 4.2.1 API1: Broken Object Level Authorization (BOLA)
+### 5.2.1 API1: Broken Object Level Authorization (BOLA)
 
 What it is?
 
@@ -211,7 +222,7 @@ Examples:
 - Can a user A, access user B information?
 - Fraudulent Transactions
 
-#### 4.2.1.1 API1 Example:
+#### 5.2.1.1 API1 Example:
 
 Coinbase: missing logic for validation check:
 
@@ -220,11 +231,11 @@ Coinbase: missing logic for validation check:
 - Check price/quantity
 - It was't checking asset id (change: ETH -> BTC)
 
-### 4.2.2 API2: Broken User Authentication
+### 5.2.2 API2: Broken User Authentication
 
-### 4.2.3 API3: Excessive Data Exposure
+### 5.2.3 API3: Excessive Data Exposure
 
-### 4.2.4 API4: Lack of Resources & Rate Limiting
+### 5.2.4 API4: Lack of Resources & Rate Limiting
 
-### 4.2.5 API5: Broken Function Level Authorization
+### 5.2.5 API5: Broken Function Level Authorization
 
