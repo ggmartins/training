@@ -1,0 +1,15 @@
+/Users/gmartins/crsp/training/advanced-c-sharp/sortedset/bin/Debug/net10.0/sortedset.deps.json
+/Users/gmartins/crsp/training/advanced-c-sharp/sortedset/bin/Debug/net10.0/sortedset.dll
+/Users/gmartins/crsp/training/advanced-c-sharp/sortedset/bin/Debug/net10.0/sortedset.pdb
+/Users/gmartins/crsp/training/advanced-c-sharp/sortedset/obj/Debug/net10.0/sortedset.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gmartins/crsp/training/advanced-c-sharp/sortedset/obj/Debug/net10.0/sortedset.AssemblyInfoInputs.cache
+/Users/gmartins/crsp/training/advanced-c-sharp/sortedset/obj/Debug/net10.0/sortedset.AssemblyInfo.cs
+/Users/gmartins/crsp/training/advanced-c-sharp/sortedset/obj/Debug/net10.0/sortedset.csproj.CoreCompileInputs.cache
+/Users/gmartins/crsp/training/advanced-c-sharp/sortedset/obj/Debug/net10.0/sortedset.sourcelink.json
+/Users/gmartins/crsp/training/advanced-c-sharp/sortedset/obj/Debug/net10.0/sortedset.dll
+/Users/gmartins/crsp/training/advanced-c-sharp/sortedset/obj/Debug/net10.0/refint/sortedset.dll
+/Users/gmartins/crsp/training/advanced-c-sharp/sortedset/obj/Debug/net10.0/sortedset.pdb
+/Users/gmartins/crsp/training/advanced-c-sharp/sortedset/obj/Debug/net10.0/ref/sortedset.dll
+/Users/gmartins/crsp/training/advanced-c-sharp/sortedset/bin/Debug/net10.0/sortedset
+/Users/gmartins/crsp/training/advanced-c-sharp/sortedset/bin/Debug/net10.0/sortedset.runtimeconfig.json
+/Users/gmartins/crsp/training/advanced-c-sharp/sortedset/obj/Debug/net10.0/sortedset.genruntimeconfig.cache
