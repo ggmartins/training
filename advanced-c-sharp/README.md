@@ -5,5 +5,6 @@
 - [StackcContainer](https://github.com/ggmartins/training/tree/main/advanced-c-sharp/stackcontainer) stackcontainer
 - [SortedSet](https://github.com/ggmartins/training/tree/main/advanced-c-sharp/sortedset) sortedset
 - [Experiments4](https://github.com/ggmartins/training/tree/main/advanced-c-sharp/Experiments4) General Experiements (LongestCommonPrefix, etc)
+- [dicontainer](https://github.com/ggmartins/training/tree/main/advanced-c-sharp/dicontainer) Depedency Injection Reference Implementation 
 
  
