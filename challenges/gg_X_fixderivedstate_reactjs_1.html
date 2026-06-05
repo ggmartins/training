@@ -30,7 +30,7 @@ interface Repo {
 let App = function MyApp() {
   const [search, setSearch] = React.useState("");
   // const [filteredRepos, setFilteredRepos(React.useState<Repo[]>([]);
-  const { data, isLoading, error } = useQuery({
+  const { data: repos = [], isLoading, error } = useQuery({
     queryKey: ['repos'],
     queryFn: async () => {
       const response = await fetch('https://api.github.com/users/ggmartins/repos');
@@ -42,8 +42,6 @@ let App = function MyApp() {
       return response.json();
     }
   });
-  const repos = Array.isArray(data) ? data : [];
-
   console.log("Rendering...");
 
   //React.useEffect( () => {
