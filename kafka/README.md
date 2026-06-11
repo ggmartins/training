@@ -158,6 +158,53 @@ kafka-run-class.sh kafka.tools.GetOffsetShell \
   --time -1
 ```
 
+### 1.1.10 Derived Topics
+
+```
+trades
+  |
+  +--> trades-for-fraud-detection-prod
+  |
+  +--> trades-for-fraud-detection-staging
+```
+
+Create topics for fanout app:
+
+```
+kafka-topics.sh \
+  --bootstrap-server localhost:9092 \
+  --create \
+  --topic trades-for-fraud-detection-prod \
+  --partitions 12 \
+  --replication-factor 3
+kafka-topics.sh \
+  --bootstrap-server localhost:9092 \
+  --create \
+  --topic trades-for-fraud-detection-staging \
+  --partitions 12 \
+  --replication-factor 3
+```
+
+Pseudo code for derived topics fanout app:
+
+```python
+for record in consumer.poll():
+    producer.send(
+        "trades-for-fraud-detection-prod",
+        key=record.key,
+        value=record.value,
+        headers=record.headers
+    )
+
+    producer.send(
+        "trades-for-fraud-detection-staging",
+        key=record.key,
+        value=record.value,
+        headers=record.headers
+    )
+```
+
+
 ## 1.2 APIs (Clients)
 
 ### 1.2.1 Admin API
