@@ -20,25 +20,25 @@ Book: Designing Event Driven Systems: Concepts and Patterns.. Ben Stopford
                  |          +--| ZooKeeper 1 |-------| ZooKeeper 2 |--------| ZooKeeper 3 |--+ |
 +----------+     |          |  +-------------+       +-------------+        +-------------+  | |
 | Producer |-+   |          +----------------------------------------------------------------+ |
-| Clients  | |-+ |        _____               +-----------------+                              |
-+----------+ | | |       /     \___________   | Broker 1        |                              |
-  +----------+ |-|------+       Writes Msg \  | +------------+  |                              |
-    +----------+ |       \      to Topic A,  +--| P0  |1|2|  |--|-----------\                  |   +------------------------+
-                 |        \     Partition 0   | +------------+  |             \                |   | Topic A Consumer Group |
-                 |         \                  | +------------+  |              \               |   |                        |
-                 |          \                 | | P1  |1|2|3 |  |                \_____________|___|__+----------------+    |
-                 |           \                | +------------+  |                              |   |  | Consumer 1     |    |
-                 |            \               +-----------------+                              |   |  +----------------+    |
+| Clients  | |-+ |        _____               +---------------------+                          |
++----------+ | | |       /     \___________   | Broker 1  (leader)  |                          |
+  +----------+ |-|------+       Writes Msg \  | +----------------+  |                          |
+    +----------+ |       \      to Topic A,  +--| TA, P0  |1|2|  |--|-------+                  |   +------------------------+
+                 |        \     Partition 0   | +----------------+  |        \                 |   | Topic A Consumer Group |
+                 |         \                  | +----------------+  |         \                |   |                        |
+                 |          \                 | | TB, P1  |1|2|3 |  |          \_______________|___|__+----------------+    |
+                 |           \                | +----------------+  |                          |   |  | Consumer 1     |    |
+                 |            \               +---------------------+                          |   |  +----------------+    |
                  |             +--------------\                                                |   |  +----------------+    |
-                 |      +-----------------+     \           +-----------------+             ___|___|__| Consumer 2     |    |
-                 |      | Broker 2        |       \         | Broker 3        |            /   |   |  +----------------+    |
-                 |      | +------------+  |         \       | +------------+  |          /     |   |                        |
-                 |      | | P0  |1|2|  |  | Writes Msg \    | | P0  |1|2|  |  |        /       |   |  size: 2               |
-                 |      | +------------+  | to Topic A, \   | +------------+  |      /         |   +------------------------+
-                 |      | +------------+  | Partition 1  \___ +------------+  |    /           |
-                 |      | | P1  |1|2|3 |  |                 | | P1  |1|2|3 |__|__/             |
-                 |      | +------------+  |                 | +------------+  |                |
-                 |      +-----------------+                 +-----------------+                |
+                 |      +-----------------+     \           +---------------------+            |___|__| Consumer 2     |    |
+                 |      | Broker 2        |       \         | Broker 3 (follower) |            /   |  +----------------+    |
+                 |      | +------------+  |         \       | +----------------+  |          / |   |                        |
+                 |      | | P0  |1|2|  |  | Writes Msg \    | | TB, P0  |1|2|  |  |        /   |   |  size: 2               |
+                 |      | +------------+  | to Topic A, \   | +----------------+  |      /     |   +------------------------+
+                 |      | +------------+  | Partition 1  \___ +----------------+  |    /       |
+                 |      | | P1  |1|2|3 |  |                 | | TA, P1  |1|2|3 |__|__/         |
+                 |      | +------------+  |                 | +----------------+  |            |
+                 |      +-----------------+                 +---------------------+            |
                  +-----------------------------------------------------------------------------+
 ```
 ### 1.1.1 Brokers         
@@ -96,6 +96,66 @@ Slots (offset) in the partition that holds the messages
 | | Value  {"name":".. | |
 | +--------------------+ |
 +------------------------+
+```
+
+### 1.1.9 Replay
+
+For staging, DO NOT RUN THIS IN PROD:
+
+Replay from the beginning of the topic:
+```bash
+/nome/ec2-user/kafka_2.12-2.6.2/bin/kafka-consumer-groups.sh —-bootstrap-server b-1.msk101.h9orjq.c10.kafka.us-west-2.amazonaws.com:9092,
+b3.msk101.h9orjq.c10.kafka.us—west-2.amazonaws.com:9092, b-2.msk101.h9orjq.c10.kafka.us-west-2.amazonaws.com:9092 \
+  --bootstrap-server localhost:9092 \
+  --group risk-engine \
+  --topic trades \
+  --reset-offsets \
+  --to-earliest \
+  --dry-run #remove dry run to actually execute
+```
+
+Example: move the group back by 5000 messages per partition.
+
+```bash
+kafka-consumer-groups.sh \
+  --bootstrap-server localhost:9092 \
+  --group risk-engine \
+  --topic trades \
+  --reset-offsets \
+  --shift-by -5000 \
+  --execute
+```
+
+From a point in time:
+
+```bash
+kafka-consumer-groups.sh \
+  --bootstrap-server localhost:9092 \
+  --group risk-engine \
+  --topic trades \   # use trades:2 for partition 2 only
+  --reset-offsets \
+  --to-datetime 2026-06-10T00:00:00.000 \
+  --execute
+```
+
+Replay (tap from `trades`) into `trades-debug` topic:
+
+```
+kafka-console-consumer.sh \
+  --bootstrap-server localhost:9092 \
+  --topic trades \
+  --from-beginning \
+  --max-messages 1000 \
+| kafka-console-producer.sh \
+  --bootstrap-server localhost:9092 \
+  --topic trades-replay
+```
+
+```
+kafka-run-class.sh kafka.tools.GetOffsetShell \
+  --broker-list localhost:9092 \
+  --topic trades \
+  --time -1
 ```
 
 ## 1.2 APIs (Clients)
