@@ -1,3 +1,53 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [1. AWS Intro](#1-aws-intro)
+  - [1.1 Types of Cloud Computing](#11-types-of-cloud-computing)
+  - [1.2 Pricing](#12-pricing)
+  - [1.3 Global Services](#13-global-services)
+  - [1.4 Coming from Azure](#14-coming-from-azure)
+- [2. AWS Certifications](#2-aws-certifications)
+  - [2.1 Basic](#21-basic)
+    - [2.1.1 Cloud Practioner](#211-cloud-practioner)
+    - [2.1.2 AI Practioner](#212-ai-practioner)
+  - [2.2 Associate](#22-associate)
+    - [2.2.1 Developer Associate (DVA-C02)](#221-developer-associate-dva-c02)
+      - [2.2.1.1 Content](#2211-content)
+        - [2.2.1.1.1 Content Domain 1: Development with AWS Services](#22111-content-domain-1-development-with-aws-services)
+        - [2.2.1.1.2 Content Domain 2: Security](#22112-content-domain-2-security)
+        - [2.2.1.1.3 Content Domain 3: Deployment](#22113-content-domain-3-deployment)
+        - [2.2.1.1.4 Content Domain 4: Troubleshooting and Optimization](#22114-content-domain-4-troubleshooting-and-optimization)
+    - [2.2.2 Solutions Architect](#222-solutions-architect)
+    - [2.2.3 SysOps Administrator](#223-sysops-administrator)
+    - [2.2.3 Data Engineer](#223-data-engineer)
+    - [2.2.4 Machine Learning Engineer](#224-machine-learning-engineer)
+  - [2.3 Professional](#23-professional)
+    - [2.3.1 DevOps Engineer](#231-devops-engineer)
+    - [2.3.2 Solutions Architect](#232-solutions-architect)
+  - [2.4 Specialty](#24-specialty)
+    - [2.4.1 Machine Learning](#241-machine-learning)
+    - [2.4.2 Security](#242-security)
+    - [2.4.3 Advanced Networking](#243-advanced-networking)
+- [3. Messaging Services](#3-messaging-services)
+  - [3.1 SQS Simple Queue Service](#31-sqs-simple-queue-service)
+    - [3.1.1 Queues](#311-queues)
+    - [3.1.2 Messages](#312-messages)
+    - [3.1.3 Polling](#313-polling)
+  - [3.2 SNS Simple Notification Service](#32-sns-simple-notification-service)
+    - [3.2.1 Topic](#321-topic)
+    - [3.2.2 Messages](#322-messages)
+    - [3.2.3 PubSub](#323-pubsub)
+  - [3.3 EventBridge](#33-eventbridge)
+    - [3.3.1 Message Bus](#331-message-bus)
+    - [3.3.2 Events](#332-events)
+    - [3.3.3 Rules](#333-rules)
+    - [3.3.4 Targets](#334-targets)
+  - [3.4 SNS + SQS Pattern](#34-sns--sqs-pattern)
+  - [3.4 MSK Managed Streaming Kafka](#34-msk-managed-streaming-kafka)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 1. AWS Intro
 
 - On-demand delivery of compute, storage, database and IT resources

@@ -1,3 +1,33 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [1. Framework Design](#1-framework-design)
+  - [1.1 Designing frameworks](#11-designing-frameworks)
+  - [1.2 Code Encapsulation](#12-code-encapsulation)
+  - [1.3 Design Interfaces](#13-design-interfaces)
+  - [1.4 Modular Classes](#14-modular-classes)
+    - [1.4.1 Use interfaces.](#141-use-interfaces)
+    - [1.4.2 Do your classes support extending?](#142-do-your-classes-support-extending)
+    - [1.4.3 Do you have abstract classes?](#143-do-you-have-abstract-classes)
+    - [1.4.4 Do you have utilities?](#144-do-you-have-utilities)
+    - [1.4.5 Do you have Primitive classes?](#145-do-you-have-primitive-classes)
+    - [1.4.6 Sharing the code](#146-sharing-the-code)
+- [2. Extending Frameworks](#2-extending-frameworks)
+  - [2.1 Create indepedent modules](#21-create-indepedent-modules)
+  - [2.2 Enforce an architecture pattern](#22-enforce-an-architecture-pattern)
+- [3. Hosting Code](#3-hosting-code)
+  - [3.1 Share Framework](#31-share-framework)
+  - [3.2 Hosting framework](#32-hosting-framework)
+  - [3.3 Documenting Framework](#33-documenting-framework)
+  - [3.4 Setting up github](#34-setting-up-github)
+- [4. Continuous Integration](#4-continuous-integration)
+  - [4.1 What is CI?](#41-what-is-ci)
+  - [4.2 Custom build scripts](#42-custom-build-scripts)
+  - [4.3 Using Github Actions](#43-using-github-actions)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 # 1. Framework Design
 
