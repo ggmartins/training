@@ -85,7 +85,7 @@ In a nutshell:
 
 ## 4.1 Long time to process (>1min)
 
-<img width="449" height="482" alt="image" src="https://github.com/user-attachments/assets/376c776f-2a33-40d8-b1aa-c91e16b9bc27" />
+<img width="450" height="452" alt="image" src="https://github.com/user-attachments/assets/c5557628-f379-4577-80cb-3af68cd24d8a" />
 
 ## 4.2 Pagination results
 
@@ -168,6 +168,10 @@ or batching:
 `GET /customers?ids=1,2,3,4,5...,50`
 
 In GraphQL/DataLoader-style systems, batching is commonly used to avoid N+1.
+
+# 4.3 Conditional Update (API version)
+
+<img width="494" height="438" alt="image" src="https://github.com/user-attachments/assets/d40369b6-418a-4a1a-ac56-c650094422a9" />
 
 # 5. API Sec
 
