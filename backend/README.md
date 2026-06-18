@@ -1,5 +1,38 @@
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [1. Backend Development Intro](#1-backend-development-intro)
+- [2. REST API](#2-rest-api)
+  - [2.1 Common Methods](#21-common-methods)
+    - [2.1.1 Headers](#211-headers)
+    - [2.1.2 Status Code](#212-status-code)
+- [3 System Design Practices](#3-system-design-practices)
+  - [3.1 4 Pillars of Good System Design](#31-4-pillars-of-good-system-design)
+    - [3.1.1 Escalability](#311-escalability)
+    - [3.1.2 Maintainability](#312-maintainability)
+    - [3.1.3 Efficiency](#313-efficiency)
+    - [3.1.4 Reliability](#314-reliability)
+- [4 Typical Flows](#4-typical-flows)
+  - [4.1 Long time to process (>1min)](#41-long-time-to-process-1min)
+  - [4.2 Pagination results](#42-pagination-results)
+    - [4.2.1 Cursor Pagination vs Offset](#421-cursor-pagination-vs-offset)
+    - [4.2.2 Lazy Loading](#422-lazy-loading)
+  - [4.3 Locking and Conditional Write/Update (API version)](#43-locking-and-conditional-writeupdate-api-version)
+    - [4.3.1 Locking Examples](#431-locking-examples)
+      - [4.3.1.1 Optimistic Locking](#4311-optimistic-locking)
+      - [4.3.1.2 Pessimistic Locking](#4312-pessimistic-locking)
+- [5. API Sec](#5-api-sec)
+  - [5.1 Regulation Landscape](#51-regulation-landscape)
+  - [5.2 OWASP Top 10](#52-owasp-top-10)
+    - [5.2.1 API1: Broken Object Level Authorization (BOLA)](#521-api1-broken-object-level-authorization-bola)
+      - [5.2.1.1 API1 Example:](#5211-api1-example)
+    - [5.2.2 API2: Broken User Authentication](#522-api2-broken-user-authentication)
+    - [5.2.3 API3: Excessive Data Exposure](#523-api3-excessive-data-exposure)
+    - [5.2.4 API4: Lack of Resources & Rate Limiting](#524-api4-lack-of-resources--rate-limiting)
+    - [5.2.5 API5: Broken Function Level Authorization](#525-api5-broken-function-level-authorization)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # 1. Backend Development Intro
 
