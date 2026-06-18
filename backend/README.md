@@ -196,7 +196,7 @@ CAS, compare-and-swap, is the atomic primitive behind many optimistic techniques
 
 #### 4.3.1.1 Optimistic Locking
 
-User A UPDATE:
+User A UPDATE (succeeded):
 ```sql
 UPDATE account
 SET balance = 80,
@@ -204,7 +204,7 @@ SET balance = 80,
 WHERE id = 123
   AND version = 1;
 ```
-
+User B UPDATE (fails):
 ```sql
 UPDATE account
 SET balance = 50,
