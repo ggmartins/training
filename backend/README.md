@@ -334,3 +334,18 @@ Coinbase: missing logic for validation check:
 
 ### 5.2.5 API5: Broken Function Level Authorization
 
+# 6. Caching
+
+Considerations when using caching:
+
+- Use most for read intensive data
+- Expiration time: use not too short, not too high
+- Consistency challenges: keep data store and cache in-sync
+  (data modification can generate inconsistencies because updating data store and cache are not a single transaction)
+- SPOF (Single Point of Failure)
+- Eviction Policy:
+  - LRU least recent used
+  - LFU least frequently used
+  - FIFO first in first out
+
+
