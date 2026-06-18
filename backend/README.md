@@ -1,3 +1,6 @@
+<!-- START doctoc -->
+<!-- END doctoc -->
+
 # 1. Backend Development Intro
 
 # 2. REST API
@@ -85,7 +88,7 @@ In a nutshell:
 
 ## 4.1 Long time to process (>1min)
 
-<img width="450" height="452" alt="image" src="https://github.com/user-attachments/assets/c5557628-f379-4577-80cb-3af68cd24d8a" />
+<img width="479" height="449" alt="image" src="https://github.com/user-attachments/assets/04800b08-bd91-4180-8777-4d31f0fbb599" />
 
 ## 4.2 Pagination results
 
@@ -169,9 +172,59 @@ or batching:
 
 In GraphQL/DataLoader-style systems, batching is commonly used to avoid N+1.
 
-# 4.3 Conditional Update (API version)
+## 4.3 Locking and Conditional Write/Update (API version)
 
-<img width="494" height="438" alt="image" src="https://github.com/user-attachments/assets/d40369b6-418a-4a1a-ac56-c650094422a9" />
+<img width="503" height="441" alt="image" src="https://github.com/user-attachments/assets/01519bb0-7d18-4127-85cc-f7fc4c4839d1" />
+
+CAS, compare-and-swap, is the atomic primitive behind many optimistic techniques: update the value only if it still equals the expected value. A SQL UPDATE ... WHERE version = oldVersion is essentially a database-level CAS.
+
+
+### 4.3.1 Locking Examples 
+```
+| Question                         | Pessimistic               | Optimistic                   |
+| -------------------------------- | ------------------------- | ---------------------------- |
+| Lock before work?                | Yes                       | No                           |
+| Others blocked?                  | Yes                       | No                           |
+| Conflict detected when?          | Before/during access      | At commit/update             |
+| Best when conflicts are          | Common                    | Rare                         |
+| Failure mode                     | Waiting/deadlock          | Retry/conflict               |
+| Typical DB feature               | `SELECT FOR UPDATE`       | `version` column             |
+| Distributed-system friendly?     | Less                      | More                         |
+| Throughput under low contention  | Lower                     | Higher                       |
+| Throughput under high contention | Often better than retries | Can suffer from retry storms |
+```
+
+#### 4.3.1.1 Optimistic Locking
+
+User A UPDATE:
+```sql
+UPDATE account
+SET balance = 80,
+    version = 2
+WHERE id = 123
+  AND version = 1;
+```
+
+```sql
+UPDATE account
+SET balance = 50,
+    version = 2
+WHERE id = 123
+  AND version = 1;
+```
+
+Optimistic locking assumes conflicts are rare, so it allows concurrent reads and only checks at write time whether the record changed, usually with a version column or ETag. If the version has changed, the update fails and the caller retries or returns a conflict.
+
+#### 4.3.1.2 Pessimistic Locking
+
+Pessimistic locking assumes conflicts are likely, so it locks the resource before modifying it, for example with SELECT FOR UPDATE. This prevents concurrent updates but can reduce throughput and cause waiting or deadlocks.
+
+```sql
+SELECT *
+FROM account
+WHERE id = 123
+FOR UPDATE;
+```
 
 # 5. API Sec
 
