@@ -1,17 +1,34 @@
-name: TOC Generator
+name: Generate TOCs
 
 on:
   push:
     branches:
       - main
+    paths:
+      - "aws/README.md"
+      - "azure/README.md"
+      - "az-204/README.md"
+      - "az-900/README.md"
+      - "complexity/README.md"
+      - "advanced-c-sharp/README.md"
+      - "advanced-c-sharp-framework-design/README.md"
+      - ".github/workflows/toc.yml"
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
-  toc:
+  generate-toc:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: technote-space/toc-generator@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Generate TOCs
+        uses: technote-space/toc-generator@v4
+        with:
+          TARGET_PATHS: "aws/README.md,azure/README.md,az-204/README.md,az-900/README.md,complexity/README.md,advanced-c-sharp/README.md,advanced-c-sharp-framework-design/README.md"
