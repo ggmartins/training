@@ -38,7 +38,6 @@
 
 # 2. REST API
 
-
 ## 2.1 Common Methods
 
 Old way: GET/POST. Examples:
@@ -110,6 +109,12 @@ In a nutshell:
 ## 3.1 4 Pillars of Good System Design
 
 ### 3.1.1 Escalability
+
+- Vertical Scaling: When traffic is low but CPU/MEM is high (utilization)
+  - Can't add infinite CPU/MEM
+  - No fail over mechnism SPOF (Single Point of Failure)
+- Horizontal Scaling: When traffic is high and CPU/MEM utilization is moderate/high
+  - Load balancing is always required
 
 ### 3.1.2 Maintainability
 
