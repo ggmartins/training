@@ -31,7 +31,11 @@
     - [5.2.3 API3: Excessive Data Exposure](#523-api3-excessive-data-exposure)
     - [5.2.4 API4: Lack of Resources & Rate Limiting](#524-api4-lack-of-resources--rate-limiting)
     - [5.2.5 API5: Broken Function Level Authorization](#525-api5-broken-function-level-authorization)
-- [6. Caching](#6-caching)
+- [6. API Infra](#6-api-infra)
+  - [6.1 API Gateway](#61-api-gateway)
+  - [6.2 Ingress Controller](#62-ingress-controller)
+  - [6.3 Comparison API Gateway vs Ingress Controller](#63-comparison-api-gateway-vs-ingress-controller)
+- [7. Caching](#7-caching)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
