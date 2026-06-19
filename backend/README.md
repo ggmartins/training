@@ -335,7 +335,224 @@ Coinbase: missing logic for validation check:
 
 ### 5.2.5 API5: Broken Function Level Authorization
 
-# 6. Caching
+# 6. API Infra
+
+## 6.1 API Gateway
+
+API-management layer for clients consuming your services. Manage, secure, observe, and control API traffic.
+
+```terraform
+
+/* app.py
+import json
+
+def handler(event, context):
+    return {
+        "statusCode": 200,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": json.dumps({
+            "message": "Hello from Lambda behind API Gateway",
+            "path": event.get("path"),
+            "method": event.get("httpMethod")
+        })
+    }
+*/
+
+
+terraform {
+  required_version = ">= 1.5.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+
+    archive = {
+      source  = "hashicorp/archive"
+      version = "~> 2.4"
+    }
+  }
+}
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+data "archive_file" "lambda_zip" {
+  type        = "zip"
+  source_file = "${path.module}/lambda/app.py"
+  output_path = "${path.module}/lambda.zip"
+}
+
+resource "aws_iam_role" "lambda_role" {
+  name = "example-api-lambda-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Principal = {
+          Service = "lambda.amazonaws.com"
+        }
+        Action = "sts:AssumeRole"
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_basic_execution" {
+  role       = aws_iam_role.lambda_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
+resource "aws_lambda_function" "api_lambda" {
+  function_name = "example-api-lambda"
+  role          = aws_iam_role.lambda_role.arn
+  runtime       = "python3.12"
+  handler       = "app.handler"
+
+  filename         = data.archive_file.lambda_zip.output_path
+  source_code_hash = data.archive_file.lambda_zip.output_base64sha256
+}
+
+resource "aws_api_gateway_rest_api" "api" {
+  name        = "example-rest-api"
+  description = "Example API Gateway REST API using Terraform"
+}
+
+resource "aws_api_gateway_resource" "hello" {
+  rest_api_id = aws_api_gateway_rest_api.api.id
+  parent_id   = aws_api_gateway_rest_api.api.root_resource_id
+  path_part   = "hello"
+}
+
+resource "aws_api_gateway_method" "hello_get" {
+  rest_api_id   = aws_api_gateway_rest_api.api.id
+  resource_id   = aws_api_gateway_resource.hello.id
+  http_method   = "GET"
+  authorization = "NONE"
+}
+
+resource "aws_api_gateway_integration" "lambda_integration" {
+  rest_api_id = aws_api_gateway_rest_api.api.id
+  resource_id = aws_api_gateway_resource.hello.id
+  http_method = aws_api_gateway_method.hello_get.http_method
+
+  integration_http_method = "POST"
+  type                    = "AWS_PROXY"
+  uri                     = aws_lambda_function.api_lambda.invoke_arn
+}
+
+resource "aws_lambda_permission" "api_gateway" {
+  statement_id  = "AllowExecutionFromAPIGateway"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.api_lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_api_gateway_rest_api.api.execution_arn}/*/*"
+}
+
+resource "aws_api_gateway_deployment" "deployment" {
+  depends_on = [
+    aws_api_gateway_integration.lambda_integration
+  ]
+
+  rest_api_id = aws_api_gateway_rest_api.api.id
+
+  triggers = {
+    redeployment = sha1(jsonencode([
+      aws_api_gateway_resource.hello.id,
+      aws_api_gateway_method.hello_get.id,
+      aws_api_gateway_integration.lambda_integration.id
+    ]))
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_api_gateway_stage" "dev" {
+  deployment_id = aws_api_gateway_deployment.deployment.id
+  rest_api_id   = aws_api_gateway_rest_api.api.id
+  stage_name    = "dev"
+}
+
+#########
+output "api_url" {
+  value = "${aws_api_gateway_stage.dev.invoke_url}/hello"
+}
+
+```
+
+## 6.2 Ingress Controller
+
+Kubernetes-native HTTP routing into the cluster. Route external HTTP/S traffic into Kubernetes services. An Ingress Controller watches Kubernetes Ingress resources and configures a proxy such as NGINX, Traefik, HAProxy, or Envoy.
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+spec:
+  rules:
+    - host: api.example.com
+      http:
+        paths:
+          - path: /users
+            pathType: Prefix
+            backend:
+              service:
+                name: user-service
+                port:
+                  number: 80
+          - path: /orders
+            pathType: Prefix
+            backend:
+              service:
+                name: order-service
+                port:
+                  number: 80
+```
+
+## 6.3 Comparison API Gateway vs Ingress Controller
+
+```
+| Feature                         | Ingress Controller | API Gateway |
+| ------------------------------- | -----------------: | ----------: |
+| Path-based routing              |                Yes |         Yes |
+| Host-based routing              |                Yes |         Yes |
+| TLS termination                 |                Yes |         Yes |
+| Load balancing                  |                Yes |         Yes |
+| JWT/OAuth validation            |          Sometimes |     Usually |
+| API keys                        |          Sometimes |     Usually |
+| Rate limiting                   |          Sometimes |     Usually |
+| Request/response transformation |  Limited/sometimes |     Usually |
+| Developer portal                |                 No |   Sometimes |
+| API versioning                  |              Basic |    Stronger |
+| Usage analytics                 |    Basic/sometimes |    Stronger |
+| Monetization / quotas           |                 No |   Sometimes |
+| API lifecycle management        |                 No |     Usually |
+```
+Some tools can be both:
+```
+| Tool                       |          Can be Ingress Controller? |                         Can be API Gateway? |
+| -------------------------- | ----------------------------------: | ------------------------------------------: |
+| NGINX Ingress              |                                 Yes |                Limited API gateway features |
+| Kong                       |                                 Yes |                                         Yes |
+| Traefik                    |                                 Yes |                                         Yes |
+| Envoy / Istio Gateway      |                             Yes-ish |                                     Yes-ish |
+| AWS API Gateway            | Not a Kubernetes Ingress Controller |                                         Yes |
+| AWS ALB Ingress Controller |                                 Yes | More load balancer/ingress than API gateway |
+
+```
+
+
+# 7. Caching
 
 Considerations when using caching:
 
