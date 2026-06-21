@@ -1,3 +1,31 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [1. Kafka Intro](#1-kafka-intro)
+  - [1.1 Basics: Architecture & Data Flow](#11-basics-architecture--data-flow)
+    - [1.1.1 Brokers](#111-brokers)
+    - [1.1.2 Zookeepers & KRaft(TB phased out)](#112-zookeepers--krafttb-phased-out)
+    - [1.1.3 Topics](#113-topics)
+    - [1.1.4 Topic-Partition](#114-topic-partition)
+    - [1.1.5 Replication](#115-replication)
+    - [1.1.6 Consumer Groups](#116-consumer-groups)
+    - [1.1.7 Partition Offset](#117-partition-offset)
+    - [1.1.8 Message](#118-message)
+    - [1.1.9 Replay](#119-replay)
+    - [1.1.10 Derived Topics](#1110-derived-topics)
+  - [1.2 APIs (Clients)](#12-apis-clients)
+    - [1.2.1 Admin API](#121-admin-api)
+    - [1.2.2 Producer API](#122-producer-api)
+    - [1.2.4 Consumer API](#124-consumer-api)
+  - [1.5 Schema Registry: Kafka Maturity](#15-schema-registry-kafka-maturity)
+  - [1.6 Kafka Connect: Near Real-Time Data Pipeline](#16-kafka-connect-near-real-time-data-pipeline)
+  - [1.7 Stream Processing and Kafka Related Technologies](#17-stream-processing-and-kafka-related-technologies)
+- [2. Managing Kafka](#2-managing-kafka)
+- [3. AWS MKS (Managed Kafka Services)](#3-aws-mks-managed-kafka-services)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 1. Kafka Intro
 
 - event-driven architecture, or receiver-driven routing architecture - based for decoupled/plugabble architecture
