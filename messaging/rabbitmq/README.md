@@ -3,7 +3,14 @@
 **Table of Contents**
 
 - [1. RabbitMQ Intro](#1-rabbitmq-intro)
-- [2. AMQP Asychnonous Message Queue Protocol](#2-amqp-asychnonous-message-queue-protocol)
+- [2. AMQP Advanced Message Queue Protocol](#2-amqp-advanced-message-queue-protocol)
+  - [2.1 Core AMQP concepts](#21-core-amqp-concepts)
+  - [2.2 AMQP vs Kafka](#22-amqp-vs-kafka)
+- [3 RabbitMQ Exchange Types:](#3-rabbitmq-exchange-types)
+  - [3.1 Direct exchange](#31-direct-exchange)
+  - [3.2 Fanout Exchange](#32-fanout-exchange)
+  - [3.3 Topic Exchange](#33-topic-exchange)
+  - [3.4 Header Exchange](#34-header-exchange)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
