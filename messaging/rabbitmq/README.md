@@ -31,9 +31,16 @@ A common AMQP broker is RabbitMQ.
 
 - Producer: The app that sends a message.
 - Exchange: Receives messages from producers and decides where to route them.
+  - An Exchange is a gateway to RabbitMQ for your messages.
+  - The distance the message has to travel inside RabbitMQ depends on the type of exchange. 
 - Routing key: A label used by the exchange to decide which queue should get the message.
 - Binding: A rule connecting an exchange to a queue.
-- Queue: Stores messages until consumers read them.
+  - Bindings are the rules that a queue defines while establishing a connection with an exchange.
+  - You can have a queue connected to multiple exchanges.
+  - Every queue is also connected to a default exchange.
+  - An exchange will use these bindings to route messages to queues.
+- Queue: FIFO queues, stores messages until consumers read them.
+  - Can be configured with a `name` and as `durable` (persistent) to protect data against crashes. 
 - Consumer: The app that receives/processes messages.
 
 ## 2.2 AMQP vs Kafka
