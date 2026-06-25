@@ -1,0 +1,1540 @@
+https://www.youtube.com/watch?v=JV3pL1_mn2M
+
+The full transcription of this video is provided below:
+
+0:00 hey everyone today we're diving into the
+0:01 book AI engineering by chip win 800
+0:04 pages of really great content about this
+0:06 in demand field that's offering salaries
+0:08 of $300,000 or more in this video I'm
+0:10 summarizing everything from the book to
+0:12 help you get a highle overview of the
+0:13 field we'll talk about Foundation models
+0:16 prompt engineering rag fine tuning
+0:18 agents how to build a system improving
+0:20 inference and more I also want to
+0:21 mention this is a super highlevel
+0:23 overview of a very detailed technical
+0:25 book don't expect to learn all the
+0:27 details just from watching this video I
+0:29 really recommend using this is a way to
+0:30 get an overview of what the field looks
+0:32 like and use it as a jumping off point
+0:33 for your own research and exploration so
+0:36 what exactly is AI engineering and how
+0:38 is it different from traditional machine
+0:39 learning let's break it down AI
+0:41 engineering has exploded recently for
+0:43 two simple reasons AI models have gotten
+0:45 dramatically better at solving real
+0:47 problems while the barrier to building
+0:49 with them has gotten much lower this
+0:51 perfect storm has created one of the
+0:52 fastest growing engineering disciplines
+0:54 today at its core AI engineering is
+0:56 about building applications on top of
+0:58 foundation models those massive AI
+1:00 systems trained by companies like open
+1:02 AI or Google unlike traditional machine
+1:04 learning Engineers who build models from
+1:06 scratch AI Engineers leverage existing
+1:08 ones focusing Less on training and more
+1:10 on adaptation these Foundation models
+1:12 work through a process called
+1:14 self-supervision instead of requiring
+1:15 humans to painstakingly label data these
+1:18 models can learn by predicting parts of
+1:19 their input data this breakthrough
+1:21 solved the data labeling bottleneck that
+1:23 held back AI for years as these models
+1:25 scaled up with more data and computing
+1:27 power they evolved from simple language
+1:28 models to what we now call large
+1:30 language models or llms and they didn't
+1:32 stop there they've expanded to handle
+1:34 multiple types of data including images
+1:35 and video often becoming large
+1:37 multimodal models nowadays we're seeing
+1:39 Foundation models power everything from
+1:41 coding assistance like GitHub co-pilot
+1:43 to image generation tools writing AIDS
+1:45 customer support Bots and sophisticated
+1:47 data analysis systems now that we've
+1:49 covered what AI engineering is let's dig
+1:51 deeper into Foundation models themselves
+1:53 how they're trained how they work and
+1:55 why understanding their architecture
+1:56 matters for AI Engineers Foundation
+1:58 models at their core can only know what
+2:00 they've been trained on this might seem
+2:02 obvious but it has profound implications
+2:04 if a model hasn't seen examples of a
+2:06 specific language or concept during
+2:07 training it simply won't have that
+2:09 knowledge most large Foundation models
+2:10 are trained on web crawled data which
+2:12 brings some inherent problems this data
+2:14 often contains clickbait misinformation
+2:16 toxic content and fake news to combat
+2:19 this teams use various filtering
+2:20 techniques for instance open AI only
+2:23 used Reddit links with at least three
+2:24 upvotes when training gpt2 the language
+2:27 distribution in training data is also
+2:29 heavily skewed about half of all crawled
+2:31 data is in English which means languages
+2:33 with millions of speakers are often
+2:34 underrepresented this is why specialized
+2:36 models for specific languages and
+2:38 domains are becoming increasingly
+2:39 important also the distribution of
+2:41 domains in one of the main training data
+2:43 sets leans heavily towards business Tech
+2:45 news and art in terms of model
+2:46 architecture most Foundation models use
+2:48 Transformer architectures based on the
+2:50 attention mechanism but to understand
+2:52 why Transformers were such a
+2:53 breakthrough we need to look at what
+2:54 came before Transformers were invented
+2:56 to solve the problems of sequence to
+2:58 sequence models which used current
+3:00 neural networks for tasks like
+3:01 translation these had two main
+3:03 components an encoder that processes
+3:05 inputs and a decoder that generates
+3:07 outputs both worked sequentially token
+3:10 by token the problem is that the decoder
+3:12 only has access to a compressed
+3:14 representation of the entire input
+3:16 imagine trying to answer detailed
+3:17 questions about a book when all you have
+3:19 is a brief summary also input processing
+3:21 and output generation are done
+3:23 sequentially so it's slow for long
+3:24 sequences Transformers solved this with
+3:27 the attention mechanism which allows the
+3:29 model to waigh the importance of
+3:30 different input tokens when generating
+3:32 each output token it's like being able
+3:34 to reference any page in the book while
+3:36 answering questions plus Transformers
+3:38 can process input tokens in parallel
+3:40 making them much faster during inference
+3:41 Transformers work in two steps first
+3:44 pre-fill process all the input tokens in
+3:46 parallel to create the intermediate
+3:48 State and second decode generate one
+3:51 output token at a time the attention
+3:52 mechanism uses three types of vectors
+3:55 first query vectors these represent what
+3:58 information the model is looking for
+4:00 next key vectors like indices of
+4:02 previous tokens and finally value
+4:04 vectors the actual content of the
+4:06 previous tokens the model computes how
+4:08 much attention to give each input token
+4:10 by comparing the Q and K vectors A high
+4:13 similarity score means that the tokens
+4:15 content V will heavily influence the
+4:17 output this is why longer context
+4:20 windows are computationally expensive
+4:22 more tokens mean more K and V vectors to
+4:24 compute and store attention is almost
+4:26 always multi-headed allowing the model
+4:28 to focus on different groups of tokens
+4:30 simultaneously in llama 27b there are 32
+4:33 attention heads for example a complete
+4:34 Transformer consists of multiple
+4:36 Transformer blocks each containing an
+4:38 attention module and a neural network
+4:40 module the number of blocks is often
+4:42 called the number of layers before and
+4:44 after each block there's an embedding
+4:45 module that converts tokens and their
+4:47 positions into vectors and finally an
+4:49 unembedded layer that Maps output
+4:51 vectors to token probabilities so that's
+4:53 a super high look at this I would really
+4:55 recommend either reading the book or
+4:57 check out stat quest for an awesome
+4:58 overview of Transformers and the
+4:59 attention mechanism I'll link that in
+5:01 the description that's really how I
+5:02 learned while Transformers dominate
+5:03 they're not the only architecture models
+5:05 like RW KV which combines RNN based
+5:08 approaches with parallelization
+5:09 capabilities are gaining traction for
+5:11 certain applications in general larger
+5:13 models with more parameters have greater
+5:14 capacity to learn and perform better the
+5:16 number of parameters helps us estimate
+5:18 the compute resources needed for
+5:19 training and inference as well however
+5:21 note the parameter count can be
+5:22 misleading with sparse models so those
+5:24 with many zeros which can be more
+5:26 efficient a large sparse model might
+5:28 require less compute than a smaller
+5:30 dense one when designing models compute
+5:32 is often the limiting factor the
+5:34 chinchilla scaling law helps calculate
+5:35 the optimal model size and data size for
+5:38 a given compute budget it suggests that
+5:40 the number of training tokens should be
+5:41 about 20 times the model size so a 3
+5:43 billion parameter model needs about 60
+5:45 billion training tokens while the cost
+5:47 for achieving the same model performance
+5:49 is decreasing over time the cost for
+5:51 improvements remains High going from a
+5:53 3% to a 2% error rate might require an
+5:55 order of magnitude more data compute or
+5:58 energy but even small performance
+6:00 improvements can make a huge difference
+6:01 for Downstream applications as we keep
+6:03 scaling models we're approaching two
+6:05 significant bottlenecks first training
+6:07 data their's concern will run out of
+6:09 highquality internet data in the next
+6:11 few years forcing models to train on AI
+6:13 generated content potentially causing
+6:15 performance degradation or requiring
+6:17 access to proprietary data like
+6:19 copyrighted books and medical records
+6:21 second electricity data centers already
+6:23 consume 1 to 2% of global electricity
+6:25 limiting how much larger they can grow
+6:27 without significant energy breakthroughs
+6:29 pre-trained Foundation models face two
+6:31 main issues they're optimized for text
+6:33 completion not conversation and their
+6:35 outputs can be factually incorrect or
+6:37 ethically problematic posttraining aims
+6:39 to address these issues through two main
+6:41 steps first supervised fine tuning
+6:43 supervised fine tuning optimizes the
+6:45 model for conversations instead of
+6:47 completion this requires high quality
+9:46 discover new capabilities that might
+9:47 extend beyond human abilities all of
+9:49 this is made worse by a general
+9:50 underinvestment in evaluation compared
+9:52 to model development so let's start with
+9:54 some fundamental metrics used to
+9:55 evaluate language models during training
+9:57 most autor regressive language models
+9:59 are trained using cross entropy or its
+10:01 relative perplexity these metrics
+10:02 essentially measure how well the model
+10:04 predicts the next token in a sequence
+10:06 entropy measures how much information on
+10:08 average a token carries the higher the
+10:10 entropy the more information dense each
+10:12 token is and the more unpredictable the
+10:14 language if you can perfectly predict
+10:15 what I'll say next what I say carries no
+10:17 new information language models learn
+10:19 the distribution of their training data
+10:21 the better a model learns this
+10:23 distribution the better it becomes at
+10:24 predicting what comes next resulting in
+10:26 lower cross entropy a perfectly trained
+10:28 model would would achieve cross entropy
+10:30 equal to the entropy of the training
+10:31 data itself and the KL Divergence
+10:34 between the two will be zero perplexity
+10:36 is simply the exponential of cross
+10:37 entropy it measures the amount of
+10:39 uncertainty a model has when predicting
+10:41 the next token higher perplexity means
+10:44 that there are more possible options the
+10:45 model is considering what counts as good
+10:47 perplexity depends entirely on the data
+10:50 more structured data has lower expected
+10:52 perplexity because it's more predictable
+10:54 the larger the vocabulary the higher the
+10:56 perplexity because there are more
+10:57 possible options and the long longer the
+10:59 context length the lower the perplexity
+11:01 tends to be while perplexity is useful
+11:03 for guiding training and serves as a
+11:05 proxy for a model's General capabilities
+11:07 it becomes less reliable for models that
+11:09 have undergone significant posttraining
+11:10 with sft or rhf as models get better at
+11:14 completing tasks they might actually get
+11:16 worse at predicting the next token in a
+11:17 statistical sense perplexity can also be
+11:19 used to detect if a text was in a
+11:21 model's training data because it would
+11:22 be unusually good at predicting those
+11:24 tokens and to identify nonsensical text
+11:26 which would have abnormally High
+11:28 perplexity for some tasks we can perform
+11:30 exact evaluation where there's no
+11:32 ambiguity about the correct answer like
+11:34 multiple choice questions this is in
+11:36 contrast to subjective evaluation like
+11:38 grading an essay the gold standard here
+11:40 is functional correctness evaluating
+11:42 whether the system performs its intended
+11:44 functionality for example if I ask a
+11:46 model to book a restaurant reservation
+11:48 did it make the correct reservation this
+11:49 is the ultimate metric for any
+11:51 application though it's not always clear
+11:52 how to measure it in coding tasks
+11:54 functional correctness translates to
+11:56 execution accuracy does the code run and
+11:58 produce the expected output for gaming
+12:01 Bots we can measure objective
+12:02 performance metrics like win rates when
+12:04 reference data is available we can
+12:05 evaluate outputs by comparing their
+12:07 similarity to this ground truth this
+12:09 approach is bottlenecked by how much and
+12:10 how fast reference data can be generated
+12:12 either by humans or AI there are three
+12:15 main ways to compare outputs to
+12:16 references first exact match a binary
+12:19 measure that works for simple questions
+12:21 with definitive answers like who was the
+12:23 first woman to win the Nobel Prize
+12:24 second lexical similarity a continuous
+12:27 measure of how much the tokens over
+12:29 overlap between the output and reference
+12:31 this can use techniques like edit
+12:32 distance how many changes are needed to
+12:34 transform one text into another or
+12:36 engram overlap metrics like blue and
+12:38 Rouge the drawback is that you need a
+12:40 comprehensive set of reference responses
+12:43 and the references themselves can be
+12:45 wrong plus higher lexical similarity
+12:47 doesn't necessarily mean a better
+12:48 response there are many ways to express
+12:50 the same idea third semantic similarity
+12:53 this is a continuous measure of whether
+12:54 two texts have the same meaning
+12:56 regardless of the specific words used
+12:59 this is typically implemented by
+13:00 comparing text embeddings using metrics
+13:02 like cosine similarity the advantage is
+13:04 that it doesn't require references but
+13:06 it does depend on the quality of the
+13:07 underlying embedding algorithm one of
+13:09 the most powerful and common methods for
+13:11 evaluating AI models in production is
+13:13 using another AI model as a judge these
+13:15 AI judges are fast easy to use and
+13:18 relatively cheap compared to human
+13:19 evaluators they can work without
+13:21 reference data and can judge attributes
+13:23 like correctness toxicity hallucinations
+13:25 and more Studies have shown that AI
+13:26 judges can correlate strongly with human
+13:28 evaluators sometimes showing higher
+13:30 agreement than between different human
+13:32 judges they can also explain their
+13:34 decisions which helps with transparency
+13:36 you can use AI judges to score outputs
+13:38 compare outputs to references or pick
+13:40 the best of two responses since language
+13:42 models are generally better with text
+13:44 than numbers AI judges tend to perform
+13:46 better with classification tasks than
+13:47 numerical scoring when creating prompts
+13:49 for AI judges you need to include the
+13:51 evaluation task criteria and scoring
+13:53 system few shot examples generally work
+13:56 better than zero shot which we'll talk
+13:58 about later in the prompt engering
+13:59 section though longer prompts do
+14:01 increase costs interestingly you don't
+14:03 always need your strongest model as the
+14:05 judge specialized smaller models can
+14:07 often perform evaluation tasks
+14:08 effectively which helps reduce costs and
+14:10 latency however of course AI judges have
+14:13 limitations like all AI applications
+14:15 they're probalistic the same judge given
+14:17 the same input can produce different
+14:19 scores if prompted differently or simply
+14:21 run twice this makes evaluation results
+14:23 harder to reproduce or trust
+14:25 additionally metrics aren't standardized
+14:27 across different systems one system
+14:29 system's definition of faithfulness
+14:30 might differ from anothers Models also
+14:33 exhibit biases they might prefer
+14:35 responses from the same model this is
+14:36 called Self Bias favor the first answer
+14:39 in a comparison this is position bias or
+14:41 prefer lengthier answers verbosity bias
+14:44 you can mitigate these biases through
+14:46 techniques like randomizing the order of
+14:47 responses but this also increases costs
+19:47 metrics like accuracy F1 blue Etc keep
+19:50 in mind that the goal is to select a
+19:51 small subset of models for more rigorous
+19:53 testing with your own benchmarks and
+19:55 metrics public benchmarks rarely
+19:57 represent your applications need
+19:58 perfectly and they may suffer from data
+20:00 contamination which is when the models
+20:02 were trained on the same data they're
+20:03 being evaluated on to deal with
+20:05 contamination you first need to detect
+20:07 it using her istics like engram
+20:09 overlapping and perplexity if perplexity
+20:11 on the evaluation data is unusually low
+20:14 it's possible the model has seen this
+20:15 during training once you've narrowed
+20:16 down your model candidates you need a
+20:18 robust evaluation pipeline evaluate both
+20:20 the endtoend output and each component
+20:23 intermediate outputs independently you
+20:25 can use something called turn-based
+20:26 evaluation where you assess the quality
+20:28 of each output and task-based evaluation
+20:31 where you measure whether the system
+20:32 completes a task and how many turns it
+20:34 takes first think about what makes a
+20:36 good response factors like relevance
+20:39 factual consistency and safety then
+20:41 create test queries and generate
+20:43 multiple responses to see how models
+20:44 perform develop detailed rubrics with
+20:47 examples for your scoring system whether
+20:49 you use binary scores continuous scales
+20:51 or something else depends on your data
+20:53 and your needs the key is to make your
+20:55 rubric unambiguous so that human
+20:57 evaluators can follow it consistently ly
+20:59 most importantly tie your evaluation
+21:01 metrics to business metrics if your
+21:03 customer support chatbots factual
+21:04 consistency is 80% what does that mean
+21:07 for the business perhaps you can
+21:08 automate 30% of customer support
+21:10 requests at that level but at 90%
+21:12 consistency you could automate 50% this
+21:15 lets you quantify the business impact of
+21:16 model improvements you'll also need to
+21:18 establish a usefulness threshold for
+21:20 instance your chat bot must be 90%
+21:23 factually consistent to be viable in
+21:24 production different criteria might
+21:26 require different evaluation methods
+21:29 you might use a specialized toxicity
+21:31 classifier semantic similarity metrics
+21:33 to measure relevance and an AI judge to
+21:35 assess factual consistency you can even
+21:38 mix and match evaluation methods for the
+21:39 same criteria for example maybe use a
+21:42 cheap classifier on all your data and an
+21:44 expensive AI judge on just 1% for high
+21:47 quality signals while automated metrics
+21:49 are preferable for scale don't hesitate
+21:51 to include human evaluation even in
+21:53 production just do it on a subset of
+21:55 data to keep costs manageable it's also
+21:57 crucial to evaluate application on
+21:59 different slices of data or users to
+22:01 ensure it performs well across segments
+22:03 and avoid biases this helps you identify
+22:06 areas for improvement and prevent
+22:07 Simpsons Paradox where a model performs
+22:10 better on aggregate but worse on each
+22:12 individual subset how much evaluation
+22:14 data you need depends on your
+22:15 application and methods generally you
+22:18 want enough to be reliable but not so
+22:20 much that costs become prohibitive a
+22:22 good way to test reliability is to
+22:23 create multiple bootstrap samples of
+22:25 your evaluation set and see if they
+22:27 yield similar results if you get 90% on
+22:29 one bootstrap but 70% on another your
+22:31 evaluation pipeline isn't trustworthy
+22:33 finally evaluate the reliability of your
+22:35 pipeline itself first is it getting
+22:36 signals right do better responses indeed
+22:38 get higher scores next do better
+22:41 evaluation metrics lead to Better
+22:42 Business outcomes third how reliable is
+22:44 the pipeline if you run it twice do you
+22:46 get the same results fourth how
+22:48 correlated are your metrics you don't
+22:50 need two metrics if they're perfectly
+22:51 correlated but completely uncorrelated
+22:53 metrics might indicate problems and
+22:55 finally what cost and latency does your
+22:57 evaluation pipeline add your your
+22:58 application model selection remains one
+23:00 of the hardest but most important topics
+23:02 in AI engineering with the rapidly
+23:04 growing number of foundation models
+23:06 available your challenge isn't
+23:07 developing models but selecting the
+23:09 right one for your specific needs
+23:11 balancing performance cost privacy and
+23:13 control now let's dive into what might
+23:15 be the most accessible yet surprisingly
+23:17 nuanced aspect of AI engineering prompt
+23:19 engineering if you've ever used chat GPT
+23:22 you've already done some form of prompt
+23:23 engineering but there's much more to it
+23:25 than just typing questions prompt
+23:27 engineering refers to the process of
+23:28 crafting instructions that guide a model
+23:30 to generate your desired outcome it's
+23:32 the easiest and most common model
+23:34 adaptation technique because unlike fine
+23:36 tuning it doesn't change the model's
+23:38 weights you're just telling the model
+23:39 what you want it to do while it's the
+23:41 most accessible entry point to AI
+23:43 engineering don't be fooled into
+23:44 thinking that it's simplistic effective
+23:46 prompt engineering requires the same
+23:48 experimental rigor as any machine
+23:50 learning task you should extract maximum
+23:52 value from prompting before moving to
+23:54 more resource intensive techniques like
+23:55 fine-tuning that said understanding
+23:57 prompt engineering alone isn't enough
+23:58 for production ready systems you'll
+24:00 still need knowledge of Statistics
+24:02 engineering and classical ml for
+24:03 experiment tracking evaluation and data
+24:05 set curation prompts typically consist
+24:07 of one or more of these components first
+24:10 the task description this includes the
+24:12 model's role and expected output format
+24:15 for example you are a helpful medical
+24:17 assistant analyze the following symptoms
+24:18 and suggest possible conditions listing
+24:20 them in order of likelihood next
+24:22 examples these show the model how to
+24:24 perform the task for instance if you
+24:26 want a model to classify text as toxic
+24:28 or non-toxic you might include examples
+24:30 of each third the concrete task this is
+24:33 the specific job you want the model to
+24:34 do like answering a question or
+24:36 summarizing a book how much prompt
+24:37 engineering you need depends on the
+24:38 model's robustness to prompt
+24:40 perturbation a robust model shouldn't
+24:42 produce dramatically different outputs
+24:43 if you write the number five versus
+24:45 write it out FIV this robustness is
+24:48 strongly correlated with a model's
+24:50 overall capability it's also worth
+24:51 noting that different models have
+24:52 different preferred prompt structures
+24:54 for example GPT 4 typically performs
+24:56 better when the task description is at
+24:58 the beginning of the prompt while llama
+24:59 3 does better when the task appears at
+25:01 the end teaching models what to do via
+25:03 prompts is known as in context learning
+25:05 each example in your prompt is called a
+25:07 shot so we get the terms few shot zero
+25:10 shot and one shot learning how many
+25:12 examples you need depends on both the
+25:13 model and your application so
+25:15 experimentation is necessary the number
+25:17 of examples you can include is limited
+25:18 by the model's context length and for
+25:20 API models your cost constraints many
+25:23 modern models distinguish between system
+25:25 and user prompts the system prompt
+25:27 contains the Tas task description
+25:29 telling the model what role to play its
+25:30 goals and constraints the user prompt
+25:33 contains the specific task or query
+25:35 almost all applications like trpt have
+25:37 system prompts usually created by the
+25:38 application developers rather than end
+25:40 users these system and user prompts are
+25:42 combined using a template that can vary
+25:44 between models and versions if you use
+25:46 the wrong template you might experience
+25:47 unexpected performance issues even small
+25:50 mistakes like an extra new line can
+25:51 cause problems when constructing inputs
+25:53 make sure to follow the model's chat
+25:55 template exactly this is especially
+25:57 important if you're using using third
+25:58 party tools to construct prompts as
+26:00 template mismatches often lead to silent
+26:03 failures models typically understand
+26:05 instructions better when they appear at
+26:06 the beginning or end of The Prompt
+26:08 rather than buried in the middle let's
+26:09 go through some key strategies for
+26:11 Effective prompt engineering first write
+26:13 clear and explicit instructions if you
+26:15 want a model to score an essay explain
+26:17 the scoring system you want it to use
+26:19 should it allow fractional scores what
+26:21 should it do if it can't determine an
+26:22 answer be specific to reduce ambiguity
+26:25 second ask the model to adopt a Persona
+26:27 asking a model to respond as a
+26:29 particular character or expert can
+26:30 significantly change its output style
+26:32 and focus for example respond as an
+26:35 experienced pediatrician or answer as if
+26:37 you were explaining it to a 10-year-old
+26:39 third provide examples examples can
+26:41 dramatically shift a model's response
+26:43 style for instance asking will Santa
+26:45 bring me presents without examples might
+26:48 get a straight no Santa is fictional
+26:50 response but if you provide an example
+26:52 of a Whimsical answer about the Tooth
+26:53 Fairy the model is more likely to play
+26:55 along four specify the output format
+26:58 tell the model exactly how you want the
+27:00 response structured this might mean
+27:02 requesting things like no preambles so
+27:04 none of this based on the content of
+27:06 this essay I'd give it a score of dot
+27:08 dot dot you can also ask for specific
+27:10 formats like Json or markdown and
+27:12 particular sections or headings five
+27:15 break complex tasks into simpler
+27:17 subtasks this not only improves
+27:19 performance but also makes monitoring
+27:20 debugging and parallelization easier
+27:23 however it can increase the latency
+27:24 perceived by users if they don't see the
+27:26 intermediate outputs you can also use
+27:28 cheaper models for simpler steps to
+27:29 reduce cost six give the model time to
+27:32 think several techniques can improve
+27:34 model reasoning Chain of Thought
+27:35 prompting so think this through step by
+27:37 step process instructions so something
+27:40 like first analyze the key themes second
+27:42 identify the author's perspective and so
+27:45 on next self-critique ask the model to
+27:47 check its own work these approaches
+27:49 generally improve quality but increase
+27:50 latency and token usage seven iterate
+27:53 systematically this is so important
+27:56 different techniques work better for
+27:57 different models so experimentation is
+27:59 crucial always version your prompts and
+28:01 use an experiment tracking tool with
+28:03 standardized evaluation metrics and data
+28:05 also separate prompts from code store
+28:08 them in configuration files rather than
+28:10 hardcoding them this will make it way
+28:11 easier to update various tools aim to
+28:13 automate The Prompt engineering workflow
+28:15 including open prompt and dspi these
+28:17 tools let you specify input and output
+28:19 formats evaluation metrics and
+28:21 evaluation data then essentially they
+28:23 perform automl to find the optimal
+28:25 prompts however these tools can be
+28:27 expensive if if they make many API calls
+28:29 under the hood they also might produce
+28:31 prompts with typos or other issues and
+28:32 they may not keep up with changing model
+28:34 requirements for these reasons it's best
+28:36 to start with manual prompt engineering
+28:38 before moving to automated tools you can
+28:39 also use AI models themselves to write
+31:17 forgotten a rag system consists of two
+31:19 main components a retriever that fetches
+31:21 the information from the external memory
+31:23 source and a generator the foundation
+31:25 model that produces a response based on
+31:27 the retrieved information in today's rag
+31:29 systems these components are often
+31:30 trained separately with many teams using
+31:32 off-the-shelf Retriever and models
+31:34 however fine tuning the entire rag
+31:36 system from end to end can significantly
+31:38 improve performance the success of a rag
+31:40 system heavily depends on its retriever
+31:42 a retriever performs two main functions
+31:44 indexing and querying indexing involves
+31:46 processing data so that it can quickly
+31:48 be retrieved later this is the
+31:50 preparatory step where you organize your
+31:51 knowledge base querying is the process
+31:53 of sending a search query to retrieve
+31:55 data relevant to it how you index your
+31:57 data determines how you retrieve it
+31:58 later let's walk through a simple
+32:00 example imagine your external memory as
+32:01 a database of documents like contracts
+32:03 or meeting notes these documents can
+32:05 range from 10 tokens to a million tokens
+32:07 in length naively retrieving whole
+32:09 documents would make your context
+32:10 arbitrarily long potentially exceeding
+32:12 the model's context window to avoid this
+32:14 you typically split each document into
+32:16 smaller chunks which we'll discuss later
+32:18 for each user query your goal is to
+32:20 retrieve the data chunks most relevant
+32:22 to that query then with some
+32:24 postprocessing to join the retrieved
+32:25 chunks with the user's prompt you the
+32:28 final prompt that goes to the model many
+33:45 Vector search themselves but will use
+33:47 existing Vector databases these
+33:48 databases organize vectors into buckets
+33:50 trees or graphs using various fistic to
+33:53 increase the likelihood that similar
+33:54 vectors are stored close to each other
+33:56 embedding based retrieval can sign
+33:57 significantly outperform term-based
+33:59 retrieval over time especially if you
+34:01 fine-tune your embedding model and
+34:02 retriever but it has its downsides it
+34:05 can make it harder to search for
+34:06 specific names or error codes and
+34:08 generating embeddings can be expensive
+34:10 and introduce latency a production
+34:12 retrieval system typically combines
+34:13 several approaches for example a cheaper
+34:16 less precise retriever like turn-based
+34:17 search might first fetch candidates and
+34:20 then a more precise but expensive
+34:21 mechanism like KNN finds the best
+34:23 options among those candidates depending
+34:25 on your task certain tactics can
+34:27 increase the chance of retrieving
+34:28 relevant documents the simplest approach
+34:30 is to divide documents into chunks of
+34:32 equal length based on characters words
+34:34 sentences or paragraphs overlapping
+34:35 chunks can ensure that important
+34:37 boundary information is included in at
+34:39 least one chunk smaller chunk sizes
+34:41 allow for more diverse information since
+34:42 you can fit more chunks into the model's
+34:44 context but this can also result in the
+34:46 loss of important context smaller chunks
+34:48 also increase computational overhead
+34:50 especially for embedding based retrieval
+34:52 there's no Universal best chunk size or
+34:54 overlap percentage you just need to
+34:56 experiment based on your specific data
+34:57 and task the initial document rankings
+34:59 generated by the retriever can be
+35:01 further refined to be more accurate this
+35:03 is especially useful when you need to
+35:04 reduce the number of retrieve documents
+35:06 due to context window limitations
+35:08 documents could be reranked based on
+35:10 various factors such as recency so maybe
+35:12 you give more weight to newer data or
+35:14 additional relevant signals next let's
+35:16 talk about query rewriting also known as
+35:19 query reformulation normalization or
+35:22 expansion this technique involves
+35:24 rewriting queries to include necessary
+35:26 context for example if a user asks
+35:28 what's its population after previously
+35:31 asking about Paris the query might be
+35:33 expanded to what's the population of
+35:35 Paris each chunk can be augmented with
+35:38 relevant context to make it easier to
+35:40 retrieve this might include metadata
+35:41 like tags and keywords or for e-commerce
+35:44 products it could be information like
+35:45 descriptions and reviews you can also
+35:48 augment chunks with context from the
+35:49 full document to help them retain more
+35:51 of the original meaning for example
+35:53 maybe a summary of the entire document
+35:54 when choosing a retrieval solution
+35:56 consider first first what retrieval
+35:58 mechanisms it supports term-based
+36:00 embedding based and or hybrid for Vector
+36:03 databases what embedding models and
+36:05 Vector search algorithms are supported
+36:07 also consider scalability both for data
+36:09 storage and query traffic you'll need to
+36:11 think about indexing speed and batch
+36:13 processing capabilities query latency
+36:16 pricing structure and compliance
+36:17 requirements as well it's also important
+36:19 to note that rag isn't limited to just
+36:21 text it can also be used with multimodal
+36:23 and tabular data for instance if a user
+36:25 asks what's the color of the house in
+36:27 the Pixar movie up a multimodal rag
+36:29 system might first retrieve an image of
+36:31 the house to help the model answer
+36:32 similarly rag can work with tabular data
+36:34 using text to SQL conversations the
+36:37 system can execute a query on a database
+36:38 and then generate a response based on
+36:40 the results for complex database schemas
+36:42 you might need an intermediate step to
+36:44 predict which table to use for each
+36:45 query especially if there are too many
+36:47 tables to fit all the schemas in the
+36:48 context window in the next part we'll
+36:50 explore the agentic pattern which goes
+36:52 beyond passive retrieval to actively
+36:54 interact with external tools and apis
+36:56 the agentic pattern is a more active
+36:57 approach to extending AI capabilities
+37:00 this is a rapidly evolving field so
+37:02 consider this section more experimental
+37:03 than the others we've covered at its
+37:05 broadest definition an agent is anything
+37:07 that can perceive its environment and
+37:09 act upon it for AI systems this means
+37:11 that a model can observe its environment
+37:13 make decisions based on those
+37:14 observations take actions that affect
+37:16 the environment and learn from the
+37:18 outcomes of those actions the
+37:19 environment is defined by the use case
+37:22 for a game playing Agent the game is the
+37:24 environment for a web scraping agent the
+37:25 internet is the environment what makes
+37:27 agents powerful is the set of tools they
+37:29 have access to for example chat GPT is
+37:31 an agent that can search the web execute
+37:33 python code and generate images among
+37:35 other capabilities remember our rag
+37:37 example with tabular data that was
+37:39 actually a simple agent with three
+37:41 actions generating SQL queries executing
+37:43 those queries and producing a response
+37:45 let's see how this works in practice if
+37:47 a user asks project the sales revenue
+37:49 over the next 3 months the agent might
+37:52 first reason about how to accomplish the
+37:54 task then generate a SQL query to fetch
+37:57 historical sales data next it would
+37:58 execute that query against the database
+38:00 analyze if the retrieved information is
+38:02 sufficient possibly generate and execute
+38:04 additional queries and then create a
+38:06 projection based on the gathered data
+38:08 finally it would conclude that the task
+38:09 has been successfully completed compared
+38:11 to simpler AI applications agents
+38:13 require more powerful models because
+38:15 they often need to perform multiple
+38:16 steps to complete a task the overall
+38:18 success rate decreases with each step
+38:20 because of compounding errors and the
+38:22 stakes are higher since agents have
+38:23 access to potentially powerful tools
+38:25 speaking of tools agents can be equipped
+38:27 with various tools which fall into
+38:29 several categories first knowledge
+38:31 augmentation tools these could be things
+38:33 like text or image retrievers as in rag
+38:35 SQL executors for database access web
+38:38 search capabilities apis for accessing
+38:40 inventory systems email readers Etc and
+38:43 web browsers for navigating online
+38:44 content whether public or private next
+38:47 we have capability extension tools like
+38:49 calculators since AI models often
+38:50 struggle with complex math time zone or
+38:53 unit converters translation services and
+38:55 code interpreters we also have WR action
+38:57 tools so tools that enable the agent not
+38:59 just to read but also write to systems
+39:02 these can automate workflows but require
+39:04 strong security protocols complex tasks
+39:06 require planning and there are many
+39:08 possible ways to decompose a task not
+39:10 all approaches will be successful and
+39:12 not all will be efficient to help with
+39:13 debugging and to prevent cases where a
+39:15 model executes unnecessary API calls
+39:18 planning should be decoupled from
+39:19 execution the process typically works
+39:21 like this first ask the agent to
+39:23 generate a plan then validate the plan
+39:26 before execution and then only execute
+39:28 once validated plans can be validated
+39:30 using heris STS like removing plans with
+39:32 invalid actions or too many steps or by
+39:35 using another AI model as a judge you
+39:37 can even generate several plans in
+39:39 parallel and then ask an evaluator to
+39:41 pick the most promising one for
+39:42 particularly important or sensitive
+39:44 tasks you might want a human in the loop
+39:46 to review plans before execution while
+39:48 Foundation model agents use the model
+39:50 itself as the planner reinforcement
+39:51 learning agents are trained using
+39:53 reinforcement learning algorithms this
+39:54 approach uses more resources than
+39:56 Foundation models but could offer
+39:57 performance improvements in the future
+39:59 the simplest way to turn a model into a
+40:01 plan generator is through prompt
+40:02 engineering you tell the model what
+40:04 functionality it has available and the
+40:05 expected inputs and outputs for each
+40:07 tool you can improve your prompts by
+40:09 writing better system prompts with more
+40:10 examples providing clearer descriptions
+40:13 of tools and their parameters
+40:14 simplifying functions as much as
+40:16 possible using a stronger model or
+40:17 fine-tuning a model specifically for
+40:19 Plan Generation as a practical tip
+40:21 always ask the system to report what
+40:23 parameter values it uses for each
+40:25 function call this provides a sanity
+40:27 check check that can catch many issues
+40:28 before execution another useful approach
+40:30 is to generate plans in natural language
+40:32 first then translate them to the exact
+40:34 function calls in a second step this
+40:36 helps if function names change over time
+40:38 or if you find a model specifically for
+40:40 plan creation the translation can often
+40:42 be done by a smaller cheaper model
+40:44 agents can fail in various ways so it's
+40:47 important to have robust evaluation
+40:48 methods there are lots of different
+40:50 things that can go wrong so we could
+40:51 have planning failures like using
+40:53 invalid tools using valid tools but with
+40:56 invalid parameters using valid tools
+40:58 with incorrect parameter values or
+41:00 failing to achieve the goal or satisfy
+41:01 constraints to evaluate planning
+41:03 capability create a data set where each
+41:05 example is a tuple of task available
+41:07 tools and constraints for each task use
+41:09 the agent to generate multiple plans and
+41:11 compute metrics like the percentage of
+41:13 generated plans that are valid how many
+41:15 attempts it takes to get a valid plan
+41:17 percentage of tools called that are
+41:19 valid and how often invalid tools are
+41:21 called you could also have tool failures
+41:22 so that could include things like bad
+41:24 translation from high level plans to
+41:26 specific function name
+41:27 no access to the required tools or tools
+41:30 giving incorrect outputs like poorly
+41:31 generated SQL queries for this your
+41:33 efficiency metrics might be how many
+41:35 steps does the agent need on average to
+41:37 complete a task what's the cost to
+41:39 complete a task how long does each
+41:41 action typically take are there
+41:42 particularly slow or expensive actions
+41:44 and how does the agent compare to
+41:46 baselines which might be another agent
+41:47 or a human one of the key challenges for
+41:50 agents is remembering information over
+41:51 time a memory system allows a model to
+41:53 retain and utilize information across
+41:56 interactions a a models typically have
+41:58 three main memory mechanisms there's the
+42:00 internal knowledge embedded in the model
+42:02 itself through training there's the
+42:03 context window which is kind of your
+42:04 shortterm memory for immediate session
+42:07 specific information and finally
+42:09 external data sources like rag systems
+42:10 this is kind of like your long-term
+42:12 memory information that is essential to
+42:14 all tasks should be incorporated via
+42:16 training rarely needed information
+42:17 should reside in long-term memory while
+42:19 short-term memory is for immediate
+42:21 context specific information benefits of
+42:23 a well-designed memory management system
+42:25 include storing information longer than
+42:27 the context window allows persisting
+42:29 information between sessions making a
+42:31 model more consistent in its responses
+42:33 and actions by combining rag for
+42:35 information access tools for capability
+42:37 extension planning for complex tasks and
+42:40 memory systems for continuity agents can
+42:42 tackle increasingly sophisticated
+42:44 problems while this field is still
+42:46 evolving rapidly it represents one of
+42:48 the most promising Frontiers in AI
+42:49 engineering as with all powerful
+42:51 Technologies agent systems require
+42:53 careful consideration of safety security
+42:55 and ethical use the more capable able an
+42:57 agent becomes the more critical it is to
+42:59 ensure it operates within appropriate
+43:00 boundaries and with proper oversight now
+43:02 let's explore fine tuning the process of
+43:04 adapting a model to a specific task by
+43:06 further training it and adjusting its
+43:08 weights while prompt engineering and rag
+43:10 are relatively lightweight techniques
+43:11 fine-tuning offers deeper customization
+43:14 but requires more resources and
+43:15 expertise so when to fine-tune fine
+43:18 tuning can improve a model's performance
+43:20 in two ways first by enhancing domain
+43:22 specific capabilities like coding or
+43:24 answering medical questions and second
+43:26 improving instruction following
+43:28 abilities like adhering to specific
+43:29 output formats however fine tuning
+43:31 requires significant upfront investment
+43:33 it often needs more memory than what's
+43:35 available on a single GPU making it
+43:36 expensive this is why reducing memory
+43:38 requirements has become a primary
+43:40 motivation for many fine-tuning
+43:41 techniques that we'll discuss later so
+43:43 you should consider fine-tuning when
+43:45 you've already exhausted what you can
+43:46 achieve with prompt-based methods you
+43:48 need to produce consistent structured
+43:50 outputs and you're working with smaller
+43:52 models that need to perform better on
+45:06 try to get the model to perform the task
+45:08 with prompting alone add more examples
+45:09 to the prompt from there at that point
+45:11 if the model continues to have
+45:12 information based failures try more
+45:14 advanced rag like embedding based
+45:16 retrieval if it continues to have
+45:17 behavioral issues opt for fine-tuning
+45:19 finally combine Rag and fine-tuning for
+45:21 a bigger performance boost because of
+45:23 the scale of foundation models memory is
+45:25 a major bottleneck for both inference
+45:27 and fine tuning the memory requirements
+45:28 for fine-tuning are typically much
+45:30 higher than for inference due to how
+45:31 neural networks are trained neural
+45:33 networks are typically trained using
+45:34 back propagation each training step
+45:36 consists of a forward pass where we
+45:38 compute the output from the input and a
+45:40 backwards pass where we update the
+45:41 model's weights using signals from the
+45:43 forward pass during inference only the
+45:45 forward pass is executed during training
+45:47 both passes are needed the key
+45:49 contributors to a model's memory
+45:51 footprint during fine tuning are the
+45:52 total number of parameters the number of
+45:54 trainable parameters and the numerical
+45:56 representation of these parameters a
+45:58 trainable parameter is one that can be
+45:59 updated during fine tuning so during
+46:01 pre-training all model parameters are
+46:03 updated during inference no parameters
+46:05 are updated and during fine-tuning some
+46:08 or all of the parameters may be updated
+46:10 parameters that remain unchanged are
+46:12 called Frozen parameters one way to
+46:14 reduce training memory is through
+46:15 gradient checkpointing also called
+46:17 activation recomputation where
+46:19 activations aren't stored but recomputed
+46:21 as needed this increases training time
+46:23 but reduces memory requirements the key
+46:24 Insight here is that the more trainable
+46:26 parameters we have the higher the memory
+46:28 footprint reducing the number of
+46:29 trainable parameters reduces memory
+46:31 requirements this is the motivation
+46:33 behind parameter efficient fine-tuning
+46:34 which we'll talk about in a bit another
+46:36 way to reduce the memory footprint is
+46:37 through quantization converting a model
+46:39 from a format with more bits to one with
+46:41 fewer bits for a 13 billion parameter
+46:43 model using 32-bit floating Point each
+46:45 parameter requires 4 bytes resulting in
+46:48 52 GB total so if you reduce each value
+46:51 to 16 bits the memory needed drops to 26
+46:54 GB inference is typically done using as
+46:57 few bits as possible 16 eight or even
+46:59 four bits training is more sensitive to
+47:01 numerical Precision so it's usually done
+47:03 in mixed Precision with some operations
+47:05 in higher Precision like 32bit and
+47:07 others in lower Precision like 16 or
+47:09 8bit different numerical formats balance
+47:12 range so the span of values that can be
+47:14 represented and precision how exactly a
+47:16 number can be represented there are a
+47:17 few different formats reducing Precision
+47:19 can cause values to change or result in
+47:21 errors so it's important to load models
+47:23 in their intended format for example
+47:25 when llama 2 is released its weights
+47:27 optimized for bf16 causing significantly
+47:29 worse quality when loaded with fp16 now
+51:15 that data volume matters full fine
+51:17 tuning typically requires thousands to
+51:19 millions of examples while PFT can work
+51:21 with hundreds also you'll need to know
+51:22 how many fine tune models you need
+51:24 adapter methods let you serve multiple
+51:26 variants that share a base model there
+51:27 are also some key hyper parameters that
+51:29 you should know these ones in particular
+51:31 significantly impact fine-tuning results
+51:33 so we have the learning rate just like
+51:34 in machine learning if the loss curve
+51:35 fluctuates the learning rate is likely
+51:37 too high if it's stable but decreases
+51:39 very slowly the rate's probably too low
+51:41 generally start larger and decrease over
+51:43 time we also have batch size larger
+51:45 batches process training examples faster
+51:47 but require more memory small batches
+51:49 lead to more unstable training so to
+51:51 address instability you can accumulate
+51:52 gradiance across several batches we also
+51:54 need to think about the number of epoch
+51:56 smaller data sets typically need more
+51:58 epochs than larger ones for millions of
+52:00 examples one to two Epoch might suffice
+52:03 for thousands of examples 4 to 10 may be
+52:05 needed reduce Epoch if you see
+52:07 overfitting we also have prompt loss
+52:09 weight for instruction fine-tuning this
+52:11 determines how much prompts should
+52:12 contribute to the loss compared to the
+52:14 responses if it's set to 100% prompts
+52:16 and responses contribute equally if it's
+52:18 0% the model learns only from responses
+52:21 the default is typically 10% while the
+52:23 technical process of fine-tuning has
+53:35 need either preference data or examples
+53:37 with explicit scores your training data
+53:38 should exhibit the behaviors you want
+53:40 your model to learn this can be
+53:41 particularly challenging for complex
+53:43 behaviors like Chain of Thought
+53:44 reasoning or tool use in agent workflows
+53:46 When developing conversational
+53:47 applications you need to consider
+53:49 whether you require single turn data
+53:50 multi-turn data or both single turn data
+53:53 helps train a model to respond to
+53:54 individual instructions while multi-turn
+53:56 data data teaches the model how to solve
+53:57 tasks through dialogue like clarifying
+53:59 user intent before addressing the task
+54:01 or incorporating Corrections a small
+54:03 amount of high quality data can
+54:04 outperform a large amount of noisy data
+54:06 a principle confirmed by teams working
+54:08 on models like llama 3 they found that
+54:10 human generated data is often prone to
+54:11 errors in inconsistencies particularly
+54:13 for nuanced policies leading them to
+54:16 develop AI assisted annotation tools to
+54:18 ensure high quality which is interesting
+54:19 to me but what makes data high quality
+54:21 there are several factors to consider
+54:23 first relevance the examples should be
+54:25 relevant to your target task legal text
+54:27 from the 19th century might not be
+54:28 relevant for answering contemporary
+54:30 legal questions you'll also need
+54:31 alignment with task requirements if your
+54:33 task focuses on factual consistency
+54:36 annotations need to be factually correct
+54:38 if it demands creativity annotations
+54:40 should be creative we also need to think
+54:41 about consistency annotations should be
+54:43 consistent across examples and
+54:45 annotators they need to be correctly
+54:46 formatted so data should adhere to the
+54:48 expected structure they need to be
+54:50 sufficiently unique you want minimal
+54:52 duplicates in your data set they need to
+54:53 be compliant and follow internal and
+54:55 external policies and you need coverage
+54:57 your training data needs to cover the
+54:59 range of possible problems you want to
+55:01 solve requiring sufficient diversity
+55:03 missing coverage in important areas will
+55:04 result in poor performance for those
+55:06 cases no matter how much data you have
+55:07 overall but how much data do you need
+55:09 asking how much data you need is kind of
+55:11 like asking how much money you need the
+55:13 answer varies widely depending on your
+55:14 situation several factors influence data
+55:16 requirements so if you're fine-tuning
+55:18 then the fine-tuning technique matters
+55:20 full fine tuning typically requires
+55:22 orders of magnitude more data than
+55:23 parameter efficient methods like Laura
+55:25 with tens of thousands to millions of
+55:27 examples full fine tuning might be
+55:29 appropriate with just hundreds to a few
+55:31 thousand examples PFT methods will
+55:33 likely work better it also depends on
+55:35 your task complexity a simple sentiment
+55:37 classification task requires much less
+55:39 data than complex question answering
+55:41 about financial filings for example the
+55:43 base model performance also makes a
+55:44 difference so the closer the base model
+55:46 is to your desired performance the fewer
+55:48 examples you'll need larger more capable
+55:50 base models generally require fewer
+55:51 examples to fine-tune effectively open
+55:53 ai's fine-tuning guide demonstrates that
+55:55 with fewer examples around 100 more
+55:57 advanced models give better fine-tuning
+55:59 results however after fine-tuning on a
+56:02 large data set around 550,000 examples
+56:05 all models perform similarly regardless
+56:07 of their initial capabilities so in
+56:09 short with limited data use PFT methods
+56:12 on more advanced models with abundant
+56:14 data full fine tuning on smaller models
+56:16 becomes viable before investing in a
+56:17 large data set start with a small
+56:19 well-crafted set of around 50 examples
+56:22 to see if fine tuning improves your
+56:23 model if you see clear improvements more
+56:25 data will likely help further if you see
+56:26 no improvement with a small data set a
+56:28 larger one rarely solves the problem
+56:30 though be careful to rule out other
+56:31 issues like poor hyperparameters or data
+56:33 quality first in most cases you should
+56:35 see improvements after fine-tuning with
+56:37 just 50 to 100 examples you can also
+56:40 reduce the amount of high quality data
+56:41 you need by first fine-tuning on more
+56:43 accessible data so One path might be
+56:45 self-supervised to supervised first
+56:47 fine-tune on domain specific documents
+56:49 then on targeted question answer pairs
+56:51 or less relevant to more relevant data
+56:53 first fine tune on adjacent domains with
+56:55 abundant data then on your specific
+56:57 domain or synthetic to real data first
+56:59 find- tune on AI generated examples then
+57:02 on limited real examples experimenting
+57:04 with subsets of your current data set so
+57:06 maybe 25 50 and 100% can help estimate
+57:09 how much more data you'll need a steep
+57:11 performance gain with increasing data
+57:12 set size suggests significant
+57:14 improvement from doubling your data a
+57:16 plateau indicates diminishing returns so
+57:18 let's say you need more data how can you
+57:19 get it if you don't have enough for your
+57:21 use case if possible you'll want to
+57:22 create a data flywheel that leverages
+57:24 user interactions to continue ually
+57:26 improve your product this offers a
+57:28 significant competitive advantage or you
+57:30 could also just check available data
+57:31 sets you can often mix and match
+57:33 different sources though all data must
+57:35 be thoroughly verified for quality and
+57:37 appropriate licensing when annotating
+57:38 your own data the challenge isn't just
+57:40 The annotation process but creating
+57:42 clear guidelines you need to explicitly
+57:44 Define what makes a good response can a
+57:46 response be correct but unhelpful what
+57:48 distinguishes a score of three versus 4
+57:51 these guidelines are crucial both for
+57:52 human and AI powered annotations trust
+57:55 me one of the hard machine learning
+57:56 problems I've ever had to solve was an
+57:58 issue with human labelers data
+58:00 augmentation creates new examples from
+58:02 existing data which is another option so
+58:04 you could do things like flipping an
+58:05 image to create a new variant or you
+58:06 could use data synthesis this generates
+58:09 artificial data that mimics real data
+58:11 properties like simulating Mouse
+58:12 movements on a web page the key
+58:14 difference between augmented data and
+58:16 synthetic data is that augmented data is
+58:18 derived from real data while synthetic
+58:20 data is Created from scratch data
+58:22 synthesis therefore is particularly
+58:23 valuable for addressing privacy concerns
+58:25 when working with sensitive information
+58:27 together some combination of these
+58:29 techniques should allow you to produce
+58:30 data at scale increase coverage across
+58:32 your problem space and possibly improve
+58:34 quality with AI generated data since
+58:36 humans aren't always great at creating
+58:38 consistent data but of course make sure
+58:39 to measure the quality of your AI
+58:41 generated data just like you would for
+58:42 human generated data once you have your
+58:44 data you need to process it data
+58:46 processing can be timec consuming but it
+58:48 is critical for Quality here are some
+58:50 best practices start with filtering
+58:52 tasks and test scripts before big runs
+58:54 avoid changing data in place so you want
+58:56 to make sure to keep the originals
+58:58 perform exploratory data analysis on
+59:00 distributions and outliers examine
+59:02 interannotator disagreement and resolve
+59:04 conflicts fact check and manually
+59:06 inspect examples D duplicate data to
+59:08 prevent over representation clean
+59:10 formatting tokens like HTML and markdown
+59:13 which can improve performance and reduce
+59:14 input size remove non-compliant data so
+59:17 anything like pii toxic material or
+59:19 copyrighted content filter out
+59:20 lowquality data identified during
+59:22 verification if you have more data than
+59:24 your compute budget allows use active
+59:26 learning to select the most helpful
+59:27 examples and ensure data is in the right
+59:29 format for your model using the
+59:31 appropriate tokenizer and chat template
+59:33 while all these steps require a lot of
+59:35 effort they're essential for creating
+59:36 data sets that will help your model to
+1:00:45 infrastructure to optimize inference we
+1:00:47 first need to understand what's slowing
+1:00:48 things down generally speaking AI
+1:00:51 workloads face two types of bottlenecks
+1:00:53 compute bound bottlenecks occur when the
+1:00:55 limiting factor is the computational
+1:00:56 power available tasks requiring
+1:00:59 intensive calculations like image
+1:01:00 generation are typically compute bound
+1:01:02 memory bandwidth bound bottlenecks occur
+1:01:04 when the limiting factor is how quickly
+1:01:06 data can move between memory and
+1:01:07 processors autor regressive language
+1:01:09 model inference is typically memory
+1:01:11 bandwidth bound profiling tools like
+1:01:13 Nvidia Insight can help determine which
+1:01:14 bottleneck affects your workload through
+1:01:16 something called a roofline chart what's
+1:01:18 important to understand is that
+1:01:19 different optimization Techniques
+1:01:20 address different bottlenecks a compute
+1:01:22 bound workload might benefit from more
+1:01:24 powerful chips or Distributing work
+1:01:26 across multiple chips meanwhile a memory
+1:01:27 bandwidth bound workload might see
+1:01:29 better results from chips with higher
+1:01:30 memory bandwidth now that we understand
+1:01:32 bottlenecks let's look at how inference
+1:01:33 is actually served many providers often
+1:01:36 two distinct types of inference apis
+1:01:38 each optimized for different use cases
+1:01:40 online apis optimize for Laten see
+1:01:42 processing requests as soon as they
+1:01:43 arrive chatbots typically use online
+1:01:46 apis since users expect quick responses
+1:01:48 batch apis on the other hand optimize
+1:05:03 models themselves more efficient model
+1:05:05 compression reduces a model's size
+1:05:07 potentially making it faster there are
+1:05:09 several approaches here quantization
+1:05:11 which we already discussed reduces
+1:05:12 numerical Precision pruning removes less
+1:05:15 important parameters or sets them to
+1:05:16 zero and distillation which we also
+1:05:18 already discussed trains a smaller model
+1:05:20 to mimic a larger one among these
+1:05:22 options weight only quantization is by
+1:05:24 far the most popular because it's
+1:05:25 relatively easy to implement works well
+1:05:27 for many models out of the box and
+1:05:28 delivers significant benefits without
+1:05:30 that much effort another challenge
+1:05:31 specific to language models is their
+1:05:33 autor regressive nature they generate
+1:05:34 text one token at a time which creates a
+1:05:37 sequential bottleneck several Techniques
+1:05:38 address this limitation speculative
+1:05:40 decoding uses a faster but less powerful
+1:05:42 model to generate candidate tokens which
+1:05:45 are then verified by the Target Model
+1:05:47 it's like having an assistant draft
+1:05:48 responses and a manager quickly review
+1:05:50 and approve inference with reference
+1:05:52 copies tokens from the input when
+1:05:53 appropriate for example when answering
+1:05:55 questions about a document rather
+1:05:56 than generating them from scratch this
+1:05:58 can significantly speed up responses for
+1:06:00 document-based queries parallel decoding
+1:06:02 aims to generate multiple tokens
+1:06:04 simultaneously breaking the sequential
+1:06:06 constraint additionally attention
+1:11:38 caching is particularly valuable for
+1:11:40 multi-step processes like Chain of
+1:11:41 Thought reasoning or queries requiring
+1:11:43 timec consuming actions like retrieval
+1:11:44 or web searches for implementation your
+1:11:46 options range from in-memory storage
+1:11:48 which is fast but has limited capacity
+1:11:50 to databases like postgress SQL and
+1:11:52 reddis you'll also need an eviction
+1:11:54 policy like least recently used or least
+1:11:57 frequently used to manage cache sizes as
+1:11:59 you scale stage five add complex logic
+1:12:01 and write actions this is the most
+1:12:03 sophisticated AI applications go beyond
+1:12:06 simple question answering to incorporate
+1:12:08 complex multi-step reasoning flows
+1:12:10 agentic patterns with loops and
+1:12:11 decision-making and write actions that
+1:12:13 make changes to the environment write
+1:12:15 actions like sending emails placing
+1:12:17 orders or initiating transfers
+1:12:19 dramatically increase your system's
+1:12:21 capabilities but also introduce
+1:12:22 significant risks these should be
+1:12:24 implemented with icient caution and
+1:12:25 appropriate safeguards as your
+1:12:27 architecture grows in complexity keeping
+1:12:29 track of everything becomes increasingly
+1:12:30 challenging this is where monitoring and
+1:12:32 observability become critical while
+1:12:34 related they serve slightly different
+1:12:36 purposes monitoring tracks external
+1:12:38 outputs to detect when something goes
+1:12:39 wrong but doesn't necessarily help
+1:12:41 identify the cause it's like knowing
+1:12:43 your car broke down but not why
+1:12:45 observability on the other hand ensures
+1:12:46 that sufficient information about your
+1:12:48 system's internal state is collected so
+1:12:50 that when something goes wrong you can
+1:12:51 diagnose the issue without deploying new
+1:12:53 code it's like having sensors throughout
+1:12:54 your car that can pinpoint exactly what
+1:12:56 failed there are three key metrics that
+1:12:58 can help you evaluate your observability
+1:13:00 mttd or mean time to detection how long
+1:13:03 it takes to detect an issue mttr
+1:13:06 meantime to response and CFR change
+1:13:08 failure rate which is the percentage of
+1:13:10 deployments that result in failures each
+1:13:12 component in your pipeline should have
+1:13:13 its own metrics and you should
+1:13:15 understand how these metrics correlate
+1:13:16 to your business's Northstar metrics
+1:13:18 remember the golden rule of
+1:13:19 observability just log everything when
+1:13:21 metrics indicate a problem detailed logs
+1:13:23 help you identify exactly what went
+1:13:25 wrong as your application evolves to
+1:13:27 include multiple models data sources and
+1:13:29 tools managing these interactions can
+1:13:31 become increasingly complex this is
+1:13:32 where an orchestrator becomes valuable
+1:13:34 helping you specify how these components
+1:13:36 work together AI orchestrator tools like
+1:13:38 Lang chain llama index flow wise Lang
+1:13:40 flow and hay stock help manage these
+1:13:42 complex pipelines however it's often
+1:13:45 wise to start building your application
+1:13:46 without an orchestrator first to
+1:13:49 understand the core mechanics before
+1:13:50 adding another layer of abstraction now
+1:13:52 let's talk about what might be the most
+1:13:53 valuable asset in AI engineering user
+1:13:56 feedback this feedback provides
+1:13:57 proprietary data that can give you a
+1:13:59 genuine competitive advantage while
+1:14:01 everyone can access the same Foundation
+1:14:02 models only you have access to how your
+1:14:04 specific users interact with your system
+1:14:06 user feedback comes in two main forms
+1:14:09 explicit feedback is directly provided
+1:14:11 by users this is things like Thumbs Up
+1:14:13 and Down ratings star ratings or written
+1:14:15 comments implicit feedback is inferred
+1:14:17 from user Behavior this could be things
+1:14:18 like early termination error Corrections
+1:14:21 or question clarifications complaint
+1:14:23 messages sentiment frequency of
+1:14:25 regenerating responses and conversation
+1:14:27 length when designing your feedback
+1:14:29 systems consider carefully when to
+1:14:31 request input you could ask for feedback
+1:14:33 at the beginning of the experience like
+1:14:34 like asking for skill level in a
+1:14:35 language learning app or when something
+1:14:37 unexpected happens like slow response
+1:14:39 time or at natural decision points like
+1:14:41 offering between two alternative
+1:14:42 responses the goal is to gather valuable
+1:14:45 insights without disrupting the user
+1:14:46 experience remember that every request
+1:14:48 for feedback creates friction so use
+1:14:50 these opportunities wisely while we've
+1:14:52 covered each component separately a
+1:14:53 mature AI application integrates all
+1:14:56 these elements into a cohesive system
+1:14:58 the architecture you choose should align
+1:15:00 with your specific use case technical
+1:15:01 constraints and business objectives one
+1:15:03 important thing to remember is that
+1:15:04 complexity should serve a purpose only
+1:15:06 add components that solve real problems
+1:15:08 for your application sometimes a simpler
+1:15:10 architecture with fewer moving Parts is
+1:15:12 more reliable and easier to maintain
+1:15:14 than a complex one with every Bell and
+1:15:15 whistle the field of AI engineering is
+1:15:17 still rapidly evolving with new
+1:15:19 techniques and best practices emerging
+1:15:21 daily the most successful AI Engineers
+1:15:23 maintain flexibility in their
+1:15:25 architecture allowing them to
+1:15:26 incorporate new advances while providing
+1:15:28 stable reliable experiences to their
+1:15:30 users and that wraps up our journey
+1:15:31 through AI engineering we've covered an
+1:15:33 incredible amount of ground from
+1:15:35 understanding Foundation models and
+1:15:36 evaluation to mastering prompt
+1:15:38 engineering rag agents fine-tuning data
+1:15:40 set engineering and optimization
+1:15:42 techniques of course this was a super
+1:15:44 high Lev overview of a very detailed
+1:15:46 book so I really recommend using this as
+1:15:48 a starting point to check out the book
+1:15:49 on your own I had a great time putting
+1:15:51 this together and I plan to do more
+1:15:52 videos covering technical content like
+1:15:54 this in the future so let me know in the
+1:15:56 comments which book you want me to
+1:15:57 summarize next and don't forget to
+1:15:58 subscribe so you don't miss it when the
+1:15:59 next one comes out thanks so much for
+1:16:01 watching and I'll see you next time
