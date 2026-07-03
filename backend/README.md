@@ -146,11 +146,11 @@ Planning for failure. The system can still run and it's resilient to failures.
 
 ## 3.2 The 3 Key Elements of Systems Design
 
-## 3.2.1 Moving Data
+### 3.2.1 Moving Data
 
 Ensure data moves smoothly, securely and as fast as possible from A to B, B to A, A to N, etc. 
 
-## 3.2.2 Storing Data
+### 3.2.2 Storing Data
 
 Understading key components like:
 - Data access patterns
@@ -158,7 +158,7 @@ Understading key components like:
 - Backup strategies
 - Trade off between data store technologies
 
-## 3.2.3 Trasforming Data
+### 3.2.3 Trasforming Data
 
 Common operations:
 - Transforming data to a new format
