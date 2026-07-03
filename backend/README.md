@@ -9,7 +9,7 @@
     - [2.1.2 Status Code](#212-status-code)
 - [3 System Design Practices](#3-system-design-practices)
   - [3.1 4 Pillars of Good System Design](#31-4-pillars-of-good-system-design)
-    - [3.1.1 Escalability](#311-escalability)
+    - [3.1.1 Scalability](#311-Scalability)
     - [3.1.2 Maintainability](#312-maintainability)
     - [3.1.3 Efficiency](#313-efficiency)
     - [3.1.4 Reliability](#314-reliability)
@@ -111,9 +111,11 @@ In a nutshell:
 
 # 3 System Design Practices
 
-## 3.1 4 Pillars of Good System Design
+## 3.1 The 4 Pillars of Good System Design
 
-### 3.1.1 Escalability
+### 3.1.1 Scalability
+
+Systems grows with the user base.
 
 - Vertical Scaling: When traffic is low but CPU/MEM is high (utilization)
   - Can't add infinite CPU/MEM
@@ -123,9 +125,58 @@ In a nutshell:
 
 ### 3.1.2 Maintainability
 
+Ensure new users can understand and improve the current system.
+
 ### 3.1.3 Efficiency
 
+Ensure the system is making the best use of the resources.
+
 ### 3.1.4 Reliability
+
+Planning for failure. The system can still run and it's resilient to failures.
+
+## 3.2 The 3 Key Elements of Systems Design
+
+## 3.2.1 Moving Data
+
+Ensure data moves smoothly, securely and as fast as possible from A to B, B to A, A to N, etc. 
+
+## 3.2.2 Storing Data
+
+Understading key components like:
+- Data access patterns
+- Access speed strategies (indexing, caching, etc)
+- Backup strategies
+- Trade off between data store technologies
+
+## 3.2.3 Trasforming Data
+
+Common operations:
+- Transforming data to a new format
+- Aggregating/Grouping/Calculating
+- Mastering, matching and enriching data
+
+## 3.3 CAP Theorem
+
+Principles of the trade-off of designing distributed systems. The system can only accomodate for 2 out of 3 properties at the same time.
+
+### 3.3.1 Consitency
+
+Consistency ensures that multiple nodes all have the same version of the data at a the same time.
+Changes should propagate to all other nodes.
+
+### 3.3.2 Availability
+
+Availability ensures that the system is capable of producing a valid response to operations regardless of what is happening behind the scenes.
+
+### 3.3.3 Partition Tolerance
+
+The system can still fully operate even after a partition failure event.
+
+### 3.3.4 Examples
+
+- Banking system: Consistency + Availability
+- TODO: more examples and questions here.
 
 # 4 Typical Flows
 
