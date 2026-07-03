@@ -176,7 +176,26 @@ Changes should propagate to all other nodes.
 
 ### 3.3.2 Availability
 
-Availability ensures that the system is capable of producing a valid response to operations regardless of what is happening behind the scenes.
+Availability ensures that the system is capable of producing a valid response to operations regardless of what is happening behind the scenes. Can be mesured with % uptime/downtime and the golden time target is considered to be 99.999% (5 minutes downtime per year).
+
+#### 3.3.2.1 SLO Service Level Objectives
+
+Performace and/or availability, for example <= 300ms response time at %99.9 of time.
+
+#### 3.3.2.2 SLA Service Level Agreement
+
+Formal contract that dictates strict rules for availability, eg: uptime 99.99%
+
+#### 3.3.2.3 Building Resiliency
+
+- Reliability: ensure the system works consistently 
+- Fault-tolerance: ensure the systems still works even with unexpected failures (expect the unexpected) 
+- Redundancy: ensure the system contains redundant components in stand-by, ready to enter operations
+
+#### 3.3.2.4 Perormance
+
+- Throughput (eg: queries per second)
+- Latency (time to get a response after a request issue)
 
 ### 3.3.3 Partition Tolerance
 
