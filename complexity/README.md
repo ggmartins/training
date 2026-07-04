@@ -2,14 +2,15 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [1. Big-O Complexity](#1-big-o-complexity)
-  - [1.1 O(1)](#11-o1)
-  - [1.2 O(log n)](#12-olog-n)
-  - [1.3 O(n)](#13-on)
-  - [1.4 O(n log(n))](#14-on-logn)
-  - [1.5 O(n^2)](#15-on2)
-  - [1.6 O(2^n)](#16-o2n)
-  - [O(n!)](#on)
+- [1. Asymptotic Bounding](#1-asymptotic-bounding)
+- [2. Big-O Complexity](#2-big-o-complexity)
+  - [2.1 O(1)](#21-o1)
+  - [2.2 O(log n)](#22-olog-n)
+  - [2.3 O(n)](#23-on)
+  - [2.4 O(n log(n))](#24-on-logn)
+  - [2.5 O(n^2)](#25-on2)
+  - [2.6 O(2^n)](#26-o2n)
+  - [2.7 O(n!)](#27-on)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
