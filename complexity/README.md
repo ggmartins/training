@@ -63,15 +63,15 @@
 # 3. DSAs and their asymptotic complexity
 
 ## 3.1 Data Structure Complexity
-
-**Legend:** 🟢 Best · 🟡 Good · 🟠 Moderate · 🔴 Poor · ⚪ N/A
+**Legend:** <img src="../docs/images/green.svg"> Best · <img src="../docs/images/lightgreen.svg"> Very Good
+· <img src="../docs/images/yellow.svg"> Good · <img src="../docs/images/orange.svg"> Moderate · <img src="../docs/images/red.svg"> Poor · ⚪ N/A
 
 <table>
   <thead>
     <tr>
       <th rowspan="3">Data&nbsp;Structure</th>
       <th colspan="8">Time Complexity</th>
-      <th rowspan="3">Worst&nbsp;Space</th>
+      <th rowspan="3">Worst&nbsp;Space&nbsp;Complexity</th>
     </tr>
     <tr>
       <th colspan="4">Average</th>
@@ -89,177 +89,177 @@
     </tr>
   </thead>
   <tbody>
-<tbody>
 <tr>
   <td><a href="https://en.wikipedia.org/wiki/Array_data_structure">Array</a></td>
-  <td>🟢&nbsp;<code>Θ(1)</code></td>
-  <td>🟡&nbsp;<code>Θ(n)</code></td>
-  <td>🟡&nbsp;<code>Θ(n)</code></td>
-  <td>🟡&nbsp;<code>Θ(n)</code></td>
-  <td>🟢&nbsp;<code>O(1)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;Θ(1)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;Θ(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;Θ(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;Θ(n)</nobr></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;O(1)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
 </tr>
 <tr>
   <td><a href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)">Stack</a></td>
-  <td>🟡&nbsp;<code>Θ(n)</code></td>
-  <td>🟡&nbsp;<code>Θ(n)</code></td>
-  <td>🟢&nbsp;<code>Θ(1)</code></td>
-  <td>🟢&nbsp;<code>Θ(1)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟢&nbsp;<code>O(1)</code></td>
-  <td>🟢&nbsp;<code>O(1)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;Θ(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;Θ(n)</nobr></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;Θ(1)</nobr></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;Θ(1)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;O(1)</nobr></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;O(1)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
 </tr>
 <tr>
   <td><a href="https://en.wikipedia.org/wiki/Queue_(abstract_data_type)">Queue</a></td>
-  <td>🟡&nbsp;<code>Θ(n)</code></td>
-  <td>🟡&nbsp;<code>Θ(n)</code></td>
-  <td>🟢&nbsp;<code>Θ(1)</code></td>
-  <td>🟢&nbsp;<code>Θ(1)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟢&nbsp;<code>O(1)</code></td>
-  <td>🟢&nbsp;<code>O(1)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;Θ(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;Θ(n)</nobr></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;Θ(1)</nobr></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;Θ(1)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;O(1)</nobr></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;O(1)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
 </tr>
 <tr>
   <td><a href="https://en.wikipedia.org/wiki/Singly_linked_list#Singly_linked_lists">Singly-Linked&nbsp;List</a></td>
-  <td>🟡&nbsp;<code>Θ(n)</code></td>
-  <td>🟡&nbsp;<code>Θ(n)</code></td>
-  <td>🟢&nbsp;<code>Θ(1)</code></td>
-  <td>🟢&nbsp;<code>Θ(1)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟢&nbsp;<code>O(1)</code></td>
-  <td>🟢&nbsp;<code>O(1)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;Θ(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;Θ(n)</nobr></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;Θ(1)</nobr></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;Θ(1)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;O(1)</nobr></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;O(1)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
 </tr>
 <tr>
   <td><a href="https://en.wikipedia.org/wiki/Doubly_linked_list">Doubly-Linked&nbsp;List</a></td>
-  <td>🟡&nbsp;<code>Θ(n)</code></td>
-  <td>🟡&nbsp;<code>Θ(n)</code></td>
-  <td>🟢&nbsp;<code>Θ(1)</code></td>
-  <td>🟢&nbsp;<code>Θ(1)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟢&nbsp;<code>O(1)</code></td>
-  <td>🟢&nbsp;<code>O(1)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;Θ(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;Θ(n)</nobr></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;Θ(1)</nobr></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;Θ(1)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;O(1)</nobr></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;O(1)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
 </tr>
 <tr>
   <td><a href="https://en.wikipedia.org/wiki/Skip_list">Skip&nbsp;List</a></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟠&nbsp;<code>O(n&nbsp;log(n))</code></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/orange.svg">&nbsp;O(n&nbsp;log(n))</nobr></td>
 </tr>
 <tr>
   <td><a href="https://en.wikipedia.org/wiki/Hash_table">Hash&nbsp;Table</a></td>
-  <td>⚪&nbsp;<code>N/A</code></td>
-  <td>🟢&nbsp;<code>Θ(1)</code></td>
-  <td>🟢&nbsp;<code>Θ(1)</code></td>
-  <td>🟢&nbsp;<code>Θ(1)</code></td>
-  <td>⚪&nbsp;<code>N/A</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td><nobr>⚪&nbsp;N/A</nobr></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;Θ(1)</nobr></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;Θ(1)</nobr></td>
+  <td><nobr><img src="../docs/images/green.svg">&nbsp;Θ(1)</nobr></td>
+  <td><nobr>⚪&nbsp;N/A</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
 </tr>
 <tr>
   <td><a href="https://en.wikipedia.org/wiki/Binary_search_tree">Binary&nbsp;Search&nbsp;Tree</a></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
 </tr>
 <tr>
   <td><a href="https://en.wikipedia.org/wiki/Cartesian_tree">Cartesian&nbsp;Tree</a></td>
-  <td>⚪&nbsp;<code>N/A</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>⚪&nbsp;<code>N/A</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td><nobr>⚪&nbsp;N/A</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr>⚪&nbsp;N/A</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
 </tr>
 <tr>
   <td><a href="https://en.wikipedia.org/wiki/B-tree">B-Tree</a></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>O(log(n))</code></td>
-  <td>🟢&nbsp;<code>O(log(n))</code></td>
-  <td>🟢&nbsp;<code>O(log(n))</code></td>
-  <td>🟢&nbsp;<code>O(log(n))</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;O(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;O(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;O(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;O(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
 </tr>
 <tr>
   <td><a href="https://en.wikipedia.org/wiki/Red%E2%80%93black_tree">Red-Black&nbsp;Tree</a></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>O(log(n))</code></td>
-  <td>🟢&nbsp;<code>O(log(n))</code></td>
-  <td>🟢&nbsp;<code>O(log(n))</code></td>
-  <td>🟢&nbsp;<code>O(log(n))</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;O(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;O(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;O(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;O(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
 </tr>
 <tr>
   <td><a href="https://en.wikipedia.org/wiki/Splay_tree">Splay&nbsp;Tree</a></td>
-  <td>⚪&nbsp;<code>N/A</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>⚪&nbsp;<code>N/A</code></td>
-  <td>🟢&nbsp;<code>O(log(n))</code></td>
-  <td>🟢&nbsp;<code>O(log(n))</code></td>
-  <td>🟢&nbsp;<code>O(log(n))</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td><nobr>⚪&nbsp;N/A</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr>⚪&nbsp;N/A</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;O(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;O(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;O(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
 </tr>
 <tr>
   <td><a href="https://en.wikipedia.org/wiki/AVL_tree">AVL&nbsp;Tree</a></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>O(log(n))</code></td>
-  <td>🟢&nbsp;<code>O(log(n))</code></td>
-  <td>🟢&nbsp;<code>O(log(n))</code></td>
-  <td>🟢&nbsp;<code>O(log(n))</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;O(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;O(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;O(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;O(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
 </tr>
 <tr>
   <td><a href="https://en.wikipedia.org/wiki/K-d_tree">KD&nbsp;Tree</a></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
-  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/lightgreen.svg">&nbsp;Θ(log(n))</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
+  <td><nobr><img src="../docs/images/yellow.svg">&nbsp;O(n)</nobr></td>
 </tr>
 </tbody>
 </table>
+
 
 ## 3.2 Sorting Algorithm Complexity
 
