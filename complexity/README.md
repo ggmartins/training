@@ -61,30 +61,206 @@
 
 # 3. DSAs and their asymptotic complexity
 
-## Data Structure Complexity
+## 3.1 Data Structure Complexity
 
-**Legend:** 🟢 Best performance · 🟡 Good · 🟠 Moderate · 🔴 Poor · ⚪ N/A
+**Legend:** 🟢 Best · 🟡 Good · 🟠 Moderate · 🔴 Poor · ⚪ N/A
 
-| Data Structure                                                                             |    Avg. Access |    Avg. Search | Avg. Insertion |  Avg. Deletion |   Worst Access |   Worst Search | Worst Insertion | Worst Deletion |      Worst Space |
-| ------------------------------------------------------------------------------------------ | -------------: | -------------: | -------------: | -------------: | -------------: | -------------: | --------------: | -------------: | ---------------: |
-| [Array](https://en.wikipedia.org/wiki/Array_data_structure)                                |      🟢 `Θ(1)` |      🟡 `Θ(n)` |      🟡 `Θ(n)` |      🟡 `Θ(n)` |      🟢 `O(1)` |      🟡 `O(n)` |       🟡 `O(n)` |      🟡 `O(n)` |        🟡 `O(n)` |
-| [Stack](https://en.wikipedia.org/wiki/Stack_%28abstract_data_type%29)                      |      🟡 `Θ(n)` |      🟡 `Θ(n)` |      🟢 `Θ(1)` |      🟢 `Θ(1)` |      🟡 `O(n)` |      🟡 `O(n)` |       🟢 `O(1)` |      🟢 `O(1)` |        🟡 `O(n)` |
-| [Queue](https://en.wikipedia.org/wiki/Queue_%28abstract_data_type%29)                      |      🟡 `Θ(n)` |      🟡 `Θ(n)` |      🟢 `Θ(1)` |      🟢 `Θ(1)` |      🟡 `O(n)` |      🟡 `O(n)` |       🟢 `O(1)` |      🟢 `O(1)` |        🟡 `O(n)` |
-| [Singly-Linked List](https://en.wikipedia.org/wiki/Singly_linked_list#Singly_linked_lists) |      🟡 `Θ(n)` |      🟡 `Θ(n)` |      🟢 `Θ(1)` |      🟢 `Θ(1)` |      🟡 `O(n)` |      🟡 `O(n)` |       🟢 `O(1)` |      🟢 `O(1)` |        🟡 `O(n)` |
-| [Doubly-Linked List](https://en.wikipedia.org/wiki/Doubly_linked_list)                     |      🟡 `Θ(n)` |      🟡 `Θ(n)` |      🟢 `Θ(1)` |      🟢 `Θ(1)` |      🟡 `O(n)` |      🟡 `O(n)` |       🟢 `O(1)` |      🟢 `O(1)` |        🟡 `O(n)` |
-| [Skip List](https://en.wikipedia.org/wiki/Skip_list)                                       | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` |      🟡 `O(n)` |      🟡 `O(n)` |       🟡 `O(n)` |      🟡 `O(n)` | 🟠 `O(n log(n))` |
-| [Hash Table](https://en.wikipedia.org/wiki/Hash_table)                                     |        ⚪ `N/A` |      🟢 `Θ(1)` |      🟢 `Θ(1)` |      🟢 `Θ(1)` |        ⚪ `N/A` |      🟡 `O(n)` |       🟡 `O(n)` |      🟡 `O(n)` |        🟡 `O(n)` |
-| [Binary Search Tree](https://en.wikipedia.org/wiki/Binary_search_tree)                     | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` |      🟡 `O(n)` |      🟡 `O(n)` |       🟡 `O(n)` |      🟡 `O(n)` |        🟡 `O(n)` |
-| [Cartesian Tree](https://en.wikipedia.org/wiki/Cartesian_tree)                             |        ⚪ `N/A` | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` |        ⚪ `N/A` |      🟡 `O(n)` |       🟡 `O(n)` |      🟡 `O(n)` |        🟡 `O(n)` |
-| [B-Tree](https://en.wikipedia.org/wiki/B-tree)                                             | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` | 🟢 `O(log(n))` | 🟢 `O(log(n))` |  🟢 `O(log(n))` | 🟢 `O(log(n))` |        🟡 `O(n)` |
-| [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree)                     | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` | 🟢 `O(log(n))` | 🟢 `O(log(n))` |  🟢 `O(log(n))` | 🟢 `O(log(n))` |        🟡 `O(n)` |
-| [Splay Tree](https://en.wikipedia.org/wiki/Splay_tree)                                     |        ⚪ `N/A` | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` |        ⚪ `N/A` | 🟢 `O(log(n))` |  🟢 `O(log(n))` | 🟢 `O(log(n))` |        🟡 `O(n)` |
-| [AVL Tree](https://en.wikipedia.org/wiki/AVL_tree)                                         | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` | 🟢 `O(log(n))` | 🟢 `O(log(n))` |  🟢 `O(log(n))` | 🟢 `O(log(n))` |        🟡 `O(n)` |
-| [KD Tree](https://en.wikipedia.org/wiki/K-d_tree)                                          | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` | 🟢 `Θ(log(n))` |      🟡 `O(n)` |      🟡 `O(n)` |       🟡 `O(n)` |      🟡 `O(n)` |        🟡 `O(n)` |
+<table>
+  <thead>
+    <tr>
+      <th rowspan="3">Data&nbsp;Structure</th>
+      <th colspan="8">Time Complexity</th>
+      <th rowspan="3">Worst&nbsp;Space</th>
+    </tr>
+    <tr>
+      <th colspan="4">Average</th>
+      <th colspan="4">Worst</th>
+    </tr>
+    <tr>
+      <th>Access</th>
+      <th>Search</th>
+      <th>Insert</th>
+      <th>Delete</th>
+      <th>Access</th>
+      <th>Search</th>
+      <th>Insert</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+<tbody>
+<tr>
+  <td><a href="https://en.wikipedia.org/wiki/Array_data_structure">Array</a></td>
+  <td>🟢&nbsp;<code>Θ(1)</code></td>
+  <td>🟡&nbsp;<code>Θ(n)</code></td>
+  <td>🟡&nbsp;<code>Θ(n)</code></td>
+  <td>🟡&nbsp;<code>Θ(n)</code></td>
+  <td>🟢&nbsp;<code>O(1)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+</tr>
+<tr>
+  <td><a href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)">Stack</a></td>
+  <td>🟡&nbsp;<code>Θ(n)</code></td>
+  <td>🟡&nbsp;<code>Θ(n)</code></td>
+  <td>🟢&nbsp;<code>Θ(1)</code></td>
+  <td>🟢&nbsp;<code>Θ(1)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟢&nbsp;<code>O(1)</code></td>
+  <td>🟢&nbsp;<code>O(1)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+</tr>
+<tr>
+  <td><a href="https://en.wikipedia.org/wiki/Queue_(abstract_data_type)">Queue</a></td>
+  <td>🟡&nbsp;<code>Θ(n)</code></td>
+  <td>🟡&nbsp;<code>Θ(n)</code></td>
+  <td>🟢&nbsp;<code>Θ(1)</code></td>
+  <td>🟢&nbsp;<code>Θ(1)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟢&nbsp;<code>O(1)</code></td>
+  <td>🟢&nbsp;<code>O(1)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+</tr>
+<tr>
+  <td><a href="https://en.wikipedia.org/wiki/Singly_linked_list#Singly_linked_lists">Singly-Linked&nbsp;List</a></td>
+  <td>🟡&nbsp;<code>Θ(n)</code></td>
+  <td>🟡&nbsp;<code>Θ(n)</code></td>
+  <td>🟢&nbsp;<code>Θ(1)</code></td>
+  <td>🟢&nbsp;<code>Θ(1)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟢&nbsp;<code>O(1)</code></td>
+  <td>🟢&nbsp;<code>O(1)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+</tr>
+<tr>
+  <td><a href="https://en.wikipedia.org/wiki/Doubly_linked_list">Doubly-Linked&nbsp;List</a></td>
+  <td>🟡&nbsp;<code>Θ(n)</code></td>
+  <td>🟡&nbsp;<code>Θ(n)</code></td>
+  <td>🟢&nbsp;<code>Θ(1)</code></td>
+  <td>🟢&nbsp;<code>Θ(1)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟢&nbsp;<code>O(1)</code></td>
+  <td>🟢&nbsp;<code>O(1)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+</tr>
+<tr>
+  <td><a href="https://en.wikipedia.org/wiki/Skip_list">Skip&nbsp;List</a></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟠&nbsp;<code>O(n&nbsp;log(n))</code></td>
+</tr>
+<tr>
+  <td><a href="https://en.wikipedia.org/wiki/Hash_table">Hash&nbsp;Table</a></td>
+  <td>⚪&nbsp;<code>N/A</code></td>
+  <td>🟢&nbsp;<code>Θ(1)</code></td>
+  <td>🟢&nbsp;<code>Θ(1)</code></td>
+  <td>🟢&nbsp;<code>Θ(1)</code></td>
+  <td>⚪&nbsp;<code>N/A</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+</tr>
+<tr>
+  <td><a href="https://en.wikipedia.org/wiki/Binary_search_tree">Binary&nbsp;Search&nbsp;Tree</a></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+</tr>
+<tr>
+  <td><a href="https://en.wikipedia.org/wiki/Cartesian_tree">Cartesian&nbsp;Tree</a></td>
+  <td>⚪&nbsp;<code>N/A</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>⚪&nbsp;<code>N/A</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+</tr>
+<tr>
+  <td><a href="https://en.wikipedia.org/wiki/B-tree">B-Tree</a></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>O(log(n))</code></td>
+  <td>🟢&nbsp;<code>O(log(n))</code></td>
+  <td>🟢&nbsp;<code>O(log(n))</code></td>
+  <td>🟢&nbsp;<code>O(log(n))</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+</tr>
+<tr>
+  <td><a href="https://en.wikipedia.org/wiki/Red%E2%80%93black_tree">Red-Black&nbsp;Tree</a></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>O(log(n))</code></td>
+  <td>🟢&nbsp;<code>O(log(n))</code></td>
+  <td>🟢&nbsp;<code>O(log(n))</code></td>
+  <td>🟢&nbsp;<code>O(log(n))</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+</tr>
+<tr>
+  <td><a href="https://en.wikipedia.org/wiki/Splay_tree">Splay&nbsp;Tree</a></td>
+  <td>⚪&nbsp;<code>N/A</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>⚪&nbsp;<code>N/A</code></td>
+  <td>🟢&nbsp;<code>O(log(n))</code></td>
+  <td>🟢&nbsp;<code>O(log(n))</code></td>
+  <td>🟢&nbsp;<code>O(log(n))</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+</tr>
+<tr>
+  <td><a href="https://en.wikipedia.org/wiki/AVL_tree">AVL&nbsp;Tree</a></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>O(log(n))</code></td>
+  <td>🟢&nbsp;<code>O(log(n))</code></td>
+  <td>🟢&nbsp;<code>O(log(n))</code></td>
+  <td>🟢&nbsp;<code>O(log(n))</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+</tr>
+<tr>
+  <td><a href="https://en.wikipedia.org/wiki/K-d_tree">KD&nbsp;Tree</a></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟢&nbsp;<code>Θ(log(n))</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+  <td>🟡&nbsp;<code>O(n)</code></td>
+</tr>
+</tbody>
+</table>
 
-
-
-## Sorting Algorithm Complexity
+## 3.2 Sorting Algorithm Complexity
 
 **Legend:** 🟢 Best performance · 🟡 Good · 🟠 Moderate · 🔴 Poor
 
