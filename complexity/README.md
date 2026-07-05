@@ -27,10 +27,18 @@
 - Big-Ω (omega) = Lower-bound, consider the best case scenario
 - Big-θ (theta) = The "tight" bound, also know as the best approximation possible, or fit function
 
+or more complete:
+
+- f(n)=O(g(n)) : asymptotic upper bound
+- f(n)=o(g(n)) : strict asymptotic upper bound
+- f(n)=Ω(g(n)) : asymptotic lower bound
+- f(n)=ω(g(n)) : strict asymptotic lower bound
+- f(n)=Θ(g(n)) : same asymptotic order
+	​
+
 # 2. Big-O Complexity
 
 <img width="612" height="598" alt="image" src="https://github.com/user-attachments/assets/f58a2f1f-aa26-4914-91cb-7e1355ab0931" />
-
 
 ## 2.1 O(1)
 
@@ -60,9 +68,36 @@
 
 - Adding a nested loop for each loop
 
-# 3. DSAs and their asymptotic complexity
+# 3. Little-o
 
-## 3.1 Data Structure Complexity
+* f(n) = O(g(n))    → same growth or slower
+* f(n) = o(g(n))    → strictly slower
+
+$$
+f(n)=o(g(n))
+\iff
+\lim_{n\to\infty}\frac{f(n)}{g(n)}=0
+$$
+
+| Statement      | True? | Reason                 |
+| -------------- | ----: | ---------------------- |
+| 1 = o(n)       |     ✅ | 1/n → 0               |
+| log n = o(n)   |     ✅ | log n/n → 0           |
+| n = o(n^2)     |     ✅ | 1/n → 0               |
+| n = o(n log n))|     ✅ | 1/log n → 0           |
+| n = o(2n)      |     ❌ | n/(2n) = 1/2          |
+| n^2 = o(n^2)   |     ❌ | ratio is (1)          |
+| 3n^2 = o(n^2)  |     ❌ | ratio is (3)          |
+| n^2 = O(n^2)   |     ✅ | same asymptotic order |
+
+$$
+o(g(n)) \subset O(g(n))
+$$
+
+
+# 4. DSAs and their asymptotic complexity
+
+## 4.1 Data Structure Complexity
 **Legend:** <img src="../docs/images/green.svg"> Best · <img src="../docs/images/lightgreen.svg"> Very Good
 · <img src="../docs/images/yellow.svg"> Good · <img src="../docs/images/orange.svg"> Moderate · <img src="../docs/images/red.svg"> Poor · ⚪ N/A
 
@@ -260,8 +295,7 @@
 </tbody>
 </table>
 
-
-## 3.2 Sorting Algorithm Complexity
+## 4.2 Sorting Algorithm Complexity
 
 **Legend:** 🟢 Best performance · 🟡 Good · 🟠 Moderate · 🔴 Poor
 
