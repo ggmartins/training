@@ -11,6 +11,7 @@
   - [2.5 O(n^2)](#25-on2)
   - [2.6 O(2^n)](#26-o2n)
   - [2.7 O(n!)](#27-on)
+- [3. DSA and their Asymptotic Complexities](#3-dsa-and-their-asymptotic-complexities)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
