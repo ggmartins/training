@@ -31,11 +31,18 @@
 or more complete:
 
 - f(n)=O(g(n)) : asymptotic upper bound
-- f(n)=o(g(n)) : strict asymptotic upper bound
+- f(n)=o(g(n)) : strict asymptotic upper bound (little o)
 - f(n)=Ω(g(n)) : asymptotic lower bound
-- f(n)=ω(g(n)) : strict asymptotic lower bound
+- f(n)=ω(g(n)) : strict asymptotic lower bound (little omega)
 - f(n)=Θ(g(n)) : same asymptotic order
-	​
+
+In other words:
+
+* $T(n)$ is $O(f(n))$: growth rate of $T(n)$ $\le$ growth rate of $f(n)$
+* $T(n)$ is $o(f(n))$: growth rate of $T(n)$ $<$ growth rate of $f(n)$
+* $T(n)$ is $\Omega(f(n))$: growth rate of $T(n)$ $\ge$ growth rate of $f(n)$
+* $T(n)$ is $\omega(f(n))$: growth rate of $T(n)$ $>$ growth rate of $f(n)$
+* $T(n)$ is $\Theta(f(n))$: growth rate of $T(n)$ $=$ growth rate of $f(n)$
 
 # 2. Big-O Complexity
 
