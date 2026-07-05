@@ -55,3 +55,9 @@
 
 - Adding a nested loop for each loop
 
+# 3. DSA and their Asymptotic Complexities
+
+<img width="949" height="536" alt="image" src="https://github.com/user-attachments/assets/3cddcfc7-07dd-4991-b4b0-2ef4e737bd66" />
+
+
+
