@@ -11,9 +11,10 @@
   - [2.5 O(n^2)](#25-on2)
   - [2.6 O(2^n)](#26-o2n)
   - [2.7 O(n!)](#27-on)
-- [3. DSAs and their asymptotic complexity](#3-dsas-and-their-asymptotic-complexity)
-  - [3.1 Data Structure Complexity](#31-data-structure-complexity)
-  - [3.2 Sorting Algorithm Complexity](#32-sorting-algorithm-complexity)
+- [3. Little-o](#3-little-o)
+- [4. DSAs and their asymptotic complexity](#4-dsas-and-their-asymptotic-complexity)
+  - [4.1 Data Structure Complexity](#41-data-structure-complexity)
+  - [4.2 Sorting Algorithm Complexity](#42-sorting-algorithm-complexity)
     - [Notes](#notes)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
