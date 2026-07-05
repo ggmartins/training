@@ -29,7 +29,7 @@
 
 # 2. Big-O Complexity
 
-<img width="550" height="700" alt="image" src="https://github.com/user-attachments/assets/873f3cc9-7377-4854-ac80-662ebe78c419" />
+<img width="612" height="598" alt="image" src="https://github.com/user-attachments/assets/f58a2f1f-aa26-4914-91cb-7e1355ab0931" />
 
 
 ## 2.1 O(1)
