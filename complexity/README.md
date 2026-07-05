@@ -12,6 +12,9 @@
   - [2.6 O(2^n)](#26-o2n)
   - [2.7 O(n!)](#27-on)
 - [3. DSAs and their asymptotic complexity](#3-dsas-and-their-asymptotic-complexity)
+  - [Data Structure Complexity](#data-structure-complexity)
+  - [Sorting Algorithm Complexity](#sorting-algorithm-complexity)
+    - [Notes](#notes)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
