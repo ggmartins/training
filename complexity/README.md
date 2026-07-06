@@ -24,7 +24,86 @@ General References:
 - [Big-O Cheat Sheet](https://www.bigocheatsheet.com/)
 - [DSA](https://cathyatseneca.gitbooks.io/data-structures-and-algorithms/content/analysis/notations.html)
 
-# 1. Asymptotic Bounding
+# 1. Complexity Measurements
+
+The main measurements of complexity are:
+
+## 1.1 Time Complexity
+
+The time it takes (how fast it runs) as the input size increases and tend to infinite.
+
+## 1.2 Space Complexity
+
+How much memory it uses as the input size increases and tend to infinite.
+
+## 1.3 Other Less Common Complexity Measurements
+
+Considering other forms of complexity measurements we can organize these into:
+
+```
+COMPLEXITY MEASURES
+│
+├── Sequential computation
+│   ├── Time
+│   └── Space
+│
+├── Memory hierarchy
+│   ├── I/O operations
+│   └── Cache misses
+│
+├── Distributed systems
+│   ├── Communication
+│   ├── Messages
+│   └── Communication rounds
+│
+├── Parallel computation
+│   ├── Work
+│   └── Span / Depth
+│
+├── Black-box computation
+│   └── Query complexity
+│
+└── Circuit computation
+    ├── Circuit size
+    └── Circuit depth
+```
+
+### 1.3.1 I/O Complexity
+
+How much I/O operations the algorithm executes as the input size increases. [Link](https://cs.au.dk/~gerth/emF03/)
+
+- Storage → RAM
+- RAM → CPU Cache
+
+Depending on the context, for example, operations with a database, the number of CPU instructions might not be as important as the IO operations.
+
+- Algorithm A:
+10 billon CPU ops
+100 storage reads
+
+- Algorithm B:
+1 million CPU ops
+1 million storage reads
+
+In this case A might run faster.
+
+### 1.3.2 Communication Complexity
+
+How many bits are required to solve the problem? [Link](https://theory.stanford.edu/~tim/w15/l/w15.pdf)
+
+### 1.3.3 Query Complexity
+
+Measures how many times the algorithm needs to query a data source. (Database, API, Black Box Function). [Link](https://www.cs.cmu.edu/~odonnell/quantum15/lecture05.pdf)
+
+### 1.3.4 Parallel Computation (Work / Span)
+
+TBD [Link](https://ocw.mit.edu/courses/6-172-performance-engineering-of-software-systems-fall-2018/497aa98bab1b3b9e643653a8a2af2a3b_a_R_DpsENfk.pdf?utm_source=chatgpt.com)
+
+### 1.3.5 Circuit Size and Circuit Depth
+
+TBD
+
+# 2. Asymptotic Bounding
 
 - Big-O = Upper-bound, considered to be "loose" or conservative with worse case scenario in mind
 - Big-Ω (omega) = Lower-bound, consider the best case scenario
@@ -46,43 +125,43 @@ In other words:
 * $T(n)$ is $\omega(f(n))$: growth rate of $T(n)$ $>$ growth rate of $f(n)$
 * $T(n)$ is $\Theta(f(n))$: growth rate of $T(n)$ $=$ growth rate of $f(n)$
 
-# 1.1 References
+## 2.1 References
 
 - [Back to Back SWE Youtube Video](https://www.youtube.com/watch?v=0oDAlMwTrLo)
 
-# 2. Big-O Complexity
+# 3. Big-O Complexity
 
 <img width="612" height="598" alt="image" src="https://github.com/user-attachments/assets/f58a2f1f-aa26-4914-91cb-7e1355ab0931" />
 
-## 2.1 O(1)
+## 3.1 O(1)
 
 - Accessing values in a hash table by key
 
-## 2.2 O(log n)
+## 3.2 O(log n)
 
 - Divide and conquer algorithms
 
-## 2.3 O(n)
+## 3.3 O(n)
 
 - Traversing a list
 
-## 2.4 O(n log(n))
+## 3.4 O(n log(n))
 
 - Iterations that use divide and conquer
 
-## 2.5 O(n^2)
+## 3.5 O(n^2)
 
 - 2 Nested for loops
 
-## 2.6 O(2^n)
+## 3.6 O(2^n)
 
 - Naive recursive Fibonacci sequence calculation
 
-## 2.7 O(n!)
+## 3.7 O(n!)
 
 - Adding a nested loop for each loop
 
-# 3. Little-o
+# 4. Little-o
 
 * f(n) = O(g(n))    → same growth or slower
 * f(n) = o(g(n))    → strictly slower
@@ -109,9 +188,9 @@ o(g(n)) \subset O(g(n))
 $$
 
 
-# 4. DSAs and their asymptotic complexity
+# 5. DSAs and their asymptotic complexity
 
-## 4.1 Data Structure Complexity
+## 5.1 Data Structure Complexity
 **Legend:** <img src="../docs/images/green.svg"> Best · <img src="../docs/images/lightgreen.svg"> Very Good
 · <img src="../docs/images/yellow.svg"> Good · <img src="../docs/images/orange.svg"> Moderate · <img src="../docs/images/red.svg"> Poor · ⚪ N/A
 
@@ -309,7 +388,7 @@ $$
 </tbody>
 </table>
 
-## 4.2 Sorting Algorithm Complexity
+## 5.2 Sorting Algorithm Complexity
 
 **Legend:** 🟢 Best performance · 🟡 Good · 🟠 Moderate · 🔴 Poor
 
