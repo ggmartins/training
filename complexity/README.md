@@ -3,6 +3,7 @@
 **Table of Contents**
 
 - [1. Asymptotic Bounding](#1-asymptotic-bounding)
+- [1.1 References](#11-references)
 - [2. Big-O Complexity](#2-big-o-complexity)
   - [2.1 O(1)](#21-o1)
   - [2.2 O(log n)](#22-olog-n)
