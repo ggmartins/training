@@ -19,8 +19,9 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-- `https://www.bigocheatsheet.com/`
-- `https://cathyatseneca.gitbooks.io/data-structures-and-algorithms/content/analysis/notations.html`
+General References:
+- [Big-O Cheat Sheet](https://www.bigocheatsheet.com/)
+- [DSA](https://cathyatseneca.gitbooks.io/data-structures-and-algorithms/content/analysis/notations.html)
 
 # 1. Asymptotic Bounding
 
@@ -43,6 +44,10 @@ In other words:
 * $T(n)$ is $\Omega(f(n))$: growth rate of $T(n)$ $\ge$ growth rate of $f(n)$
 * $T(n)$ is $\omega(f(n))$: growth rate of $T(n)$ $>$ growth rate of $f(n)$
 * $T(n)$ is $\Theta(f(n))$: growth rate of $T(n)$ $=$ growth rate of $f(n)$
+
+# 1.1 References
+
+- [Back to Back SWE Youtube Video](https://www.youtube.com/watch?v=0oDAlMwTrLo)
 
 # 2. Big-O Complexity
 
