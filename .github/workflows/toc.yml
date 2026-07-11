@@ -9,6 +9,8 @@ on:
       - "backend/README.md"
       - "messaging/kafka/README.md"
       - "messaging/rabbitmq/README.md"
+      - "dataeng/databricks/README.md"
+      - "dataeng/ssis/README.md"
       - "aws/README.md"
       - "azure/README.md"
       - "az-204/README.md"
@@ -35,4 +37,4 @@ jobs:
       - name: Generate TOCs
         uses: technote-space/toc-generator@v4
         with:
-          TARGET_PATHS: "ai/eng/README.md,backend/README.md,messaging/kafka/README.md,messaging/rabbitmq/README.md,aws/README.md,azure/README.md,az-204/README.md,az-900/README.md,complexity/README.md,advanced-c-sharp/README.md,advanced-c-sharp-framework-design/README.md"
+          TARGET_PATHS: "ai/eng/README.md,backend/README.md,messaging/kafka/README.md,messaging/rabbitmq/README.md,dataeng/databricks/README.md,dataeng/ssis/README.md,aws/README.md,azure/README.md,az-204/README.md,az-900/README.md,complexity/README.md,advanced-c-sharp/README.md,advanced-c-sharp-framework-design/README.md"
