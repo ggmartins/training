@@ -45,7 +45,10 @@ More Info:
 
 # 2. Data
 
-Units of information that can be text, numbers, images, videos, audio, physical documents
+Data: units of information.
+
+
+
 
 ```
 +------------------------------------------------------------+
@@ -69,29 +72,49 @@ Units of information that can be text, numbers, images, videos, audio, physical 
 (* structured or unstructured)
 ```
 
-## 2.1 Data Movement
+## 2.1 Data Types
 
-### 2.1.1 Batch
+A data type is (typed) units of information that can be text, numbers, images, videos, audio, physical documents
 
-### 2.1.2 Streaming
+## 2.2 Data Document
 
-## 2.2 Data Modelling
+Data document is a definition of the collective form in which the data exists.
+- Database: structured data that can be quickly accessed and serve searches/queries eg. Azure SQL
+- Dataset: a logical grouping of data (structured or unstructured). eg MNIST Dataset
+- Datastore: unstructured or semi-structured data repository eg. S3 Bucket / Azure Datalake
+- Data Warehouse: structured or semistructured data that serve analytics and reports eg Azure Synapse Analytics
+- Notebooks: data that is arranged in pages or cells designed for easy consumption eg Jupyter Notebooks
+
+## 2.3 Data Movement
+
+### 2.3.1 Batch
+
+### 2.3.2 Streaming
+
+## 2.4 Data Modelling
 
 How do we design our data? 
 
-### 2.2.1 Relational vs Non-relational
+### 2.4.1 Relational vs Non-relational
 
 How do we access our data for query and search?
 
-### 2.2.2  Schema vs Schemaless
+### 2.4.2  Schema (Relational databases) vs Schemaless (Non-relationship)
 
 How do we structure out data for search?
 
-## 2.3 Data Integrity and Corruption
+- Schema: formal language that defines the structure of the data
+  - Tables, Fields, Relationships, Indexes, Views, Packages, Procedures, Functions, XML Schemas,
+  - Queues, Triggers, Types, Sequences, Materialized views, Database links, directories
+- Schemaless: when the data or data instance or primary "cell" of the data can accept many types
+  -  Key/Value, Document, Columns/WideColumns, Graph
+  -  
+
+## 2.5 Data Integrity and Corruption
 
 How do we trust our data?
 
-## 2.3.1 Normalized vs Denormalized
+## 2.5.1 Normalized vs Denormalized
 
 Trading quality versus speed
 
