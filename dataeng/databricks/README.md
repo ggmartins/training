@@ -1,3 +1,21 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [1. Databricks Certified Data Engineer Associate (DB-DEA)](#1-databricks-certified-data-engineer-associate-db-dea)
+  - [1.1 Exam Breakdown](#11-exam-breakdown)
+- [2. Data](#2-data)
+  - [2.1 Data Movement](#21-data-movement)
+    - [2.1.1 Batch](#211-batch)
+    - [2.1.2 Streaming](#212-streaming)
+  - [2.2 Data Modelling](#22-data-modelling)
+    - [2.2.1 Relational vs Non-relational](#221-relational-vs-non-relational)
+    - [2.2.2  Schema vs Schemaless](#222--schema-vs-schemaless)
+  - [2.3 Data Integrity and Corruption](#23-data-integrity-and-corruption)
+  - [2.3.1 Normalized vs Denormalized](#231-normalized-vs-denormalized)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 1. Databricks Certified Data Engineer Associate (DB-DEA)
 
 - Managing data within databricks

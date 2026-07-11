@@ -1,3 +1,20 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [SSIS SQL Server Integration Services Training](#ssis-sql-server-integration-services-training)
+- [1. Intro](#1-intro)
+  - [1.1 What can it be used for?](#11-what-can-it-be-used-for)
+  - [1.2 Learning Objectives](#12-learning-objectives)
+- [2 Creating a Package and Processing of Flat File](#2-creating-a-package-and-processing-of-flat-file)
+  - [2.1 Learning Objectives](#21-learning-objectives)
+  - [2.2 SSIS Overview](#22-ssis-overview)
+    - [2.2.1 Data Flow](#221-data-flow)
+    - [2.2.2 Importing Multiple Files](#222-importing-multiple-files)
+    - [2.2.3 Exporting Results into a Flat File](#223-exporting-results-into-a-flat-file)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # SSIS SQL Server Integration Services Training
 
 # 1. Intro
