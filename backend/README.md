@@ -122,6 +122,16 @@ In a nutshell:
 - 418 "not compatible"
 - 404 Not found.
 
+```
+| Operation         |   Method |  Typical success |
+| ----------------- | -------: | ---------------: |
+| Retrieve resource |    `GET` |         `200 OK` |
+| Create resource   |   `POST` |    `201 Created` |
+| Replace resource  |    `PUT` |   `200` or `204` |
+| Partially update  |  `PATCH` |   `200` or `204` |
+| Delete resource   | `DELETE` | `204 No Content` |
+```
+
 # 3 System Design Practices
 
 ## 3.1 The 4 Pillars of Good System Design
@@ -653,4 +663,61 @@ Considerations when using caching:
   - LFU least frequently used
   - FIFO first in first out
 
+# 8 HTTP Triggers
+
+An HTTP trigger is a mechanism that starts a function when the application receives an HTTP request.
+
+In Azure Functions, an HTTP-triggered function behaves like a small API endpoint:
+
+```
+Client
+   |
+   | HTTP GET /api/products/123
+   v
+Azure Functions
+   |
+   v
+Your C# function executes
+   |
+   v
+HTTP response
+```
+
+```csharp
+public class GetProduct
+{
+    [Function("GetProduct")]
+    public HttpResponseData Run(
+        [HttpTrigger(
+            AuthorizationLevel.Function,
+            "get",
+            Route = "products/{id:int}")]
+        HttpRequestData request,
+        int id)
+    {
+        var response = request.CreateResponse(HttpStatusCode.OK);
+
+        response.WriteAsJsonAsync(new
+        {
+            Id = id,
+            Name = "Keyboard"
+        });
+
+        return response;
+    }
+}
+```
+
+
+
+
+```
+| ASP.NET Core                       | HTTP-triggered Azure Function                          |
+| ---------------------------------- | ------------------------------------------------------ |
+| Runs as a complete web application | Runs as a serverless function                          |
+| Application owns the HTTP pipeline | Azure Functions manages the host                       |
+| Good for cohesive APIs             | Good for isolated endpoints and event-driven workloads |
+| Full middleware pipeline           | Function-specific bindings and middleware              |
+| Usually always running             | Can scale based on demand                              |
+```
 
