@@ -49,6 +49,7 @@
   - [6.2 Ingress Controller](#62-ingress-controller)
   - [6.3 Comparison API Gateway vs Ingress Controller](#63-comparison-api-gateway-vs-ingress-controller)
 - [7. Caching](#7-caching)
+- [8 HTTP Triggers](#8-http-triggers)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
