@@ -140,8 +140,22 @@ How do we access our data for query and search?
 How do we structure out data for search?
 
 - Schema: formal language that defines the structure of the data
-  - Tables, Fields, Relationships, Indexes, Views, Packages, Procedures, Functions, XML Schemas,
-  - Queues, Triggers, Types, Sequences, Materialized views, Database links, directories
+  - Tables - logical grouping of data (rows and columns (fields)).
+  - Fields - or columns, usually a types unit of data that belongs to a table,
+  - Relationships - used as contraints to guarantee data integrity between two or more tables,
+  - Indexes - structure created to map and sort rows in a table allowing binary (faster searches),
+  - Views - usually a result of a query that is stored only in memory and that can be used as a normal table,
+  - Materialized views - same as views, but the data is stored in disk,
+  - Procedures - a sequence of commands that executes a specific operation logic
+  - Triggers - a mechanism that executes a procedure or a function based on events
+  - Packages - a container that cen be used to logically group functions, procedures, variables, constants, cursors, exceptions
+  - Functions - a command that executes a specific operation
+  - XML/JSON Schemas - a data validation structure that ensures expected values
+  - Queues, TBD
+  - Types, Link to [Data Types](README.md#2.1-Data-Types)
+  - Sequences, TBD
+  - Database links, TBD
+  - Directories, TBD
 
 #### 2.4.2.1 DSL (Domain Specific Language)
 
@@ -159,12 +173,10 @@ interacting with NoSQL document databases, or building relational-backed key-val
 - Schemaless: when the data or data instance or primary "cell" of the data can accept many types
   -  Key/Value, Document, Columns/WideColumns, Graph
 
-
 ### 2.4.4 Pivot Table
 
 It's a data table that reorganizes data from the original table, with more extensive data,
 summarizing its information producing a different view where it's easy to find figures and facts.
-
 
 ### 2.4.5 Data Cube
 
