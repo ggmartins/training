@@ -15,6 +15,8 @@
     - [2.4.2  Schema (Relational databases)](#242--schema-relational-databases)
       - [2.4.2.1 DSL (Domain Specific Language)](#2421-dsl-domain-specific-language)
     - [2.4.3 Schemaless (Non-relationship)](#243-schemaless-non-relationship)
+    - [2.4.4 Pivot Table](#244-pivot-table)
+    - [2.4.5 Data Cube](#245-data-cube)
   - [2.5 Data Integrity and Corruption](#25-data-integrity-and-corruption)
   - [2.5.1 Normalized vs Denormalized](#251-normalized-vs-denormalized)
 
