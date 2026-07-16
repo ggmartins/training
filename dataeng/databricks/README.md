@@ -173,6 +173,28 @@ Most common:
 - one to many, eg. Country has a City
 - many to many, eg. Country has *many* Visitors, a Visitor can visit *many* Countries
 - many to many, via Junction Table eg. CountryVisior has foreignKey of country.ID and visitor.ID
+
+#### 2.4.2.3 Row-Store
+
+- Data is organized in Rows
+- Traditional RDBMS are row-stores
+- Good for general purpose databases, write intensive data pipelines
+- Suited for OLTP Online Transactional Processing
+- Great when all columns data in row is required in on reads
+- Not the best for analytics or querying a massive amounts of data
+
+eg. PostgreSQL, SQL Server, Cassandra, ScylladDB
+
+#### 2.4.2.4 Column-Store
+
+- Data is organized into columns
+- Good for reads and aggregating values for analytics
+- NoSQL Stores or SQL Like Databases
+- Suited for OLAP Online Analytical Processing
+- Great for processing large database scans querying
+
+eg. BigTable, RedShift
+
   
 ### 2.4.3 Schemaless (Non-relationship)
 
