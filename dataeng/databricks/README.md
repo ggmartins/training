@@ -111,7 +111,6 @@ Data document is a definition of the collective form in which the data exists.
 ## 2.3 Data Movement
 
 
-
 ### 2.3.1 Batch
 
 When you send batches (or collections) of data to be processed. Usually:
@@ -142,7 +141,7 @@ How do we structure out data for search?
 - Schema: formal language that defines the structure of the data
   - Tables - logical grouping of data (rows and columns (fields)).
   - Fields - or columns, usually a types unit of data that belongs to a table,
-  - Relationships - used as contraints to guarantee data integrity between two or more tables,
+  - Relationships - used as contraints to guarantee data integrity between same, two or more tables (Primary key/Foreign Key),
   - Indexes - structure created to map and sort rows in a table allowing binary (faster searches),
   - Views - usually a result of a query that is stored only in memory and that can be used as a normal table,
   - Materialized views - same as views, but the data is stored in disk,
@@ -163,6 +162,16 @@ Schemas, DSLs (Domain Specific Languages), and tools like Pydantic are essential
 automate data validation, type-checking, and serialization. They act as a strict contract between
 different parts of a system, preventing errors, ensuring data integrity,
 and making codebases easier to maintain and document.
+
+#### 2.4.2.2 Relationships
+
+<img src="https://i.sstatic.net/rb3Ig.jpg" />
+
+Most common:
+- one to one, eg. Country has a Capital
+- one to many, eg. Country has a City
+- many to many, eg. Country has *many* Visitors, a Visitor can visit *many* Countries
+- many to many, via Junction Table eg. CountryVisior has foreignKey of country.ID and visitor.ID
   
 ### 2.4.3 Schemaless (Non-relationship)
 
