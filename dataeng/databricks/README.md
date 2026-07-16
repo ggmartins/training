@@ -152,7 +152,7 @@ How do we structure out data for search?
   - Functions - a command that executes a specific operation
   - XML/JSON Schemas - a data validation structure that ensures expected values
   - Queues, TBD
-  - Types, Link to [Data Types](README.md#2.1-Data-Types)
+  - Types, Link to [Data Types](README.md#21-Data-Types)
   - Sequences, TBD
   - Database links, TBD
   - Directories, TBD
