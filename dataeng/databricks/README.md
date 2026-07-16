@@ -51,9 +51,6 @@ More Info:
 
 Data: units of information.
 
-
-
-
 ```
 +------------------------------------------------------------+
 | Data - units of information                                |
@@ -126,8 +123,7 @@ When you send batches (or collections) of data to be processed. Usually:
 You process the data as soon as it arrives using a pipeline of producers and consumers
 - Good for real-time analytics
 - Most expensive
-- eg [Kafka](../../kafka/README.md)
-
+- eg [Kafka](../../messaging/kafka/README.md)
 
 ## 2.4 Data Modelling
 
