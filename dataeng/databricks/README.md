@@ -102,16 +102,30 @@ A data type is (typed) units of information that can be text, numbers, images, v
 
 Data document is a definition of the collective form in which the data exists.
 - Database: structured data that can be quickly accessed and serve searches/queries eg. Azure SQL
-- Dataset: a logical grouping of data (structured or unstructured). eg MNIST Dataset
+- Dataset: a logical grouping of data (structured, semi-structured or unstructured). eg MNIST Dataset
 - Datastore: unstructured or semi-structured data repository eg. S3 Bucket / Azure Datalake
 - Data Warehouse: structured or semistructured data that serve analytics and reports eg Azure Synapse Analytics
 - Notebooks: data that is arranged in pages or cells designed for easy consumption eg Jupyter Notebooks
 
 ## 2.3 Data Movement
 
+
+
 ### 2.3.1 Batch
 
+When you send batches (or collections) of data to be processed. Usually:
+- Scheduled
+- Not realtime
+- Cost effective
+- Good for large workloads
+
 ### 2.3.2 Streaming
+
+You process the data as soon as it arrives using a pipeline of producers and consumers
+- Good for real-time analytics
+- Most expensive
+- eg [Kafka](../../kafka/README.md)
+
 
 ## 2.4 Data Modelling
 
@@ -121,16 +135,30 @@ How do we design our data?
 
 How do we access our data for query and search?
 
-### 2.4.2  Schema (Relational databases) vs Schemaless (Non-relationship)
+### 2.4.2  Schema (Relational databases) 
 
 How do we structure out data for search?
 
 - Schema: formal language that defines the structure of the data
   - Tables, Fields, Relationships, Indexes, Views, Packages, Procedures, Functions, XML Schemas,
   - Queues, Triggers, Types, Sequences, Materialized views, Database links, directories
+
+#### 2.4.2.1 DSL (Domain Specific Language)
+
+Schemas, DSLs (Domain Specific Languages), and tools like Pydantic are essential because they
+automate data validation, type-checking, and serialization. They act as a strict contract between
+different parts of a system, preventing errors, ensuring data integrity,
+and making codebases easier to maintain and document.
+  
+### 2.4.3 Schemaless (Non-relationship)
+
+"Schemaless" data management refers to handling dynamic data structures that lack a fixed,
+predefined schema at storage time. This is typically achieved using native dictionary types,
+interacting with NoSQL document databases, or building relational-backed key-value abstractions.
+
 - Schemaless: when the data or data instance or primary "cell" of the data can accept many types
   -  Key/Value, Document, Columns/WideColumns, Graph
-  -  
+
 
 ## 2.5 Data Integrity and Corruption
 
