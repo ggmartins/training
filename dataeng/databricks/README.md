@@ -94,6 +94,8 @@ A data type is (typed) units of information that can be text, numbers, images, v
 | `decimal`            |        Usually 16 bytes in C# | About 28–29 significant decimal digits | Base-10-oriented representation. Appropriate for financial calculations. Still cannot represent repeating values such as `1 / 3` exactly. |
 | Fixed-point number   |     Depends on representation | Predetermined scale                    | Often implemented as an integer plus an implied decimal scale. Exact for values within the selected scale.                                |
 | Complex number       | Usually two floats or doubles | Depends on component type              | Represents a real and imaginary component, such as `3 + 4i`.                                                                              |
+| Enum                 | Inherit for int/uint/byte     | Inherit for int/uint/byte              | Group of constants unchangeble states/options                                                                                                |
+| 
 ```
 
 ## 2.2 Data Document
