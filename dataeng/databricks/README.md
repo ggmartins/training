@@ -158,6 +158,32 @@ interacting with NoSQL document databases, or building relational-backed key-val
   -  Key/Value, Document, Columns/WideColumns, Graph
 
 
+### 2.4.4 Pivot Table
+
+It's a data table that reorganizes data from the original table, with more extensive data,
+summarizing its information producing a different view where it's easy to find figures and facts.
+
+
+### 2.4.5 Data Cube
+
+A pivot table and a data cube both summarize data across multiple dimensions, but they operate at different levels.
+A pivot table is mainly an interactive presentation and analysis tool.
+A data cube is mainly a multidimensional analytical data structure or model.
+The pivot table is one two-dimensional view of that multidimensional cube.
+
+```
+| Pivot table                                 | Data cube                                           |
+| ------------------------------------------- | --------------------------------------------------- |
+| A report or interactive view                | A multidimensional analytical model                 |
+| Usually displays two dimensions at once     | Can model many dimensions simultaneously            |
+| Often created by an end user                | Usually designed by data engineers or BI developers |
+| Common in Excel and spreadsheets            | Common in OLAP, warehouses and BI platforms         |
+| Often calculated from source data on demand | May contain precomputed aggregations                |
+| Best for exploration and presentation       | Best for reusable, large-scale analytics            |
+| Usually tied to one worksheet or report     | Can support many reports and users                  |
+
+```
+
 ## 2.5 Data Integrity and Corruption
 
 How do we trust our data?
