@@ -137,7 +137,7 @@ How do we design our data?
 
 How do we access our data for query and search?
 
-### 2.4.2  Schema (Relational databases) 
+### 2.4.2  Relational Databases - Schema
 
 How do we structure out data for search?
 
@@ -198,7 +198,7 @@ eg. PostgreSQL, SQL Server, Cassandra, ScylladDB
 eg. BigTable, RedShift
 
   
-### 2.4.3 Schemaless (Non-relationship)
+### 2.4.3 Non-Relationnal Databases (Schemaless)
 
 "Schemaless" data management refers to handling dynamic data structures that lack a fixed,
 predefined schema at storage time. This is typically achieved using native dictionary types,
@@ -234,9 +234,29 @@ The pivot table is one two-dimensional view of that multidimensional cube.
 
 ## 2.5 Data Integrity and Corruption
 
-How do we trust our data?
+- Data Integrity is the maintanance of data assurance, accuracy in its entire life-cycle.
+  - Proxy term for data quality, data validation is a pre-requisite for data integrity
+
+- Data corruption is the opposite of data Integrity
+  - Is the act or state of the data NOT being in the intended state AND WILL RESULT IN DATA LOSS or MISINFORMATION
+  - Data corruption occurs when unintended changes result in READING, WRITING and/or TRANSFERRING **WITH**:
+    - UNEXPECTED HARDWARE FAILURES
+    - HUMAN ERROR when INPUTING / MODIFYING DATA
+    - MALICIOUS ACTORS with the intention to CORRUPT your data
+    - Unforenseen side effects for automated operations via sottware
+  v  
+  -  
 
 ## 2.5.1 Normalized vs Denormalized
 
 Trading quality versus speed
 
+Senior Programming Specialist - Data Science Institute (DSI)
+Primarily accountable for designing and implementing automated ETL and data analysis pipelines, sustaining research software, and delivering integrated analytics. Reported and heavily influenced the decision-making of the Director of Internet Equity Group. (* There’s a 6-month gap in this experience due to H1B visa to Green Card processing).
+Notable Achievements:
+* Led the development of the Netrics Internet Performance Measurement real-time data platform from 2020 to 2023, producing +1 billion data points in 3 years of production. (AWS lambda,  SES, S3, Cloudwatch, Python, Golang).
+* Led the development of beadchallenge.org  speedtest (google’s search 1st position for “bead challenge speedtest”), mainly focused on the serverless microservices backend, front-end, analytics, and Infrastructure as Code IaC).
+* Designed and implemented ETL / data analysis pipeline tools and observability (airflow, influxdb, grafana, timescaledb, GraphQL, plotly, reactjs, typescript, Kafka (AWS MKS, later downgraded to SQS/SNS), S3 Inventory,  Superset, infrastructure as code IaC, pandas/dask).
+* Data and Reports used by the US government to support decisions in internet infrastructure investments/planning. 
+Exceeded in individual performance review when metrics were established.
+https://datascience.uchicago.edu/insights/iei-tackles-broadband-equity-with-the-bead-challenge/
