@@ -219,7 +219,6 @@ A pivot table is mainly an interactive presentation and analysis tool.
 A data cube is mainly a multidimensional analytical data structure or model.
 The pivot table is one two-dimensional view of that multidimensional cube.
 
-```
 | Pivot table                                 | Data cube                                           |
 | ------------------------------------------- | --------------------------------------------------- |
 | A report or interactive view                | A multidimensional analytical model                 |
@@ -229,8 +228,6 @@ The pivot table is one two-dimensional view of that multidimensional cube.
 | Often calculated from source data on demand | May contain precomputed aggregations                |
 | Best for exploration and presentation       | Best for reusable, large-scale analytics            |
 | Usually tied to one worksheet or report     | Can support many reports and users                  |
-
-```
 
 ## 2.5 Data Integrity and Corruption
 
@@ -244,19 +241,27 @@ The pivot table is one two-dimensional view of that multidimensional cube.
     - HUMAN ERROR when INPUTING / MODIFYING DATA
     - MALICIOUS ACTORS with the intention to CORRUPT your data
     - Unforenseen side effects for automated operations via sottware
-  v  
-  -  
+  -  Data Integrity and how to ensure it? <---IMPORTANT
+    - with a well defined documented data modeling <---IMPORTANT
+    - logical contraints on your database models <---IMPORTANT
+    - Redundent and access to versions of the data with the ability to restore <---IMPORTANT
+    - Human analysis of the data (QA) <---IMPORTANT
+    - Hash functions to determine if changes were made (tempered) <---IMPORTANT
+    - Principles of least-previleges (Limiting access to specific actions and resources for specific user roles) <---IMPORTANT
 
 ## 2.5.1 Normalized vs Denormalized
 
 Trading quality versus speed
 
-Senior Programming Specialist - Data Science Institute (DSI)
-Primarily accountable for designing and implementing automated ETL and data analysis pipelines, sustaining research software, and delivering integrated analytics. Reported and heavily influenced the decision-making of the Director of Internet Equity Group. (* There’s a 6-month gap in this experience due to H1B visa to Green Card processing).
-Notable Achievements:
-* Led the development of the Netrics Internet Performance Measurement real-time data platform from 2020 to 2023, producing +1 billion data points in 3 years of production. (AWS lambda,  SES, S3, Cloudwatch, Python, Golang).
-* Led the development of beadchallenge.org  speedtest (google’s search 1st position for “bead challenge speedtest”), mainly focused on the serverless microservices backend, front-end, analytics, and Infrastructure as Code IaC).
-* Designed and implemented ETL / data analysis pipeline tools and observability (airflow, influxdb, grafana, timescaledb, GraphQL, plotly, reactjs, typescript, Kafka (AWS MKS, later downgraded to SQS/SNS), S3 Inventory,  Superset, infrastructure as code IaC, pandas/dask).
-* Data and Reports used by the US government to support decisions in internet infrastructure investments/planning. 
-Exceeded in individual performance review when metrics were established.
-https://datascience.uchicago.edu/insights/iei-tackles-broadband-equity-with-the-bead-challenge/
+| Normalized                                     | Denormalized                                 |
+|------------------------------------------------|----------------------------------------------|
+| Schema designed to store Non-redundent and     | Schema that combines data so that accessing  |
+| consistent data.                               | data (querying) is fast                      |
+| * DATA INTEGRITY IS MAINTAINED                 | * DATA INTEGRITY IS NOT MAINTAINED           |
+| * LITTLE TO NO REDUNDANT DATA                  | * REDUNDANT DATA IS COMMON                   |
+| * MANY TABLES                                  | * FEWER TABLES, EXCESSIVE DATA               |
+| * OPTIMIZES FOR EFFICIENT STORAGE OF DATA      | * ULTRA FAST READ QUERYING                   |
+
+
+
+
