@@ -49,7 +49,7 @@
   - [6.2 Ingress Controller](#62-ingress-controller)
   - [6.3 Comparison API Gateway vs Ingress Controller](#63-comparison-api-gateway-vs-ingress-controller)
 - [7. Caching](#7-caching)
-- [8 HTTP Triggers](#8-http-triggers)
+- [8. Backend Patterns](#8-backend-patterns)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -650,7 +650,7 @@ Some tools can be both:
 ```
 
 
-# 7. Caching
+# 7. Caching (Cache-Aside)
 
 Considerations when using caching:
 
@@ -664,8 +664,44 @@ Considerations when using caching:
   - LFU least frequently used
   - FIFO first in first out
 
-# 8 HTTP Triggers
+The application checks the cache before querying the primary data store.
 
+1. Read cache
+2. On miss, read database
+3. Store result in cache
+4. Return result
+
+Example:
+
+```csharp
+var product = await cache.GetAsync<Product>($"product:{id}");
+
+if (product is null)
+{
+    product = await database.Products.FindAsync(id);
+    await cache.SetAsync($"product:{id}", product, expiration);
+}
+
+return product;
+
+```
+
+Good for: Product catalogs, profiles, reference data and expensive query results.
+
+Main challenge: Cache invalidation. Data may be stale.
+
+Related variations include:
+
+- Read-through cache
+- Write-through cache
+- Write-behind cache
+- Local in-memory cache
+- Distributed cache such as Redis
+- CDN or edge caching
+
+# 8. Backend Patterns and Techniques
+
+## 8.1 HTTP Triggers
 An HTTP trigger is a mechanism that starts a function when the application receives an HTTP request.
 
 In Azure Functions, an HTTP-triggered function behaves like a small API endpoint:
@@ -710,8 +746,6 @@ public class GetProduct
 ```
 
 
-
-
 ```
 | ASP.NET Core                       | HTTP-triggered Azure Function                          |
 | ---------------------------------- | ------------------------------------------------------ |
@@ -721,4 +755,102 @@ public class GetProduct
 | Full middleware pipeline           | Function-specific bindings and middleware              |
 | Usually always running             | Can scale based on demand                              |
 ```
+
+## 8.2 BFF Backend for Frontend
+
+Instead of one gateway serving every client, each client type gets a specialized backend.
+
+## 8.3 Service Discovery
+
+Service instances are dynamic: they scale up, restart, and receive new addresses. Service discovery lets callers locate healthy instances using a logical name.
+
+`orders-service → Service registry or DNS → 10.0.2.14:8080`
+
+Common approaches:
+
+- Kubernetes Services and internal DNS
+- Client-side discovery
+- Server-side discovery through a load balancer or proxy
+
+Benefit: Supports autoscaling and instance replacement.
+
+Risk: Stale discovery information can route traffic to unhealthy instances, so it is combined with health checks.
+
+## 8.4 Latency and Performance Patterns
+
+### 8.4.1 Materialized Views
+
+Data needed for a frequent query is precomputed into a read-optimized representation.
+
+For example, instead of joining orders, customers, shipments, and payments on every dashboard request, an event consumer maintains an OrderSummary view.
+
+Benefit: Very fast reads with fewer cross-service calls.
+
+Tradeoff: The view is usually eventually consistent (saved to disk).
+
+This is commonly paired with CQRS and event-driven architecture.
+
+### 8.4.2 Request Aggregation
+
+An aggregator calls several services and produces one response.
+
+```
+Product page aggregator
+    ├── Product service
+    ├── Price service
+    ├── Inventory service
+    └── Review service
+```
+
+Independent requests should usually execute concurrently:
+
+```csharp
+var productTask = productClient.GetAsync(id);
+var priceTask = priceClient.GetPriceAsync(id);
+var stockTask = inventoryClient.GetStockAsync(id);
+
+await Task.WhenAll(productTask, priceTask, stockTask);
+```
+
+Without parallel execution:
+
+T≈T(product)+T(price)+T(stock)
+	​
+With parallel execution:
+
+T≈max(T(product),T(price),T(stock))
+
+Risk: The aggregator becomes sensitive to the slowest dependency. Use deadlines, partial responses, caching and fallbacks.
+
+### 8.4.3 Request Collapsing
+
+When many callers request the same uncached resource simultaneously, only one downstream request is performed. Other callers wait for and reuse its result.
+
+```
+1,000 requests for product 42
+              ↓
+       One database query
+              ↓
+     Shared result for all callers
+```
+
+This prevents a cache miss from becoming a database stampede.
+
+It is also called:
+
+Single-flight
+Request coalescing
+Duplicate suppression
+
+## 8.4.4 Data Locality and Service-Owned Read Models
+
+Repeatedly calling several remote services to assemble basic data creates a chatty system. A service can instead maintain a local copy of the data it needs through events.
+
+For example, the Order service may store the customer’s display name locally rather than calling Customer service for every order query.
+
+Benefit: Lower latency and greater availability.
+
+Tradeoff: Duplicated data and eventual consistency.
+
+Note: Potential solution for N+1 Query problem (TODO)
 
