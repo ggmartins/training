@@ -48,8 +48,16 @@
   - [6.1 API Gateway](#61-api-gateway)
   - [6.2 Ingress Controller](#62-ingress-controller)
   - [6.3 Comparison API Gateway vs Ingress Controller](#63-comparison-api-gateway-vs-ingress-controller)
-- [7. Caching](#7-caching)
-- [8. Backend Patterns](#8-backend-patterns)
+- [7. Caching (Cache-Aside)](#7-caching-cache-aside)
+- [8. Backend Patterns and Techniques](#8-backend-patterns-and-techniques)
+  - [8.1 HTTP Triggers](#81-http-triggers)
+  - [8.2 BFF Backend for Frontend](#82-bff-backend-for-frontend)
+  - [8.3 Service Discovery](#83-service-discovery)
+  - [8.4 Latency and Performance Patterns](#84-latency-and-performance-patterns)
+    - [8.4.1 Materialized Views](#841-materialized-views)
+    - [8.4.2 Request Aggregation](#842-request-aggregation)
+    - [8.4.3 Request Collapsing](#843-request-collapsing)
+  - [8.4.4 Data Locality and Service-Owned Read Models](#844-data-locality-and-service-owned-read-models)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
