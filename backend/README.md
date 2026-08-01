@@ -57,7 +57,22 @@
     - [8.4.1 Materialized Views](#841-materialized-views)
     - [8.4.2 Request Aggregation](#842-request-aggregation)
     - [8.4.3 Request Collapsing](#843-request-collapsing)
-  - [8.4.4 Data Locality and Service-Owned Read Models](#844-data-locality-and-service-owned-read-models)
+    - [8.4.4 Data Locality and Service-Owned Read Models](#844-data-locality-and-service-owned-read-models)
+  - [8.5 Reliability and Overload Patterns](#85-reliability-and-overload-patterns)
+    - [8.5.1 Timeout or Deadline](#851-timeout-or-deadline)
+    - [8.5.2 Retry with Exponential Backoff and Jitter](#852-retry-with-exponential-backoff-and-jitter)
+    - [8.5.3 Circuit Breaker](#853-circuit-breaker)
+    - [8.5.4 Bulkhead](#854-bulkhead)
+    - [8.5.5 Rate Limiting](#855-rate-limiting)
+    - [8.5.6 Backpressure](#856-backpressure)
+    - [8.5.7 Load Shedding](#857-load-shedding)
+    - [8.5.8 Idempotency](#858-idempotency)
+    - [8.5.9 Fallback and Graceful Degradation](#859-fallback-and-graceful-degradation)
+  - [8.6 Communication Patterns](#86-communication-patterns)
+  - [8.7 Distributed Data Patterns](#87-distributed-data-patterns)
+  - [8.8 Deployment and Migration Patterns](#88-deployment-and-migration-patterns)
+  - [8.9 Observability Patterns](#89-observability-patterns)
+  - [8.10 Security Patterns](#810-security-patterns)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
