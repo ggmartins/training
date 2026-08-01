@@ -846,11 +846,11 @@ This prevents a cache miss from becoming a database stampede.
 
 It is also called:
 
-Single-flight
-Request coalescing
-Duplicate suppression
+- Single-flight
+- Request coalescing
+- Duplicate suppression
 
-## 8.4.4 Data Locality and Service-Owned Read Models
+### 8.4.4 Data Locality and Service-Owned Read Models
 
 Repeatedly calling several remote services to assemble basic data creates a chatty system. A service can instead maintain a local copy of the data it needs through events.
 
@@ -862,3 +862,162 @@ Tradeoff: Duplicated data and eventual consistency.
 
 Note: Potential solution for N+1 Query problem (TODO)
 
+## 8.5 Reliability and Overload Patterns
+
+### 8.5.1 Timeout or Deadline
+
+Every remote call should have a finite time budget.
+
+With gRPC, deadlines are especially important because they can propagate through nested calls:
+
+```
+Client deadline: 2 seconds
+    → Gateway uses remaining time
+        → Order service uses remaining time
+            → Inventory service uses remaining time
+```
+
+A deadline is generally better than giving every downstream call a separate full timeout, which can exceed the original request’s acceptable latency.
+
+### 8.5.2 Retry with Exponential Backoff and Jitter
+
+Retries are appropriate for transient failures such as a brief network interruption or throttling response.
+
+```
+Attempt 1 → wait ~100 ms
+Attempt 2 → wait ~200 ms
+Attempt 3 → wait ~400 ms
+```
+
+Jitter adds randomness so thousands of instances do not retry simultaneously.
+
+Retries should be:
+
+Limited to a small number
+Governed by an overall deadline
+Used primarily for transient failures
+Restricted to idempotent operations, or protected with an idempotency key
+Disabled for validation and permanent business errors
+
+A retry at every service layer can create exponential amplification. If three layers each make three attempts, one original request could produce up to:
+
+`3^3==27` downstream attempts.
+
+### 8.5.3 Circuit Breaker
+
+Stops calls to a dependency that is consistently failing avoid cascading microservice failures.
+
+Benefit: Fails fast and gives the dependency time to recover.
+
+Tradeoff: Thresholds must be tuned. An overly sensitive circuit can reject traffic during minor disturbances.
+
+More at [reference](https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker).
+
+### 8.5.4 Bulkhead
+
+Resources are isolated so one dependency or workload cannot consume everything.
+
+Examples:
+
+Separate connection pools for Payments and Recommendations
+Separate worker pools for high- and low-priority messages
+Per-tenant concurrency limits
+Separate Kubernetes deployments for critical workloads
+
+Without bulkheads, a slow recommendation service might exhaust every request thread and make checkout unavailable.
+
+The name comes from ship compartments: flooding in one compartment does not sink the entire ship.
+
+### 8.5.5 Rate Limiting
+
+Controls how much traffic is accepted over a time interval.
+
+Common algorithms include:
+
+- Token bucket
+- Leaky bucket
+- Fixed window
+- Sliding window
+
+Limits can be applied per:
+
+- API key
+- Customer
+- Tenant
+- IP address
+- Route
+- Service instance
+
+A rejected HTTP request commonly receives `429 Too Many Requests`, potentially with `Retry-After`.
+
+### 8.5.6 Backpressure
+
+A slower consumer tells or forces a faster producer to reduce its rate.
+
+Examples:
+
+- Bounded message queues
+- Blocking or rejecting when a queue is full
+- Kafka consumers controlling how quickly they poll
+- Reactive streams requesting only a limited number of items
+- gRPC streaming flow control
+
+**Difference from rate limiting**: Rate limiting enforces a policy; backpressure reacts to actual downstream capacity.
+
+### 8.5.7 Load Shedding
+
+When the system is already near capacity, it deliberately rejects work to preserve critical functionality.
+
+Examples:
+
+- Reject recommendation requests but preserve checkout
+- Return a cached result instead of running an expensive query
+- Reject requests whose deadlines have already expired
+- Disable optional enrichment calls
+- Prioritize paid or interactive workloads
+
+Rate limiting tries to prevent overload; load shedding protects the system once capacity is constrained.
+
+### 8.5.8 Idempotency
+
+Processing the same command multiple times produces the same effective result.
+
+For payment creation:
+
+```
+POST /payments
+Idempotency-Key: order-983-payment-1
+```
+
+The service stores the key and returns the original result if the caller repeats the request.
+
+This is essential because clients cannot always know whether a timeout means:
+
+The operation failed, or The operation succeeded but the response was lost
+
+Idempotency is important for payments, order submission, message consumers and retryable commands.
+
+See diagram at [4.1 Long time to process (>1min)](#41-long-time-to-process-1min).
+
+### 8.5.9 Fallback and Graceful Degradation
+
+When an optional dependency fails, the system returns a reduced but useful response.
+
+Examples:
+
+- Show cached inventory
+- Omit recommendations
+- Use a default shipping estimate
+- Return a stale exchange rate with a warning
+
+Fallbacks should not hide correctness failures. Using a default recommendation is acceptable; inventing a successful payment response is not.
+
+## 8.6 Communication Patterns
+
+## 8.7 Distributed Data Patterns
+
+## 8.8 Deployment and Migration Patterns
+
+## 8.9 Observability Patterns
+
+## 8.10 Security Patterns
