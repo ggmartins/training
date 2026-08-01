@@ -1322,15 +1322,91 @@ Cost: Temporarily requires duplicate infrastructure and careful database compati
 
 A new version first receives a small percentage of traffic.
 
+```
 95% → Version 1
  5% → Version 2
+```
 
 Traffic increases if error rate, latency and business metrics remain healthy.
 
 Benefit: Limits the blast radius of defective releases.
 
+### 8.8.4 Expand and Contract
+
+Database or message schema changes are deployed compatibly:
+
+- Expand: Add the new field or schema while preserving the old one.
+- Deploy producers and consumers that support both.
+- Migrate data and traffic.
+- Contract: Remove the old field only after nothing depends on it.
+
+This prevents independently deployed services from breaking each other.
+
 ## 8.9 Observability Patterns
 
+### 8.9.1 Distributed Tracing
 
+A trace ID follows one request across services:
+
+`Gateway → Orders → Payments → Bank API`
+
+Each operation creates a span containing duration, status and relevant attributes.
+
+Tracing answers questions such as:
+
+- Which service caused the latency?
+- Where did the request fail?
+- How many downstream calls occurred?
+- Did retries amplify the request?
+
+OpenTelemetry is commonly used to produce traces, metrics and logs.
+
+### 8.9.2 Correlation ID and Structured Logging
+
+Every log entry should contain machine-searchable fields such as:
+
+```json
+{
+  "traceId": "8f72...",
+  "orderId": "ORD-983",
+  "service": "payments",
+  "operation": "authorize",
+  "durationMs": 142,
+  "status": "failed"
+}
+```
+
+Avoid relying only on free-form strings. Structured fields allow logs from multiple services to be correlated.
+
+### 8.9.3 Health Checks
+
+Different health checks serve different purposes:
+
+- Liveness: Should this instance be restarted?
+- Readiness: Can it receive traffic?
+- Startup: Has initialization completed?
+
+A temporary database failure should usually make an instance unready, not necessarily kill and restart it continuously.
 
 ## 8.10 Security Patterns
+
+### 8.10.1 Zero Trust and Service Identity
+
+Network location alone does not establish trust. Each service call should have an authenticated identity and explicit authorization.
+
+Common mechanisms include:
+
+- Workload identities
+- Short-lived tokens
+- Mutual TLS
+- OAuth 2.0 access tokens
+- Fine-grained authorization policies
+
+Avoid sharing one permanent credential across every service.
+
+### 8.10.2 Token Exchange
+
+A gateway should not blindly forward a powerful external token to every internal service.
+It can exchange it for a narrower token intended for a specific downstream audience.
+
+Benefit: Reduces the damage if a token is leaked and enforces service boundaries.
