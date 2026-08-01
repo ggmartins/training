@@ -1029,6 +1029,124 @@ Fallbacks should not hide correctness failures. Using a default recommendation i
 
 ## 8.6 Communication Patterns
 
+### 8.6.1 Event-Driven Architecture
+
+Services publish **message events** instead of calling every interested service directly.
+
+```
+Order service → OrderCreated
+                    ├── Inventory consumer
+                    ├── Shipping consumer
+                    ├── Analytics consumer
+                    └── Notification consumer
+```
+
+Benefits:
+
+- Loose coupling
+- Asynchronous processing
+- Independent scaling
+- Easier addition of new consumers
+- Reduced synchronous request chains
+
+Challenges:
+
+- Eventual consistency
+- Duplicate events
+- Message ordering
+- Schema evolution
+- Harder debugging
+
+Kafka, RabbitMQ, Azure Service Bus, SNS/SQS and similar systems can support this style, with different delivery and retention semantics.
+
+TODO: look into DLQ Dead-Letter Queue
+
+### 8.6.2 Publish-Subscribe
+
+One event is delivered to multiple independent subscribers.
+
+For example, `PaymentCompleted` can be consumed by accounting, notification, loyalty and analytics services.
+
+This differs from a competing-consumer queue, where several workers divide the messages from one logical subscription.
+
+### 8.6.3 Competing Consumers
+
+Multiple service instances consume from the same queue or partition group to process work in parallel.
+
+```
+Work queue
+   ├── Worker 1
+   ├── Worker 2
+   └── Worker 3
+```
+
+Benefit: Horizontal scaling.
+
+Challenge: Ordering may be lost unless related messages use the same partition or session key.
+
+### 8.6.4 Asynchronous Request–Reply
+
+A request takes too long to hold an HTTP connection open.
+
+```
+POST /reports
+→ 202 Accepted
+→ Operation-ID: abc123
+
+GET /operations/abc123
+→ Running / Completed / Failed
+```
+
+The result can be delivered through:
+
+- Polling
+- Webhook
+- WebSocket
+- Server-sent events
+- Message response topic
+
+This is useful for report generation, media processing, imports and large AI jobs.
+
+### 8.6.5 Sidecar
+
+Supporting functionality runs in a separate process or container alongside the service.
+
+```
+Pod
+├── Application container
+└── Proxy/telemetry/configuration sidecar
+```
+
+Possible sidecar responsibilities:
+
+- Network proxying
+- Telemetry collection
+- Secret refresh
+- Log forwarding
+- Certificate management
+
+Benefit: The same capability works across services written in different languages.
+
+Tradeoff: More resource consumption and operational complexity.
+
+### 8.6.6 Service Mesh
+
+A service mesh uses proxies and a control plane to manage service-to-service communication.
+
+It can provide:
+
+- Mutual TLS
+- Traffic routing
+- Retries and timeouts
+- Telemetry
+- Canary traffic splitting
+- Authorization policies
+
+Examples include Istio, Linkerd and managed cloud implementations.
+
+**Caution**: A mesh can standardize network behavior, but it cannot decide business-level questions such as whether retrying a payment is safe.
+
+
 ## 8.7 Distributed Data Patterns
 
 ## 8.8 Deployment and Migration Patterns
