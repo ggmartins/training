@@ -86,8 +86,14 @@
     - [8.8.1 Strangler Fig](#881-strangler-fig)
     - [8.8.2 Blue–Green Deployment](#882-bluegreen-deployment)
     - [8.8.3 Canary Deployment](#883-canary-deployment)
+    - [8.8.4 Expand and Contract](#884-expand-and-contract)
   - [8.9 Observability Patterns](#89-observability-patterns)
+    - [8.9.1 Distributed Tracing](#891-distributed-tracing)
+    - [8.9.2 Correlation ID and Structured Logging](#892-correlation-id-and-structured-logging)
+    - [8.9.3 Health Checks](#893-health-checks)
   - [8.10 Security Patterns](#810-security-patterns)
+    - [8.10.1 Zero Trust and Service Identity](#8101-zero-trust-and-service-identity)
+    - [8.10.2 Token Exchange](#8102-token-exchange)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
