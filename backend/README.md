@@ -1152,11 +1152,176 @@ Examples include Istio, Linkerd and managed cloud implementations.
 
 **Caution**: A mesh can standardize network behavior, but it cannot decide business-level questions such as whether retrying a payment is safe.
 
-
 ## 8.7 Distributed Data Patterns
+
+### 8.7.1 Database per Service
+
+Each microservice owns its data and exposes it through APIs or events.
+
+```
+Order service     → Order database
+Payment service   → Payment database
+Inventory service → Inventory database
+```
+
+Ownership is more important than whether databases physically share the same database server.
+
+Benefit: Services can evolve and deploy independently.
+
+Tradeoff: Cross-service joins and ACID transactions become difficult.
+
+A shared database is simpler initially but strongly couples schemas, releases and teams.
+
+### 8.7.2 Saga
+
+A saga coordinates a business transaction spanning multiple services through local transactions and compensating actions.
+
+Example:
+
+1. Create order.
+2. Reserve inventory.
+3. Authorize payment.
+4. Schedule shipment.
+5. If payment fails, release inventory and cancel the order.
+
+Two forms are common:
+
+- Choreography: Each service reacts to events.
+- Orchestration: A saga coordinator explicitly tells services what to do.
+
+| Style         | Strength             | Risk                                       |
+| ------------- | -------------------- | ------------------------------------------ |
+| Choreography  | Loose coupling       | Event flow becomes difficult to understand |
+| Orchestration | Workflow is explicit | Coordinator can accumulate too much logic  |
+
+Compensation is not necessarily a database rollback. A refund is a new business action that reverses the financial effect of a completed charge.
+
+### 8.7.3 Transactional Outbox
+
+A service must update its database and publish an event reliably. Doing these separately creates a dual-write problem.
+
+The service writes both changes in one local database transaction:
+
+Transaction:
+  1. Update Order
+  2. Insert OrderCreated into Outbox
+  3. Commit
+
+Outbox publisher:
+  4. Read unpublished rows
+  5. Publish events
+  6. Mark them published
+
+**Benefit**: Prevents the database commit from succeeding while event publication is lost.
+
+**Tradeoff**: Events may still be published more than once, so consumers should be idempotent.
+
+### 8.7.4 Inbox or Idempotent Consumer
+
+A consumer records message IDs it has already processed.
+
+```
+If message ID exists:
+    acknowledge duplicate
+Else:
+    apply business change
+    record message ID
+```
+
+This turns at-least-once delivery into effectively-once business processing when designed carefully.
+
+“Exactly once” normally applies within limited boundaries; it should not be assumed across arbitrary databases, brokers and external APIs.
+
+### 8.7.5 CQRS
+
+**Command Query Responsibility Segregation** separates write operations from read operations.
+
+Commands → Write model → Events → Read model → Queries
+
+The write model enforces business rules. The read model is optimized for UI or reporting queries.
+
+Useful when:
+
+- Reads greatly outnumber writes
+- Read and write models differ substantially
+- Complex aggregates enforce business invariants
+- Multiple specialized read views are needed
+
+Tradeoff: Additional infrastructure and eventual consistency. CQRS is often unnecessary for ordinary CRUD services.
+
+### 8.7.6 Event Souring
+
+Instead of storing only the current state, the system stores the sequence of events that produced it.
+
+```
+AccountOpened
+MoneyDeposited
+MoneyWithdrawn
+AccountFrozen
+```
+
+Current state is reconstructed by replaying events, often accelerated by snapshots.
+
+Benefits:
+
+- Complete audit trail
+- Temporal queries
+- State reconstruction
+- Event-driven integration
+
+Challenges:
+
+- Event schema evolution
+- Replay complexity
+- Privacy and deletion requirements
+- More difficult operational tooling
+
+Event sourcing and event-driven architecture are related but not the same. A system can publish events without using its event log as the source of truth.
 
 ## 8.8 Deployment and Migration Patterns
 
+### 8.8.1 Strangler Fig
+
+A legacy application is replaced incrementally.
+
+```
+Client → Router
+           ├── New microservice for migrated functionality
+           └── Legacy system for remaining functionality
+```
+
+As functionality moves, the legacy portion gradually shrinks.
+
+Benefit: Lower migration risk than a complete rewrite.
+
+
+### 8.8.2 Blue–Green Deployment
+
+Two complete environments exist:
+
+- Blue: currently serving production
+- Green: new version
+
+Traffic switches to green after validation.
+
+Benefit: Fast rollback.
+
+Cost: Temporarily requires duplicate infrastructure and careful database compatibility.
+
+
+### 8.8.3 Canary Deployment
+
+A new version first receives a small percentage of traffic.
+
+95% → Version 1
+ 5% → Version 2
+
+Traffic increases if error rate, latency and business metrics remain healthy.
+
+Benefit: Limits the blast radius of defective releases.
+
 ## 8.9 Observability Patterns
+
+
 
 ## 8.10 Security Patterns
