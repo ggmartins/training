@@ -947,6 +947,8 @@ Benefit: Fails fast and gives the dependency time to recover.
 
 Tradeoff: Thresholds must be tuned. An overly sensitive circuit can reject traffic during minor disturbances.
 
+Note: Usually implemented through service mesh + side cars, not manually or directly into to microservices code.
+
 More at [reference](https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker).
 
 ### 8.5.4 Bulkhead
