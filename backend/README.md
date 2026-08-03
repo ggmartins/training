@@ -1169,6 +1169,7 @@ Examples include Istio, Linkerd and managed cloud implementations.
 
 Implemented through side car pod container to abstract:
 
+```
 Pod
 +------------------------------------+
 | +--------------------------------+ |
@@ -1181,8 +1182,9 @@ Pod
 | | Tracing                        | |
 | +--------------------------------+ |
 +------------------------------------+
-
+```
 <img width="875" height="469" alt="image" src="https://github.com/user-attachments/assets/ea9470d5-e957-45da-88d9-d862310f010a" />
+
 Istio used Envoy with mTLS communication between MS side car/proxies
 
 <img width="910" height="480" alt="image" src="https://github.com/user-attachments/assets/bfd540f7-f827-48f2-aa60-5d9104f1398f" />
