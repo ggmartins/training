@@ -1154,7 +1154,7 @@ Tradeoff: More resource consumption and operational complexity.
 
 ### 8.6.6 Service Mesh
 
-A service mesh uses proxies and a control plane to manage service-to-service communication.
+A service mesh uses proxies and a control plane to manage service-to-service (microservices) communication.
 
 It can provide:
 
@@ -1166,6 +1166,26 @@ It can provide:
 - Authorization policies
 
 Examples include Istio, Linkerd and managed cloud implementations.
+
+Implemented through side car pod container to abstract:
+
+Pod
++------------------------------------+
+| +--------------------------------+ |
+| | Business Logic:App Container   | |
+| +--------------------------------+ |
+| | Comm. Config  :Proxy Container | |
+| | Security                       | |
+| | Retry / Circuit Breaker        | |
+| | Performance Metrics            | |
+| | Tracing                        | |
+| +--------------------------------+ |
++------------------------------------+
+
+<img width="875" height="469" alt="image" src="https://github.com/user-attachments/assets/ea9470d5-e957-45da-88d9-d862310f010a" />
+Istio used Envoy with mTLS communication between MS side car/proxies
+
+<img width="910" height="480" alt="image" src="https://github.com/user-attachments/assets/bfd540f7-f827-48f2-aa60-5d9104f1398f" />
 
 **Caution**: A mesh can standardize network behavior, but it cannot decide business-level questions such as whether retrying a payment is safe.
 
