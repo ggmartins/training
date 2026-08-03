@@ -1194,6 +1194,8 @@ Pod
 
 **Caution**: A mesh can standardize network behavior, but it cannot decide business-level questions such as whether retrying a payment is safe.
 
+Istio Installation [here](https://medium.com/@ASHISHKUMAR256/kong-fbcf410b1b88).
+
 ## 8.7 Distributed Data Patterns
 
 ### 8.7.1 Database per Service
