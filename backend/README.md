@@ -81,7 +81,7 @@
     - [8.7.3 Transactional Outbox](#873-transactional-outbox)
     - [8.7.4 Inbox or Idempotent Consumer](#874-inbox-or-idempotent-consumer)
     - [8.7.5 CQRS](#875-cqrs)
-    - [8.7.6 Event Souring](#876-event-souring)
+    - [8.7.6 Event Sourcing](#876-event-sourcing)
   - [8.8 Deployment and Migration Patterns](#88-deployment-and-migration-patterns)
     - [8.8.1 Strangler Fig](#881-strangler-fig)
     - [8.8.2 Blue–Green Deployment](#882-bluegreen-deployment)
@@ -1266,7 +1266,7 @@ Useful when:
 
 Tradeoff: Additional infrastructure and eventual consistency. CQRS is often unnecessary for ordinary CRUD services.
 
-### 8.7.6 Event Souring
+### 8.7.6 Event Sourcing
 
 Instead of storing only the current state, the system stores the sequence of events that produced it.
 
@@ -1294,6 +1294,8 @@ Challenges:
 - More difficult operational tooling
 
 Event sourcing and event-driven architecture are related but not the same. A system can publish events without using its event log as the source of truth.
+
+Note: this is a case for bitemporal tables where we want to avoid destructive updates.
 
 ## 8.8 Deployment and Migration Patterns
 
