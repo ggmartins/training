@@ -633,7 +633,7 @@ output "api_url" {
 
 ## 6.2 Ingress Controller
 
-Kubernetes-native HTTP routing into the cluster. Route external HTTP/S traffic into Kubernetes services. An Ingress Controller watches Kubernetes Ingress resources and configures a proxy such as NGINX, Traefik, HAProxy, or Envoy.
+Kubernetes-native HTTP routing into the cluster. Route external HTTP/S traffic into Kubernetes services. An Ingress Controller watches Kubernetes Ingress resources and configures a proxy such as NGINX, Traefik, HAProxy, or Envoy. (Alternatives: Istio Gateway)
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -1180,6 +1180,7 @@ Pod
 | | Retry / Circuit Breaker        | |
 | | Performance Metrics            | |
 | | Tracing                        | |
+| | Traffic Management             | |
 | | Service Discovery              | |
 | +--------------------------------+ |
 +------------------------------------+
