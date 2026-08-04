@@ -853,7 +853,7 @@ Automated prompt tools can be expensive, generate awkward prompts, include typos
 
 # 6. RAG and Context Construction
 
-Retrieval-Augmented Generation, or RAG, gives a model access to external information at inference time. It is a way to connect a foundation model to memory, documents, databases, images, or other knowledge sources.
+Retrieval-Augmented Generation, or RAG, gives a model access to external information at inference time. It is a way to connect a foundation model to memory, documents, databases, images, or other knowledge sources. The difference: fine-tuning teaches the assistant how to respond; RAG supplies what it should know now; tools determine what it can do.
 
 ## 6.1 What RAG Solves
 
