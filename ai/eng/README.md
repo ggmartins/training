@@ -1700,6 +1700,130 @@ The production loop is:
 
 AI engineering is therefore not a one-time model integration. It is an ongoing system-building discipline.
 
+
+# 12. Practical Agent Configuration
+
+## 12.1 SKILLS.md
+
+The skills.md file is a file that can be used to teach AI **procedural knowledge**. This is a standard file format 
+defined by [agentskills.io](https://agentskills.io), that can teach the agent how to perform a particular type of
+task consistently, including which steps, tools, scripts, templates, and validation rules to use.
+
+Within context:
+- MCP -> Tool access
+- RAG -> Factual knowledge (What AI should know)
+- Fine-Tuning -> KnowHow to do it (Via model weights (training), Costly)
+- SKILLS.md -> KnowHow to do it (Via procedural knowledge (context window), Cheaper)
+
+Basic Structure:
+
+```
+azure-terraform-monitoring/
+├── SKILL.md              # Required
+├── scripts/              # Optional executable utilities
+├── references/           # Optional documentation and schemas
+├── assets/               # Optional templates and resources
+└── agents/
+    └── openai.yaml       # Optional UI and dependency metadata
+```
+
+Example:
+
+```
+---
+name: azure-terraform-monitoring
+description: Review or implement monitoring for Azure resources provisioned through Terraform. Use for Azure Monitor, diagnostic settings, Log Analytics, alerts, and Application Insights.
+---
+
+# Azure Terraform Monitoring
+
+Inspect the Terraform configuration before making changes.
+
+## Workflow
+
+1. Identify all monitored Azure resources.
+2. Check whether a Log Analytics workspace exists.
+3. Add diagnostic settings for supported resources.
+4. Add metric and log alerts.
+5. Run `terraform fmt` and `terraform validate`.
+6. Summarize monitoring coverage and remaining gaps.
+
+## Verification
+
+Confirm that:
+
+- Terraform validates successfully.
+- Diagnostic categories are supported by each resource.
+- Alert action groups have valid recipients.
+- No secrets are stored in Terraform source files.
+```
+
+YAML frontmatter: The section between `---` markers is metadata:
+
+```
+name: the skill’s identifier.
+description: explains what the skill does and, critically, when it should activate.
+```
+
+The description is effectively the skill’s routing rule. If it is vague,
+Codex may fail to select the skill or select it for unrelated requests.
+
+Markdown body: The remainder contains the actual operating procedure:
+
+- Steps to follow
+- Decisions and conditions
+- Tools to use
+- Expected inputs and outputs
+- Validation requirements
+- Error-handling rules
+- Links to bundled references, scripts, or assets
+- How a skill is loaded
+
+Skills use **progressive disclosure**:
+
+- ChatGPT or Codex initially sees only the skill’s name and description.
+- It determines whether the user’s request matches.
+- If selected, it reads the complete SKILL.md.
+- It reads referenced files or runs bundled scripts only as needed.
+
+This avoids placing every installed skill’s full instructions into the context window, which is limited.
+Skills can be activated explicitly—using @skill-name in ChatGPT or $skill-name in Codex—or implicitly
+when the request matches the description.
+
+
+## 12.2 AGENTS.md
+
+General repository instructions. This can be used, for example to instruct agent not to read proprietary code.
+Although this is not enforcing (use isolated environment like containers for this job)
+
+
+```
+## Restricted code
+
+- Never open, search, summarize, modify, or transmit files under `proprietary/`.
+- Work only with interfaces exposed under `public-api/`.
+```
+
+For enforceable protection, use:
+
+Best: Do not mount or copy proprietary code into the agent’s workspace.
+Expose only API contracts, interfaces, headers, schemas, tests, or compiled packages.
+Use OS permissions, containers, separate repositories, or Codex permission profiles.
+Deny sensitive paths explicitly:
+
+```
+default_permissions = "safe-project"
+
+[permissions.safe-project]
+extends = ":workspace"
+
+[permissions.safe-project.filesystem.":workspace_roots"]
+"." = "write"
+"proprietary/**" = "deny"
+"**/*.env" = "deny"
+```
+
+
 ---
 
 # Practical Learning Checklist
