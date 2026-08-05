@@ -1718,6 +1718,15 @@ Within context:
 - Fine-Tuning -> KnowHow to do it (Via model weights (training), Costly)
 - SKILLS.md -> KnowHow to do it (Via procedural knowledge (context window), Cheaper)
 
+Cognitive context:
+
+| Human             | AI                | Example                                                 |
+|-------------------|-------------------|---------------------------------------------------------|
+| Semantic Memory   | RAG               | AAPL is part of SP500                                   |
+| Episodic Memory   | Logs / Weights    | NVDIA 10:1 stock split occurred effectively Jun 10 2024 |
+| Procedural Mem    | SKILLS.md         | How to calculate a security sharpe ratio                |
+|-------------------|-------------------|---------------------------------------------------------|
+
 Basic Structure:
 
 ```
