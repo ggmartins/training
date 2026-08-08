@@ -1725,7 +1725,12 @@ Cognitive context:
 | Semantic Memory   | RAG               | AAPL is part of SP500                                   |
 | Episodic Memory   | Logs / Weights    | NVDIA 10:1 stock split occurred effectively Jun 10 2024 |
 | Procedural Mem    | SKILLS.md         | How to calculate a security sharpe ratio                |
-|-------------------|-------------------|---------------------------------------------------------|
+
+ATTENTION: It's a security hazard installing skills.md from unknown sources as it may trigger:
+
+- prompt injection
+- tool poisoning
+- malware 
 
 Basic Structure:
 
