@@ -1256,6 +1256,33 @@ Outbox publisher:
   5. Publish events
   6. Mark them published
 
+<img width="852" height="251" alt="image" src="https://github.com/user-attachments/assets/1f83f212-ea39-4293-af60-d76ae9e2395d" />
+
+1. POST /v1/orders with idempontency-key
+2. ATOMIC OP: write to Order and Outbox
+3. NOTIFY Publisher
+4. Publisher READ from Outbox table
+5. Publisher PUBLISHES a message to Event Bus
+6. Event Bus Acknowledges
+7. Either DELETE entry or UPDATE published_at field
+8. RECEIVER receives message from Event Bus
+9. and 10. ATOMIC (a) validates idempontency key, (b) insert fulfillment order, (c) ack
+11. NOTIFY Process
+12. Process READS Fulfillment and PROCESSES it 
+
+```mermaid
+flowchart LR
+    Client["POST /orders"] --> API["Orders API"]
+    API --> TX["Atomic transaction:<br/>Order + Outbox event"]
+    TX --> DB[("Orders database")]
+    DB --> Publisher["Outbox publisher"]
+    Publisher --> Bus["Event bus"]
+    Bus --> Consumer["Fulfillment consumer"]
+    Consumer --> FTX["Atomic transaction:<br/>Inbox + Fulfillment"]
+    FTX --> FDB[("Fulfillment database")]
+```
+
+
 **Benefit**: Prevents the database commit from succeeding while event publication is lost.
 
 **Tradeoff**: Events may still be published more than once, so consumers should be idempotent.
