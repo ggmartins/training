@@ -263,5 +263,17 @@ Trading quality versus speed
 | * OPTIMIZES FOR EFFICIENT STORAGE OF DATA      | * ULTRA FAST READ QUERYING                   |
 
 
+(*) With NoSQL databases, data is usually denormalized.
 
+## 2.5.2 Eventual Consistency vs Strong Consistency
 
+Data consistency is the process of managing the state of the data in case it's kept in 2 or more places.
+The data is considered consistent if copies match.
+
+When you have to have duplicates of your data in many places and need to keep them up to date to be
+exact matching
+
+| Strong Consistency       | Eventual Consistency   |
+|--------------------------|------------------------|
+| Every time you request the data (query) you can expect consistent data to be returned with X time (1 second) | When you request data you may get back inconsistent data within 2 seconds |
+| We'll never return to you old data. But you have to wait at least 2 seconds for the query to return | The data is always returned, but it might be old or new, but over time it might get updated if user wait a little bit longer |
