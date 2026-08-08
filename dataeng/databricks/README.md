@@ -22,6 +22,7 @@
     - [2.4.5 Data Cube](#245-data-cube)
   - [2.5 Data Integrity and Corruption](#25-data-integrity-and-corruption)
   - [2.5.1 Normalized vs Denormalized](#251-normalized-vs-denormalized)
+  - [2.5.2 Eventual Consistency vs Strong Consistency](#252-eventual-consistency-vs-strong-consistency)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
