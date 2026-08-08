@@ -1267,6 +1267,7 @@ Outbox publisher:
 7. Either DELETE entry or UPDATE published_at field
 8. RECEIVER receives message from Event Bus
 9. and 10. ATOMIC (a) validates idempontency key, (b) insert fulfillment order, (c) ack
+10. "
 11. NOTIFY Process
 12. Process READS Fulfillment and PROCESSES it 
 
