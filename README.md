@@ -6,8 +6,9 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# finance software development training
-notes from classes (freebootcamp, linkedin, etc)
+# General Techology Training
+notes from classes (freebootcamp, linkedin, chatgpt, etc)
 - Programming, AI, Cloud, and DS/DA
-- Finance Notes
-- Transcripts from Finance Movies
+- Finance Studies Notes
+- Healthcare Studies Notes
+- DevOps, Data Engineering, Azure, AWS
