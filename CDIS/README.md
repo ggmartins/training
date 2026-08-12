@@ -88,5 +88,4 @@ flowchart TB
     CWS -->|"authorized data access"| BCOMMONS
 ```
 
-<img width="813" height="470" alt="image" src="https://github.com/user-attachments/assets/7ab27597-bd64-4241-b688-4eb03bd58ae4" />
-
+<img width="813" height="470" alt="image" src="https://github.com/user-attachments/assets/14571ef3-8ff3-45f4-bf99-90618caf7758" />
