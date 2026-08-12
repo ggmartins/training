@@ -1,3 +1,12 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [1. CDIS Open Source Studies](#1-cdis-open-source-studies)
+  - [1.1 General Architecture](#11-general-architecture)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 1. CDIS Open Source Studies
 
 ## 1.1 General Architecture
