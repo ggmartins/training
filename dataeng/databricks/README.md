@@ -349,6 +349,35 @@ A Datastore a repository for persistently storing and managing collections of **
 
 ### 2.6.2 Databases
 
+Generally categorized as:
+
+- Relational databases (RDBMS)
+  - Structured data that strongly represents tabular data (tables, rows, columns)
+  - Row-oriented or columnar-oriented
+- Non-relational databases (NoSQL)
+ - Semi structured databases that may or may not distantly resemble tabular data
+
+Databases have rich set of functionality
+- specialized query language to manipulate
+- specialized data modeling strategies to optimize retriaval for different use cases
+- more fine tune control over the transformation of the data into useful data structures or reports
+
+### 2.6.3 Data Warehouse
+
+A relational / non-relational datastore designed for analytics workloads, which is generally column-oriented datastore.
+
+Companies have terabytes/pentabytes and million of rows of data and they need a fast way to produce analytics reports.
+
+Data warehouses generally perform **aggregation**
+- Grouping of data to compute metrics like total sum or average.
+- Data warehouses are optimized around columns since they need to quickly aggregate column data
+- Data warehouses are designed for _fast reading_ over a vast amount of data due to reporting requirements
+- Data warehouses are designed for infrequently accessing meaning meaning they aren't intended for
+real-time reporting but for once or twice a day or once a week for business reports.
+- DW need to consume data from operational relational databases on a regular bases to extract intelligence information
+
+### 2.6.4 Data Mart
+
 
 
 
