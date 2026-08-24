@@ -250,7 +250,7 @@ The pivot table is one two-dimensional view of that multidimensional cube.
     - Hash functions to determine if changes were made (tempered) <---IMPORTANT
     - Principles of least-previleges (Limiting access to specific actions and resources for specific user roles) <---IMPORTANT
 
-## 2.5.1 Normalized vs Denormalized
+### 2.5.1 Normalized vs Denormalized
 
 Trading quality versus speed
 
@@ -266,7 +266,7 @@ Trading quality versus speed
 
 (*) With NoSQL databases, data is usually denormalized.
 
-## 2.5.2 Eventual Consistency vs Strong Consistency
+### 2.5.2 Eventual Consistency vs Strong Consistency
 
 Data consistency is the process of managing the state of the data in case it's kept in 2 or more places.
 The data is considered consistent if copies match.
@@ -278,3 +278,21 @@ exact matching
 |--------------------------|------------------------|
 | Every time you request the data (query) you can expect consistent data to be returned with X time (1 second) | When you request data you may get back inconsistent data within 2 seconds |
 | We'll never return to you old data. But you have to wait at least 2 seconds for the query to return | The data is always returned, but it might be old or new, but over time it might get updated if user wait a little bit longer |
+
+
+### 2.5.3 Synchronous vs Asynchronous
+
+| Synchronous | Asynchronous |
+|-------------|--------------|
+| Continuous **stream** of data that is synchronized by a time or a clock (guarantee of time). |  Continuous **stream** of data that is separated by start and stop bits (no guarantee of time) |
+
+Synchronous case. A company has a primary database, but they need to have a backup database in case the primary fails.
+The company cannot lose any data, so it must be in-sync.
+The database is not going to be accessed while it's standing by to act as a replacement.
+
+Asynchronous case. A company has a primary database but they want a **read-replica** (copy of the database) so their data analytics person can create computational intensive reports that
+_do not_ impact the response time of the primary instance. It does not matter if the data is exactly 1-to-1 at the time of the access.
+
+TODO: elaborate on atomicity on sync ops, CQRS, etc
+
+
