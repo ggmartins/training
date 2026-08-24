@@ -24,6 +24,9 @@
     - [2.5.1 Normalized vs Denormalized](#251-normalized-vs-denormalized)
     - [2.5.2 Eventual Consistency vs Strong Consistency](#252-eventual-consistency-vs-strong-consistency)
     - [2.5.3 Synchronous vs Asynchronous](#253-synchronous-vs-asynchronous)
+  - [2.6 Data Sources](#26-data-sources)
+    - [2.6.1 Datastore](#261-datastore)
+    - [2.6.2 Databases](#262-databases)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
