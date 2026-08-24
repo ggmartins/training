@@ -27,6 +27,8 @@
   - [2.6 Data Sources](#26-data-sources)
     - [2.6.1 Datastore](#261-datastore)
     - [2.6.2 Databases](#262-databases)
+    - [2.6.3 Data Warehouse](#263-data-warehouse)
+    - [2.6.4 Data Mart](#264-data-mart)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
