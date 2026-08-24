@@ -296,4 +296,57 @@ _do not_ impact the response time of the primary instance. It does not matter if
 
 TODO: elaborate on atomicity on sync ops, CQRS, etc
 
+## 2.6 Data Sources
+
+- Data Vendors
+  - API Pooling 
+  - SFTP Pooling
+  - Websocket/GraphQL Subscription
+  - rsync
+- Data Lake
+- Data Store
+- Database
+
+Consumed by a CONNECTOR:
+
+```
+                                  + - Messaging Producer Code (streaming)
+                                /
+                               _ Direct Extract Code (ETL / ELF)
+                             /
+ Data source -> CONNECTOR ----- Integration Tool (ETL Engines, SSIS, Data Lake, Warehouse)
+                             \
+                               + - Data Extractions Tools (TODO: research on comercial)
+                                \
+                                  + - Custom data scrapping and automation tools (Python/SQL scripting / UPA tools)
+
+```
+
+### 2.6.1 Datastore
+
+A Datastore a repository for persistently storing and managing collections of **unstructured** or **semi-structured data**. (Not necessarily a database).
+
+- Flatfiles
+- Documents, Emails, Messages
+- CSV, TSV, Parquet, .delta, iceberg, orc, json, bjson, ndjson, avro, https://mbvyn.medium.com/understanding-databricks-data-formats-explained-parquet-orc-avro-and-delta-b8b561f6b4ec
+
+```
+  +---+
+  |   |-------+
+  +---+         \
+                  \_____
+     +---+               \    ___
+     |   |----------------> /     \
+     +---+             /   |\_____/|
+                      /    |  DS   |
+       +---+        /       \_____/
+       |   |------+
+       +---+
+```
+
+### 2.6.2 Databases
+
+
+
+
 
