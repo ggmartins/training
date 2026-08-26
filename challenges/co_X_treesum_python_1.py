@@ -1,20 +1,22 @@
 a1 = [1, 2, 20, 12, -3, -4]
 
-cache = {}
-
-res = {}
-
 def testf(a):
+   cache = {}
+   res = {}
    for n1, i in enumerate(a):
-      for n2, j in enumerate(a[n1+1:]):
+      for n2 in range(n1 +1, len(a)):
+         j = a[n2]
          cache[i + j] = sorted([i, j])
 
    for n3, k in enumerate(a):
       if (c:=cache.get(-k, None)) is not None:
         if k in c: continue
-        c.append(k)
-        res[tuple(sorted(c))] = 1
+        r = c + [k]
+        res[tuple(sorted(r))] = 1
 
-testf(a1)
+   return res
+
+
+res = testf(a1)
 
 print(res)
