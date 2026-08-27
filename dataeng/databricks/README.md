@@ -45,6 +45,8 @@ Exam code for Databricks Data Engineer DB-DEA: *PR000054
 
 Source: https://www.databricks.com/learn/training/certification#certifications
 
+<p align="center"><img src="databricks_maturity_stack.gif" /></p>
+
 
 ## 1.1 Exam Breakdown
 

@@ -745,6 +745,8 @@ Related variations include:
 
 # 8. Backend Patterns and Techniques
 
+<p align="center"><img src="images/microservices_patterns_cheatsheet.jpeg" /></p>
+
 ## 8.1 HTTP Triggers
 An HTTP trigger is a mechanism that starts a function when the application receives an HTTP request.
 
