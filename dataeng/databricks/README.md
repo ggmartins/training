@@ -379,7 +379,55 @@ Data warehouses generally perform **aggregation**
 real-time reporting but for once or twice a day or once a week for business reports.
 - DW need to consume data from operational relational databases on a regular bases to extract intelligence information
 
-### 2.6.4 Data Mart
+#### 2.6.3.1 Data Mart
+
+- subset of data warehouse (pulled as snapshot)
+- under 100GB
+- single business focus
+- designed to be read-only
+- **increases the frequency to which the data can be accessed**
+- cost to query is ultra low
+
+  <img width="635" height="299" alt="image" src="https://github.com/user-attachments/assets/8157de10-4161-4f60-a27d-e1a260476f80" />
+
+
+### 2.6.4 Data Lake
+
+- centralized data repository for various data resources including raw data sets, big data, semi-structured, unstructured formats
+- data lake lets you store all your data without careful design or preparation, without having to answer questions on the future use of the data
+- holding for data scientist
+
+A data lake is commonly accessed for data workloads such as:
+- data visualizations (~~business intelligence~~ *)
+- real-time analytics
+- machine learning
+- On-premmise Data
+
+* data lake are great for dat scientinst but it's very hard to use for BI reporting as it normally needs intensive work on preparation/transformation
+
+If data lakes are not well maintained they can become data swamps (a mess of data)
+
+### 2.6.5 Data Lakehouse (not in the exam)
+
+It combines the best elements of Data Lake and Data warehouse
+
+Data Lakehouse compared to Data Warehouse
+- support video, audio, and text files
+- support data science and ML workloads
+- have support for streaming and ETL
+- work with many open source formats
+- Data will generally reside in data lakes or blob stores
+
+Data lakehouse comapre to Data Lakes:
+- perform BI tasks very well
+- much easier to setup and maitain
+- has many features to enforce and prevent the data lake to become data swamps
+- more performant than a data lake
+
+Apache Delta Lake
+
+<p align="centered"> <img src="images/datalakehouse_deltalake.webp" /></p>
+
 
 
 
