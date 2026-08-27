@@ -431,6 +431,28 @@ Apache Delta Lake
 <p align="centered"> <img src="images/datalakehouse_deltalake.webp" /></p>
 
 
+### 2.6.6 Data Structures
+
+- Data that is organized in an specific format that enable easy access and modification.
+- Data structure can store various data types.
+
+Degree of structure:
+- Unstructured - data that is stored without a structure and without a possible relation (like your Download folder)
+- Semi-structured - data that can be browsed and searched (with limitations) (like your csv dataset)
+- Structured - data that can be fully browsed and searched (like your sqlite file)
+
+# 3. Databricks
+
+Full blown data operations SaaS and managed Apache Spark Clusters
+
+Key (open source) technologies:
+- Apache Spark
+- Delta Lake
+- MLFlow
+
+
+
+
 
 
 
