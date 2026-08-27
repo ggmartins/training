@@ -28,7 +28,9 @@
     - [2.6.1 Datastore](#261-datastore)
     - [2.6.2 Databases](#262-databases)
     - [2.6.3 Data Warehouse](#263-data-warehouse)
-    - [2.6.4 Data Mart](#264-data-mart)
+      - [2.6.3.1 Data Mart](#2631-data-mart)
+    - [2.6.4 Data Lake](#264-data-lake)
+    - [2.6.5 Data Lakehouse (not in the exam)](#265-data-lakehouse-not-in-the-exam)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
