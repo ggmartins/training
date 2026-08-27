@@ -453,7 +453,21 @@ Key (open source) technologies:
 - MLFlow
 
 
-
+The main offerings:
+- Databricks Platform
+  - Databricks cloud-based spark platform with an easy-to-use webUI
+  - Launch fully managed Spark Clusters
+  - Launch Notebooks to write code and interact with Spark
+  - Create workspaces to collaborate with team members
+  - Role Base Access Control (RBAC)
+  - Create jobs for ETL or data analytics tasks that run immediately or on a schedule
+  - Create MLflow workflows
+  - **Available on all main cloud providers AWS, Azure, GCP**
+- Databricks Community Edition - free version of Databricks plarform for Educational use
+  - Create a free micro-cluster that terminates after 2 hours when idle
+  - No workspace, jobs, RBAC
+    
+  
 
 
 
