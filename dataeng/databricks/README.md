@@ -570,9 +570,45 @@ output "workspace_url" {
 }
 ```
 
+| Option                    | Terraform resource                             | Infrastructure ownership          |
+| ------------------------- | ---------------------------------------------- | --------------------------------- |
+| Azure Databricks          | `azurerm_databricks_workspace`                 | Azure subscription                |
+| Databricks AWS Serverless | `databricks_mws_workspaces`                    | Databricks-managed serverless     |
+| Databricks AWS Classic    | `databricks_mws_workspaces` plus AWS resources | Your AWS account                  |
+| Databricks on GCP         | `databricks_mws_workspaces`                    | GCP/Databricks, depending on mode |
+
+
 (*) requires:
 ```bash
 databricks auth login \
   --host https://accounts.cloud.databricks.com \
   --account-id "<databricks-account-id>"
+```
+
+For Azure:
+
+```bash
+# Authenticate
+az login
+az account set --subscription "<subscription-id>"
+
+# Install the Databricks CLI extension
+az extension add --name databricks
+
+# Create the resource group
+az group create \
+  --name rg-databricks-demo \
+  --location eastus
+
+# Create the Databricks workspace
+az databricks workspace create \
+  --resource-group rg-databricks-demo \
+  --name dbw-cli-demo \
+  --location eastus \
+  --sku standard
+
+az databricks workspace show \
+  --resource-group rg-databricks-demo \
+  --name dbw-cli-demo \
+  --output table
 ```
