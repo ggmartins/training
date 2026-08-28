@@ -33,6 +33,7 @@
     - [2.6.5 Data Lakehouse (not in the exam)](#265-data-lakehouse-not-in-the-exam)
     - [2.6.6 Data Structures](#266-data-structures)
 - [3. Databricks](#3-databricks)
+  - [3.1 Minimal IaC Workspace provisioning](#31-minimal-iac-workspace-provisioning)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
