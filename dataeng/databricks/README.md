@@ -34,6 +34,10 @@
     - [2.6.6 Data Structures](#266-data-structures)
 - [3. Databricks](#3-databricks)
   - [3.1 Minimal IaC Workspace provisioning](#31-minimal-iac-workspace-provisioning)
+    - [3.1.1 SKU Tiers](#311-sku-tiers)
+    - [3.1.2 DBUs and DSUs](#312-dbus-and-dsus)
+  - [3.2 Budgets](#32-budgets)
+  - [3.3 Medallion (Multi-hop) Architecture](#33-medallion-multi-hop-architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
