@@ -612,3 +612,61 @@ az databricks workspace show \
   --name dbw-cli-demo \
   --output table
 ```
+
+### 3.1.1 SKU Tiers
+
+| SKU                                        | `trial`                               | `standard`                                             | `premium`                                                               |
+| ---------------------------------------------------- | ------------------------------------- | ------------------------------------------------------ | ----------------------------------------------------------------------- |
+| Intended purpose                                     | Evaluation and proof of concept       | Legacy/basic workloads                                 | Production and enterprise workloads                                     |
+| Current availability                                 | Subject to trial eligibility          | **Unavailable for new workspaces since April 1, 2026** | Available and recommended                                               |
+| Duration                                             | 14 days of trial credits              | Previously permanent                                   | Permanent while subscribed                                              |
+| Functional level                                     | Premium capabilities during trial     | Core Databricks capabilities                           | Full production capabilities                                            |
+| Apache Spark and Delta Lake                          | Yes                                   | Yes                                                    | Yes                                                                     |
+| Collaborative notebooks                              | Yes                                   | Yes                                                    | Yes                                                                     |
+| Scheduled jobs                                       | Yes                                   | Yes                                                    | Yes                                                                     |
+| Databricks Runtime for ML                            | Yes                                   | Yes                                                    | Yes                                                                     |
+| Unity Catalog                                        | Yes                                   | No                                                     | Yes                                                                     |
+| Fine-grained workspace permissions                   | Yes                                   | Limited                                                | Yes                                                                     |
+| Permissions for notebooks, clusters, jobs and tables | Yes                                   | Limited                                                | Yes                                                                     |
+| Audit logs                                           | Yes                                   | No                                                     | Yes                                                                     |
+| Cluster policies                                     | Yes                                   | No                                                     | Yes                                                                     |
+| IP access lists                                      | Yes                                   | No                                                     | Yes                                                                     |
+| Token management controls                            | Yes                                   | Limited                                                | Yes                                                                     |
+| Serverless compute                                   | Yes, subject to trial limits          | No                                                     | Yes, region/workload dependent                                          |
+| Autoscaling                                          | Optimized Premium autoscaling         | Standard autoscaling                                   | Optimized autoscaling                                                   |
+| DBU charge                                           | Trial credits cover eligible usage    | Lower legacy DBU rate                                  | Higher workload-dependent DBU rate                                      |
+| Azure infrastructure charges                         | May still apply outside trial credits | Apply                                                  | Apply for classic compute; serverless pricing is structured differently |
+| Recommended for production                           | No                                    | No                                                     | **Yes**                                                                 |
+| Future status                                        | Convert/upgrade after trial           | Automatically upgraded on October 1, 2026              | Continuing tier                                                         |
+
+### 3.1.2 DBUs and DSUs
+
+- DBUs (Databricks Units): Fully managed serverless platform requiring minimal additional configuration. Two modes:
+  - Performance Optimized Mode
+  - Standard Mode
+  - Typical cost: $0.35 / DBU
+- DBUs (Databricks Storage Units): is a unit of compute for Databricks managed storage services
+  - Fault-tolerant distributed storage that scales with the capacity needed by your Database
+  - Typical cost: $0.023 / DSU
+
+## 3.2 Budgets
+
+Budget is a cost management feature that allows you to set an amount threshold and receive an email when budget has been exceeded.
+(Same as other cloud providers)
+
+Set:
+- Name of the budget
+- Scope based Workspaces
+- Scope based on tags
+- Set threshold amount in dollars
+- Emails to alert when threshold is met
+
+## 3.3 Medallion (Multi-hop) Architecture
+
+Source [link](https://www.databricks.com/blog/what-is-medallion-architecture).
+
+<p allign="center"><img src="images/building-data-pipelines-with-delta-lake-120823.png" /></p>
+
+
+
+
