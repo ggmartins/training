@@ -452,8 +452,8 @@ Key (open source) technologies:
 - Delta Lake
 - MLFlow
 
+The main offerings from Databricks:
 
-The main offerings:
 - Databricks Platform
   - Databricks cloud-based spark platform with an easy-to-use webUI
   - Launch fully managed Spark Clusters
@@ -463,13 +463,115 @@ The main offerings:
   - Create jobs for ETL or data analytics tasks that run immediately or on a schedule
   - Create MLflow workflows
   - **Available on all main cloud providers AWS, Azure, GCP**
-- Databricks Community Edition - free version of Databricks plarform for Educational use
+- Databricks Community Edition - free version of Databricks platform for Educational use
   - Create a free micro-cluster that terminates after 2 hours when idle
   - No workspace, jobs, RBAC
     
+The Azure Databricks Workspace:
+
+- The Azure **integrated** Databricks platform that connects to:
+  - Batching Azure Data Factory
+  - Streaming: Apache Kafka Event Hub
+  - Storage: Azure Blob Storage or Azure Data Lake Storage
+- Azure Databricks SQL Analytics:
+  - Run SQL queries on your Data Lake
+  - Create multiple visualization types to explore query results
+  - Build and share your Dashboards
+
   
+Create a Databricks workspace by:
+- Creating a workspace and choosing a plan
+- Launching the workspace
+- SSO to the workspace
+- Start using Databricks Platform
 
+Alternatively, creation through IaC (see below, 3.1)
 
+## 3.1 Minimal IaC Workspace provisioning
 
+For Azure Databricks
 
+```terraform
+terraform {
+  required_version = ">= 1.5.0"
 
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 5.0"
+    }
+  }
+}
+
+provider "azurerm" {
+  features {}
+}
+
+resource "azurerm_resource_group" "databricks" {
+  name     = "rg-databricks-demo"
+  location = "East US"
+}
+
+resource "azurerm_databricks_workspace" "this" {
+  name                = "dbw-terraform-demo"
+  resource_group_name = azurerm_resource_group.databricks.name
+  location            = azurerm_resource_group.databricks.location
+  sku                 = "standard"
+
+  tags = {
+    environment = "demo"
+    managed_by  = "terraform"
+  }
+}
+
+output "workspace_url" {
+  value = "https://${azurerm_databricks_workspace.this.workspace_url}"
+}
+
+output "workspace_resource_id" {
+  value = azurerm_databricks_workspace.this.id
+}
+```
+
+For Databricks provider (*):
+
+```terraform
+
+terraform {
+  required_providers {
+    databricks = {
+      source  = "databricks/databricks"
+      version = "~> 1.0"
+    }
+  }
+}
+
+variable "databricks_account_id" {
+  type = string
+}
+
+provider "databricks" {
+  alias      = "account"
+  host       = "https://accounts.cloud.databricks.com"
+  account_id = var.databricks_account_id
+}
+
+resource "databricks_mws_workspaces" "this" {
+  provider       = databricks.account
+  account_id     = var.databricks_account_id
+  workspace_name = "terraform-serverless-demo"
+  aws_region     = "us-east-1"
+  compute_mode   = "SERVERLESS"
+}
+
+output "workspace_url" {
+  value = databricks_mws_workspaces.this.workspace_url
+}
+```
+
+(*) requires:
+```bash
+databricks auth login \
+  --host https://accounts.cloud.databricks.com \
+  --account-id "<databricks-account-id>"
+```
