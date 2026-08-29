@@ -90,3 +90,6 @@ flowchart TB
 
 <img width="609" height="472" alt="image" src="https://github.com/user-attachments/assets/0067aa9c-f9a8-4419-b4ad-da15c925b362" />
 
+# 3. Cancer Research DS Courses
+
+- https://www.coursera.org/specializations/genomic-data-science
