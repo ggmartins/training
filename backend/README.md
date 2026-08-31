@@ -82,6 +82,7 @@
     - [8.7.4 Inbox or Idempotent Consumer](#874-inbox-or-idempotent-consumer)
     - [8.7.5 CQRS](#875-cqrs)
     - [8.7.6 Event Sourcing](#876-event-sourcing)
+    - [8.7.7 Repository Pattern](#877-repository-pattern)
   - [8.8 Deployment and Migration Patterns](#88-deployment-and-migration-patterns)
     - [8.8.1 Strangler Fig](#881-strangler-fig)
     - [8.8.2 Blue–Green Deployment](#882-bluegreen-deployment)

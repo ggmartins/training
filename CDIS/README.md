@@ -4,6 +4,7 @@
 
 - [1. CDIS Open Source Studies](#1-cdis-open-source-studies)
   - [1.1 General Architecture](#11-general-architecture)
+- [3. Cancer Research DS Courses](#3-cancer-research-ds-courses)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
