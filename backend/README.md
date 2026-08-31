@@ -1321,7 +1321,20 @@ Useful when:
 - Complex aggregates enforce business invariants
 - Multiple specialized read views are needed
 
+Usually paired with Event Sourcing and sometimes Command Sourcing
+
 Tradeoff: Additional infrastructure and eventual consistency. CQRS is often unnecessary for ordinary CRUD services.
+
+In Command Query Responsibility Segregation (CQRS), the Write database (Command model) and Read database (Query model) are decoupled.
+Propagating updates and operating with caching and event sourcing effectively relies on specific patterns and synchronization mechanisms.
+
+How Writes Propagate to the Read DB:
+
+- Event-Driven Propagation (Asynchronous / Eventual Consistency): The Command model handles a write, persists changes, and emits domain events (e.g., OrderCreated). An event bus or message broker (Kafka, RabbitMQ) routes these events to event handlers, which update the Read database schema tailored for querying.
+
+- Transactional Outbox Pattern: To ensure atomic writes to both the Write DB and the message broker without two-phase commits, write the domain entity change and an outbox event to the Write DB inside the same database transaction. A background process (e.g., Debezium CDC or a polling worker) reads the outbox table and publishes events to the broker.
+
+- Synchronous Propagation (Immediate Consistency): The command handler directly updates both the Write model and Read model in a single execution flow or transaction. This eliminates eventual consistency delay but introduces tight coupling and latency overhead on writes.
 
 ### 8.7.6 Event Sourcing
 
@@ -1352,7 +1365,17 @@ Challenges:
 
 Event sourcing and event-driven architecture are related but not the same. A system can publish events without using its event log as the source of truth.
 
-Note: this is a case for bitemporal tables where we want to avoid destructive updates.
+Note: this is a case for bitemporal tables where we want to avoid destructive updates
+
+### 8.7.7 Repository Pattern
+
+The key of using repository is to decouple domain logic from database mechanics, ensuring that your core business rules stay isolated from storage concerns (through Data Mapper). This makes the technology used in data store easily replaceable (swappable). 
+
+<img width="699" height="375" alt="image" src="https://github.com/user-attachments/assets/a5b6b49e-ee74-4fca-9e6d-431caa22bcc4" />
+
+https://proandroiddev.com/the-real-repository-pattern-in-android-efba8662b754
+
+TODO: reference implementation
 
 ## 8.8 Deployment and Migration Patterns
 
