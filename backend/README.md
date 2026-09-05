@@ -49,6 +49,7 @@
   - [6.2 Ingress Controller](#62-ingress-controller)
   - [6.3 Comparison API Gateway vs Ingress Controller](#63-comparison-api-gateway-vs-ingress-controller)
 - [7. Caching (Cache-Aside)](#7-caching-cache-aside)
+  - [7.1 Cache Tools](#71-cache-tools)
 - [8. Backend Patterns and Techniques](#8-backend-patterns-and-techniques)
   - [8.1 HTTP Triggers](#81-http-triggers)
   - [8.2 BFF Backend for Frontend](#82-bff-backend-for-frontend)
