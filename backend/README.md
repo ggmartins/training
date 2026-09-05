@@ -7,6 +7,7 @@
   - [2.1 Common Methods](#21-common-methods)
     - [2.1.1 Headers](#211-headers)
     - [2.1.2 Status Code](#212-status-code)
+  - [2.2 CORS Best Practices](#22-cors-best-practices)
 - [3 System Design Practices](#3-system-design-practices)
   - [3.1 The 4 Pillars of Good System Design](#31-the-4-pillars-of-good-system-design)
     - [3.1.1 Scalability](#311-scalability)
