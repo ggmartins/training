@@ -179,6 +179,10 @@ In a nutshell:
 | Delete resource   | `DELETE` | `204 No Content` |
 ```
 
+## 2.2 CORS Best Practices
+
+TBD
+
 # 3 System Design Practices
 
 ## 3.1 The 4 Pillars of Good System Design
