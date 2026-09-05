@@ -744,6 +744,13 @@ Related variations include:
 - Distributed cache such as Redis
 - CDN or edge caching
 
+
+## 7.1 Cache Tools
+
+<img src="images/cachingtools.gif" />
+
+
+
 # 8. Backend Patterns and Techniques
 
 <p align="center"><img src="images/microservices_patterns_cheatsheet.jpeg" /></p>
