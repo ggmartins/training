@@ -40,6 +40,7 @@
   - [5.1 Regulation Landscape](#51-regulation-landscape)
   - [5.2 OWASP Top 10](#52-owasp-top-10)
     - [5.2.1 API1: Broken Object Level Authorization (BOLA)](#521-api1-broken-object-level-authorization-bola)
+  - [5.3 Beyond API Sec (Full Stack/DevSecOps)](#53-beyond-api-sec-full-stackdevsecops)
       - [5.2.1.1 API1 Example:](#5211-api1-example)
     - [5.2.2 API2: Broken User Authentication](#522-api2-broken-user-authentication)
     - [5.2.3 API3: Excessive Data Exposure](#523-api3-excessive-data-exposure)
