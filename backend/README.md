@@ -1514,3 +1514,15 @@ A gateway should not blindly forward a powerful external token to every internal
 It can exchange it for a narrower token intended for a specific downstream audience.
 
 Benefit: Reduces the damage if a token is leaked and enforces service boundaries.
+
+# 9. Backend Operations 
+
+## 9.1 Container Orchestration
+
+### 9.1.1 K8s Kubernetes
+
+#### 9.1.11 OpenShift
+
+### 9.1.2 K3s Kubernetes
+
+
