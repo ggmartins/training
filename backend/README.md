@@ -97,6 +97,11 @@
   - [8.10 Security Patterns](#810-security-patterns)
     - [8.10.1 Zero Trust and Service Identity](#8101-zero-trust-and-service-identity)
     - [8.10.2 Token Exchange](#8102-token-exchange)
+- [9. Backend Operations](#9-backend-operations)
+  - [9.1 Container Orchestration](#91-container-orchestration)
+    - [9.1.1 K8s Kubernetes](#911-k8s-kubernetes)
+      - [9.1.11 OpenShift](#9111-openshift)
+    - [9.1.2 K3s Kubernetes](#912-k3s-kubernetes)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
