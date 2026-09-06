@@ -441,6 +441,7 @@ Account for Security, Privacy and Accessibility
 - PCI DSS 4.0 (Payment Card Industry Data Security Standard) - Global (payment card data) - Does your app process credit card/payments?
 - CCPA (California Consumer Privacy Act) - California, USA
 - HIPAA (Health Insurance Portability and Accountability Act) - USA (healthcare)
+- NIST / FISMA (healthcare)
 - FedRAMP (Goverment Data)
 - GDPR (General Data Protection Regulation) - European Union
 
@@ -471,6 +472,31 @@ Examples:
 - Significant risk of data Loss
 - Can a user A, access user B information?
 - Fraudulent Transactions
+
+## 5.3 Beyond API Sec (Full Stack/DevSecOps)
+
+TBD
+
+- Network Defense
+  - Nmap
+  - Snort
+  - Solarwinds
+  - Wireshark
+- For Application & Software Security
+  - Checkmarx
+  - Veracode
+  - OWASP ZAP
+  - BurpSuite
+- For Cloud Infrastructure Security
+  - Lacework
+  - AWS Security Hub
+  - Microsoft Defender
+  - Prisma Cloud
+- For Threat Analysis & Digital Forensics
+  - MISP
+  - SANS SIFT
+  - XPLico
+  - Thehive
 
 #### 5.2.1.1 API1 Example:
 
