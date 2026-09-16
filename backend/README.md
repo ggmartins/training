@@ -1553,7 +1553,68 @@ Benefit: Reduces the damage if a token is leaked and enforces service boundaries
 
 ### 9.1.1 K8s Kubernetes
 
-#### 9.1.11 OpenShift
+100% declarative that contains mainly:
+
+- Control Planes (at least one)
+  - Responsible for the orchestration of worker nodes.
+    In production environments, the control plane usually runs across multiple
+    computers (high availability) and a cluster usually runs multiple nodes, providing fault-tolerance and high availability. 
+- Worker Nodes
+  - Responsible for running application containers inside pods.
+    It contains infrastructure to allow the execution of containerized applications.
+
+Control planes and worker nodes can be
+- Physical Machines
+- VMs
+- Cloud Instances
+
+#### 9.1.1.1 Architecture
+
+<img src="images/k8s_arch1.png">
+
+Original content from [medium](https://medium.com/devops-mojo/kubernetes-architecture-overview-introduction-to-k8s-architecture-and-understanding-k8s-cluster-components-90e11eb34ccd). 
+
+##### 9.1.1.1.1 kubectl
+##### 9.1.1.1.2 API Server (kube-api-server)
+
+- API server exposes the Kubernetes API.
+- Entry point for REST/kubectl — It is the front end for the Kubernetes control plane.
+- It's the client that allows the communication to the controller allowing the interaction between the clusters.
+- It is designed to scale horizontally.
+- It consumes YAML/JSON manifest files.
+- It validates and processes the requests made via API.
+
+##### 9.1.1.1.3 ETCD Key-Value Store (Database)
+
+- Distributed, and highly-available key value store database.
+- Stateful, persistent storage (source of truth) that stores all of Kubernetes cluster data (cluster state and config).
+- It can be part of the control plane, or, it can be configured externally.
+
+##### 9.1.1.1.4 Cloud Controller Manager
+##### 9.1.1.1.5 Controller Manager (kube-controller-manager)
+##### 9.1.1.1.6 Scheduler (kube-scheduler)
+##### 9.1.1.1.7 Cloud Provider API
+##### 9.1.1.1.8 Kubelet
+##### 9.1.1.1.9 CRI Container Runtime Interface
+
+- The container runtime is the software that is responsible for running containers (in Pods).
+- To run the containers, each worker node has a container runtime engine.
+- It pulls images from a container image registry and starts and stops containers.
+
+Kubernetes supports several container runtimes:
+
+- Docker
+- containerd
+- CRI-O
+
+Any implementation of the Kubernetes CRI (Container Runtime Interface).
+
+##### 9.1.1.1.10 Kube-proxy
+##### 9.1.1.1.11 Enduser
+
+
+
+#### 9.1.1.2 OpenShift
 
 ### 9.1.2 K3s Kubernetes
 
