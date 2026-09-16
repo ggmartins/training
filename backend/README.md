@@ -1565,7 +1565,7 @@ Benefit: Reduces the damage if a token is leaked and enforces service boundaries
 
 ### 9.1.1 K8s Kubernetes
 
-100% declarative that contains mainly:
+It's 100% declarative containerized application orchestration solution that mainly contains:
 
 - Control Planes (at least one)
   - Responsible for the orchestration of worker nodes.
@@ -1595,6 +1595,7 @@ Original content from [medium](https://medium.com/devops-mojo/kubernetes-archite
 - It is designed to scale horizontally.
 - It consumes YAML/JSON manifest files.
 - It validates and processes the requests made via API.
+- All components of a the architecture communicate via kube-api-server
 
 ##### 9.1.1.1.3 ETCD Key-Value Store (Database)
 
@@ -1604,9 +1605,31 @@ Original content from [medium](https://medium.com/devops-mojo/kubernetes-archite
 
 ##### 9.1.1.1.4 Cloud Controller Manager
 ##### 9.1.1.1.5 Controller Manager (kube-controller-manager)
+
+- The control loop ensures the current object state matches the desire object state of the cluster.
+- It takes corrective steps through API calls to make sure that the current state is the same as the desired state.
+- Controls the controllers (Deployment Controller, ReplicaSet Controller, etc)
+- It runs controller processes. Logically, each controller is a separate process, but to reduce complexity,
+  they are all compiled into a single binary and run in a single process.
+
+Some other types of controllers are:
+
+- Node controller: Responsible for noticing and responding when nodes go down.
+- Job controller: Watches for Job objects that represent one-off tasks, then creates Pods to run those tasks to completion.
+- Endpoints controller: Populates the Endpoints object (that is, joins Services & Pods).
+- Service Account & Token controllers: Create default accounts and API access tokens for new namespaces.
+
 ##### 9.1.1.1.6 Scheduler (kube-scheduler)
 ##### 9.1.1.1.7 Cloud Provider API
 ##### 9.1.1.1.8 Kubelet
+
+- The agent that runs on each node in the cluster.
+- It acts as a conduit between the API server and the node.
+- It makes sure that containers are running in a Pod and they are healthy.
+- It instantiates and executes Pods.
+- It watches API Server for work tasks.
+- It gets instructions from master and reports back to Masters.
+
 ##### 9.1.1.1.9 CRI Container Runtime Interface
 
 - The container runtime is the software that is responsible for running containers (in Pods).
@@ -1622,6 +1645,16 @@ Kubernetes supports several container runtimes:
 Any implementation of the Kubernetes CRI (Container Runtime Interface).
 
 ##### 9.1.1.1.10 Kube-proxy
+
+- A networking component that plays vital role in networking.
+- It manages IP translation and routing.
+- It is a network proxy that runs on each node in cluster.
+- It maintains network rules on nodes. These network rules allow network communication to Pods from inside or outside of cluster.
+- It ensure each Pod gets unique IP address.
+- It makes possible that all containers in a pod share a single IP.
+- It facilitating Kubernetes networking services and load-balancing across all pods in a service.
+- It deals with individual host sub-netting and ensure that the services are available to external parties.
+
 ##### 9.1.1.1.11 Enduser
 
 
