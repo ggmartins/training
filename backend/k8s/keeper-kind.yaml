@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: keepr
+  labels:
+    app: keepr
+spec:
+  # Selects a kind control-plane node regardless of cluster name.
+  nodeSelector:
+    node-role.kubernetes.io/control-plane: ""
+
+  # Required for multi-node kind clusters where control-plane nodes are tainted.
+  tolerations:
+    - key: node-role.kubernetes.io/control-plane
+      operator: Exists
+      effect: NoSchedule
+
+  # Makes 127.0.0.1:2379 point to etcd on the control-plane node.
+  hostNetwork: true
+  dnsPolicy: ClusterFirstWithHostNet
+
+  containers:
+    - name: keepr
+      image: evildecay/etcdkeeper:latest
+      imagePullPolicy: IfNotPresent
+      command:
+        - /opt/etcdkeeper/etcdkeeper.bin
+      args:
+        - -h
+        - 0.0.0.0
+        - -p
+        - "8080"
+        - -usetls
+        - -cacert
+        - /certs/etcd/ca.crt
+        - -cert
+        - /certs/apiserver-etcd-client.crt
+        - -key
+        - /certs/apiserver-etcd-client.key
+      ports:
+        - name: http
+          containerPort: 8080
+      volumeMounts:
+        - name: etcd-ca
+          mountPath: /certs/etcd/ca.crt
+          readOnly: true
+        - name: etcd-client-cert
+          mountPath: /certs/apiserver-etcd-client.crt
+          readOnly: true
+        - name: etcd-client-key
+          mountPath: /certs/apiserver-etcd-client.key
+          readOnly: true
+
+  volumes:
+    - name: etcd-ca
+      hostPath:
+        path: /etc/kubernetes/pki/etcd/ca.crt
+        type: File
+    - name: etcd-client-cert
+      hostPath:
+        path: /etc/kubernetes/pki/apiserver-etcd-client.crt
+        type: File
+    - name: etcd-client-key
+      hostPath:
+        path: /etc/kubernetes/pki/apiserver-etcd-client.key
+        type: File
+
+
