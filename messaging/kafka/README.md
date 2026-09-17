@@ -359,6 +359,16 @@ if __name__ == "__main__":
 
 ```
 
+| Java                                   | Python                                                 |
+| -------------------------------------- | ------------------------------------------------------ |
+| `KafkaShareConsumer`                   | `DeserializingShareConsumer`                           |
+| `consumer.poll(Duration.ofSeconds(1))` | `consumer.poll(timeout=1.0)`                           |
+| `consumer.acknowledge(record)`         | `consumer.acknowledge(record, AcknowledgeType.ACCEPT)` |
+| `consumer.commitSync()`                | `consumer.commit_sync()`                               |
+| `StringDeserializer.class`             | `StringDeserializer()`                                 |
+| try-with-resources                     | `with ... as consumer`                                 |
+
+
 ## 1.5 Schema Registry: Kafka Maturity
 
 ## 1.6 Kafka Connect: Near Real-Time Data Pipeline
