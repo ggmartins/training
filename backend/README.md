@@ -1601,6 +1601,25 @@ On scalling control plane replicas (availability):
 | `kube-scheduler`          |                      Generally no | Availability              |
 | `etcd`                    |                      Generally no | Fault tolerance           |
 
+On configuration storage (Software Configuration):
+
+| Source                 | App Exposed |
+| ------------------------- | --------------------------------: |
+| Command Line  |                   X |
+| ENV variables |                   X |
+| Config File   |                   X |
+| Database      |                  Yes|
+
+On roles:
+
+| Roles                 | Scope |
+| ------------------------- | --------------------------------: |
+| Installer      | kube-apiserver  ... kube-apiserver.conf |
+| Admin         |             PodSecurityPolicyYaml / PriorityClass.yaml |
+| Developer                    |         kube apply -f Deployment.yaml / Service.Yaml|
+| EndUser        | X      |
+
+
 #### 9.1.1.1 Architecture
 
 <img src="images/k8s_arch1.png">
