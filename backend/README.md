@@ -1620,6 +1620,20 @@ On roles:
 | EndUser        | X      |
 
 
+On multi-tenancy clusters:
+
+A multi-tenant Kubernetes cluster is one cluster shared by multiple teams, applications, business units, or customers while attempting to keep their workloads, data, permissions, and resource consumption isolated.
+
+Kubernetes supports multi-tenancy, but a namespace alone is not a complete security boundary. The right design depends on how much the tenants trust one another.
+
+| Architecture                             | Control plane                         | Worker nodes       | Isolation                        | Typical use                                        |
+| ---------------------------------------- | ------------------------------------- | ------------------ | -------------------------------- | -------------------------------------------------- |
+| Shared cluster with namespaces           | Shared                                | Shared             | Moderate                         | Internal development teams                         |
+| Shared cluster with dedicated node pools | Shared                                | Partially isolated | Moderate–strong                  | Teams with different security or performance needs |
+| Virtual clusters                         | Separate logical API servers and etcd | Usually shared     | Stronger control-plane isolation | Platforms offering Kubernetes to many teams        |
+| Separate clusters                        | Separate                              | Separate           | Strongest                        | Untrusted customers, regulated workloads           |
+
+
 #### 9.1.1.1 Architecture
 
 <img src="images/k8s_arch1.png">
