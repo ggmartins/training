@@ -1580,6 +1580,27 @@ Control planes and worker nodes can be
 - VMs
 - Cloud Instances
 
+Important Information:
+
+- App availability: one of the k8s components sit on the hot-path of the application,
+  meaning that, if some components crash, the app might be still running
+- Cluster/App Availability: The Three 9s of availability:  99.9% (8.76 Hours a Year),
+  Can go all the way to 5 9s of availability: 99.999% (5 minutes of a Year)
+- Main approach to high availability is redundancy. Minimal 3 instances of control plane with LB in front.
+  Normally, 5 control plane instances with 5000+ worker nodes.
+- Control plane components rely on Consensus / Raft implemented to achieve high availability (and other components? TODO:
+- The load of on "leaders" tends to be higher, specially if they run on same control plane node: Scheduling calculations, writing coordination, etc.
+- It's actually Kubelet who is responsible for creating pods, all commanded by Controller Manager
+
+On scalling control plane replicas (availability):
+
+| Component                 | Horizontal replicas add capacity? | Main benefit              |
+| ------------------------- | --------------------------------: | ------------------------- |
+| `kube-apiserver`          |                               Yes | Capacity and availability |
+| `kube-controller-manager` |                      Generally no | Availability              |
+| `kube-scheduler`          |                      Generally no | Availability              |
+| `etcd`                    |                      Generally no | Fault tolerance           |
+
 #### 9.1.1.1 Architecture
 
 <img src="images/k8s_arch1.png">
@@ -1602,6 +1623,54 @@ Original content from [medium](https://medium.com/devops-mojo/kubernetes-archite
 - Distributed, and highly-available key value store database.
 - Stateful, persistent storage (source of truth) that stores all of Kubernetes cluster data (cluster state and config).
 - It can be part of the control plane, or, it can be configured externally.
+
+etcd stores the desired and observed state exposed through the Kubernetes API, including:
+
+- Pods, Deployments and StatefulSets
+- Nodes and node status
+- Services and EndpointSlices
+- ConfigMaps and Secrets
+- RBAC objects
+- Jobs and scheduling decisions
+- Controller status and leader-election leases
+- Custom resources
+
+High availability is achieved through replication. It uses concensus/raft to elect a leader with permissions to write.
+Reads can be executed from any of the copies.
+
+The other components interact with that consensus indirectly:
+
+- kube-apiserver reads and writes cluster state in etcd.
+- kube-scheduler and kube-controller-manager watch the API and submit updates through it.
+- Multiple Scheduler and Controller Manager instances use Kubernetes Lease objects for leader election; they are not Raft members.
+- Multiple API servers are normally active simultaneously and do not elect a Raft leader.
+
+```mermaid
+flowchart TD
+    C["kubectl, operators and nodes"] --> LB["Control-plane load balancer"]
+    LB --> API["Multiple kube-apiserver instances"]
+
+    SCH["Scheduler leader"] --> API
+    CM["Controller Manager leader"] --> API
+
+    API --> EL["etcd Raft leader"]
+    EL --> E2["etcd follower 2"]
+    EL --> E3["etcd follower 3"]
+```
+
+etcd cannot materially increase load-handling capacity by adding replicas.
+
+Because every write must be replicated and acknowledged by a Raft quorum, adding etcd members generally:
+
+- Improves fault tolerance.
+- Does not partition or distribute the dataset.
+- May reduce write throughput and increase latency.
+
+By contrast, kube-apiserver instances can actively serve requests in parallel.
+
+A nuance: extra kube-scheduler and kube-controller-manager replicas primarily improve availability,
+not throughput, because normally only the elected leader performs the active work.
+
 
 ##### 9.1.1.1.4 Cloud Controller Manager
 ##### 9.1.1.1.5 Controller Manager (kube-controller-manager)
