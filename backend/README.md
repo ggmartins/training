@@ -1677,7 +1677,7 @@ flowchart TD
     EL --> E3["etcd follower 3"]
 ```
 
-etcd cannot materially increase load-handling capacity by adding replicas.
+etcd cannot materially increase load-handling capacity by adding replicas, but availability capacity.
 
 Because every write must be replicated and acknowledged by a Raft quorum, adding etcd members generally:
 
@@ -1690,6 +1690,7 @@ By contrast, kube-apiserver instances can actively serve requests in parallel.
 A nuance: extra kube-scheduler and kube-controller-manager replicas primarily improve availability,
 not throughput, because normally only the elected leader performs the active work.
 
+ETCD can be inspected via custom side-car pod named [Keeper](k8s/keeper-kind.yaml):
 
 ##### 9.1.1.1.4 Cloud Controller Manager
 ##### 9.1.1.1.5 Controller Manager (kube-controller-manager)
