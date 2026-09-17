@@ -1565,7 +1565,7 @@ Benefit: Reduces the damage if a token is leaked and enforces service boundaries
 
 ### 9.1.1 K8s Kubernetes
 
-100% declarative that contains mainly:
+It's 100% declarative containerized application orchestration solution that mainly contains:
 
 - Control Planes (at least one)
   - Responsible for the orchestration of worker nodes.
@@ -1579,6 +1579,46 @@ Control planes and worker nodes can be
 - Physical Machines
 - VMs
 - Cloud Instances
+
+Important Information:
+
+- App availability: one of the k8s components sit on the hot-path of the application,
+  meaning that, if some components crash, the app might be still running
+- Cluster/App Availability: The Three 9s of availability:  99.9% (8.76 Hours a Year),
+  Can go all the way to 5 9s of availability: 99.999% (5 minutes of a Year)
+- Main approach to high availability is redundancy. Minimal 3 instances of control plane with LB in front.
+  Normally, 5 control plane instances with 5000+ worker nodes.
+- Control plane components rely on Consensus / Raft implemented to achieve high availability (and other components? TODO:
+- The load of on "leaders" tends to be higher, specially if they run on same control plane node: Scheduling calculations, writing coordination, etc.
+- It's actually Kubelet who is responsible for creating pods, all commanded by Controller Manager
+
+On scalling control plane replicas (availability):
+
+| Component                 | Horizontal replicas add capacity? | Main benefit              |
+| ------------------------- | --------------------------------: | ------------------------- |
+| `kube-apiserver`          |                               Yes | Capacity and availability |
+| `kube-controller-manager` |                      Generally no | Availability              |
+| `kube-scheduler`          |                      Generally no | Availability              |
+| `etcd`                    |                      Generally no | Fault tolerance           |
+
+On configuration storage (Software Configuration):
+
+| Source                 | App Exposed |
+| ------------------------- | --------------------------------: |
+| Command Line  |                   X |
+| ENV variables |                   X |
+| Config File   |                   X |
+| Database      |                  Yes|
+
+On roles:
+
+| Roles                 | Scope |
+| ------------------------- | --------------------------------: |
+| Installer      | kube-apiserver  ... kube-apiserver.conf |
+| Admin         |             PodSecurityPolicyYaml / PriorityClass.yaml |
+| Developer                    |         kube apply -f Deployment.yaml / Service.Yaml|
+| EndUser        | X      |
+
 
 #### 9.1.1.1 Architecture
 
@@ -1595,6 +1635,7 @@ Original content from [medium](https://medium.com/devops-mojo/kubernetes-archite
 - It is designed to scale horizontally.
 - It consumes YAML/JSON manifest files.
 - It validates and processes the requests made via API.
+- All components of a the architecture communicate via kube-api-server
 
 ##### 9.1.1.1.3 ETCD Key-Value Store (Database)
 
@@ -1602,11 +1643,82 @@ Original content from [medium](https://medium.com/devops-mojo/kubernetes-archite
 - Stateful, persistent storage (source of truth) that stores all of Kubernetes cluster data (cluster state and config).
 - It can be part of the control plane, or, it can be configured externally.
 
+etcd stores the desired and observed state exposed through the Kubernetes API, including:
+
+- Pods, Deployments and StatefulSets
+- Nodes and node status
+- Services and EndpointSlices
+- ConfigMaps and Secrets
+- RBAC objects
+- Jobs and scheduling decisions
+- Controller status and leader-election leases
+- Custom resources
+
+High availability is achieved through replication. It uses concensus/raft to elect a leader with permissions to write.
+Reads can be executed from any of the copies.
+
+The other components interact with that consensus indirectly:
+
+- kube-apiserver reads and writes cluster state in etcd.
+- kube-scheduler and kube-controller-manager watch the API and submit updates through it.
+- Multiple Scheduler and Controller Manager instances use Kubernetes Lease objects for leader election; they are not Raft members.
+- Multiple API servers are normally active simultaneously and do not elect a Raft leader.
+
+```mermaid
+flowchart TD
+    C["kubectl, operators and nodes"] --> LB["Control-plane load balancer"]
+    LB --> API["Multiple kube-apiserver instances"]
+
+    SCH["Scheduler leader"] --> API
+    CM["Controller Manager leader"] --> API
+
+    API --> EL["etcd Raft leader"]
+    EL --> E2["etcd follower 2"]
+    EL --> E3["etcd follower 3"]
+```
+
+etcd cannot materially increase load-handling capacity by adding replicas, but availability capacity.
+
+Because every write must be replicated and acknowledged by a Raft quorum, adding etcd members generally:
+
+- Improves fault tolerance.
+- Does not partition or distribute the dataset.
+- May reduce write throughput and increase latency.
+
+By contrast, kube-apiserver instances can actively serve requests in parallel.
+
+A nuance: extra kube-scheduler and kube-controller-manager replicas primarily improve availability,
+not throughput, because normally only the elected leader performs the active work.
+
+ETCD can be inspected via custom side-car pod named [Keeper](k8s/keeper-kind.yaml):
+
 ##### 9.1.1.1.4 Cloud Controller Manager
 ##### 9.1.1.1.5 Controller Manager (kube-controller-manager)
+
+- The control loop ensures the current object state matches the desire object state of the cluster.
+- It takes corrective steps through API calls to make sure that the current state is the same as the desired state.
+- Controls the controllers (Deployment Controller, ReplicaSet Controller, etc)
+- It runs controller processes. Logically, each controller is a separate process, but to reduce complexity,
+  they are all compiled into a single binary and run in a single process.
+
+Some other types of controllers are:
+
+- Node controller: Responsible for noticing and responding when nodes go down.
+- Job controller: Watches for Job objects that represent one-off tasks, then creates Pods to run those tasks to completion.
+- Endpoints controller: Populates the Endpoints object (that is, joins Services & Pods).
+- Service Account & Token controllers: Create default accounts and API access tokens for new namespaces.
+
 ##### 9.1.1.1.6 Scheduler (kube-scheduler)
 ##### 9.1.1.1.7 Cloud Provider API
 ##### 9.1.1.1.8 Kubelet
+
+- The agent that runs on each node in the cluster.
+- It acts as a conduit between the API server and the node.
+- It makes sure that containers are running in a Pod and they are healthy.
+- It instantiates and executes Pods.
+- It watches API Server for work tasks.
+- It gets instructions from master and reports back to Masters.
+
 ##### 9.1.1.1.9 CRI Container Runtime Interface
 
 - The container runtime is the software that is responsible for running containers (in Pods).
@@ -1622,6 +1734,16 @@ Kubernetes supports several container runtimes:
 Any implementation of the Kubernetes CRI (Container Runtime Interface).
 
 ##### 9.1.1.1.10 Kube-proxy
+
+- A networking component that plays vital role in networking.
+- It manages IP translation and routing.
+- It is a network proxy that runs on each node in cluster.
+- It maintains network rules on nodes. These network rules allow network communication to Pods from inside or outside of cluster.
+- It ensure each Pod gets unique IP address.
+- It makes possible that all containers in a pod share a single IP.
+- It facilitating Kubernetes networking services and load-balancing across all pods in a service.
+- It deals with individual host sub-netting and ensure that the services are available to external parties.
+
 ##### 9.1.1.1.11 Enduser
 
 

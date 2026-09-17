@@ -241,6 +241,134 @@ for record in consumer.poll():
 
 ### 1.2.4 Consumer API
 
+Consumer API Examples (new API)
+
+```java
+package com.example;
+
+import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.KafkaShareConsumer;
+import org.apache.kafka.clients.consumer.ShareConsumerRecords;
+import org.apache.kafka.common.serialization.StringDeserializer;
+
+import java.time.Duration;
+import java.util.List;
+import java.util.Properties;
+
+public class QueueConsumer {
+
+    public static void main(String[] args) {
+        Properties props = new Properties();
+        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, "my-share-group");
+        props.put(
+            ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,
+            StringDeserializer.class.getName()
+        );
+        props.put(
+            ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,
+            StringDeserializer.class.getName()
+        );
+
+        try (KafkaShareConsumer<String, String> consumer =
+                 new KafkaShareConsumer<>(props)) { // queueing consumer implementation
+            consumer.subscribe(List.of("sandbox"));
+
+            while (true) {
+                ShareConsumerRecords<String, String> records =
+                    consumer.poll(Duration.ofSeconds(1));  // same poll method from original consumer
+
+                for (ConsumerRecord<String, String> record : records) {
+                    System.out.printf(
+                        "partition=%d offset=%d key=%s value=%s%n",
+                        record.partition(),
+                        record.offset(),
+                        record.key(),
+                        record.value()
+                    );
+
+                    consumer.acknowledge(record); // explicit acknowledge method (optional)
+                }
+                consumer.commitSync(); // force flush acks
+            }
+        }
+    }
+}
+```
+
+Python version (closest):
+
+```python
+
+#!/usr/bin/env -S uv run
+
+from confluent_kafka import AcknowledgeType, DeserializingShareConsumer
+from confluent_kafka.serialization import StringDeserializer
+
+
+def main() -> None:
+    config = {
+        "bootstrap.servers": "localhost:9092",
+        "group.id": "my-share-group",
+        "share.acknowledgement.mode": "explicit",
+        "key.deserializer": StringDeserializer(),
+        "value.deserializer": StringDeserializer(),
+    }
+
+    with DeserializingShareConsumer(config) as consumer:
+        consumer.subscribe(["sandbox"])
+
+        while True:
+            records = consumer.poll(timeout=1.0)
+
+            for record in records:
+                if record.error():
+                    print(f"Consumer error: {record.error()}")
+                    continue
+
+                print(
+                    f"partition={record.partition()} "
+                    f"offset={record.offset()} "
+                    f"key={record.key()} "
+                    f"value={record.value()}"
+                )
+
+                consumer.acknowledge(
+                    record,
+                    AcknowledgeType.ACCEPT,
+                )
+
+            # Force acknowledgements to be sent to the broker.
+            results = consumer.commit_sync(timeout=10.0)
+
+            for topic_partition, error in results.items():
+                if error is not None:
+                    print(
+                        f"Acknowledgement failed for "
+                        f"{topic_partition.topic}"
+                        f"[{topic_partition.partition}]: {error}"
+                    )
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        pass
+
+```
+
+| Java                                   | Python                                                 |
+| -------------------------------------- | ------------------------------------------------------ |
+| `KafkaShareConsumer`                   | `DeserializingShareConsumer`                           |
+| `consumer.poll(Duration.ofSeconds(1))` | `consumer.poll(timeout=1.0)`                           |
+| `consumer.acknowledge(record)`         | `consumer.acknowledge(record, AcknowledgeType.ACCEPT)` |
+| `consumer.commitSync()`                | `consumer.commit_sync()`                               |
+| `StringDeserializer.class`             | `StringDeserializer()`                                 |
+| try-with-resources                     | `with ... as consumer`                                 |
+
+
 ## 1.5 Schema Registry: Kafka Maturity
 
 ## 1.6 Kafka Connect: Near Real-Time Data Pipeline
