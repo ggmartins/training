@@ -1635,9 +1635,18 @@ Kubernetes supports multi-tenancy, but a namespace alone is not a complete secur
 
 On Accessing the cluster:
 
-- via API Server Pipeline (First stage: Authentication/Authorization)
+- via API Server Pipeline (1. Authentication, 2. Authorization, 3. Mutating Admission Control. 4. ValidatingAdmissionControl N. Database)
 - Humans -> Federated (external), Identity Provider (eg Google Workspaces, AD/Entra), OIDC
 - Machines -> Service Accounts (Not externally managed, eg CI/CD)
+- Authorization: RBAC (k get roles --all-namespaces)
+- Mutating Admission Control: intercepts (through many plugins (*)) and potentially mutate every resources that pass through API server pipeline .
+- ValidatingAdmissionControl: yes or no (**)
+
+
+(*) eg. AlwaysAdmit, AlwaysDeny, AlwaysPullImages, CertificateApproval, DefaultStorageClass, *WebHooks TODO: most commonly used?
+(**) eg, NamespaceLifeCycle, *WebHooks etc
+
+
 
 #### 9.1.1.1 Architecture
 
