@@ -24,7 +24,7 @@
       - [3.3.2.1 SLO Service Level Objectives](#3321-slo-service-level-objectives)
       - [3.3.2.2 SLA Service Level Agreement](#3322-sla-service-level-agreement)
       - [3.3.2.3 Building Resiliency](#3323-building-resiliency)
-      - [3.3.2.4 Perormance](#3324-perormance)
+      - [3.3.2.4 Performance](#3324-performance)
     - [3.3.3 Partition Tolerance](#333-partition-tolerance)
     - [3.3.4 Examples](#334-examples)
 - [4 Typical Flows](#4-typical-flows)
@@ -276,7 +276,7 @@ Formal contract that dictates strict rules for availability, eg: uptime 99.99%
 - Fault-tolerance: ensure the systems still works even with unexpected failures (expect the unexpected) 
 - Redundancy: ensure the system contains redundant components in stand-by, ready to enter operations
 
-#### 3.3.2.4 Perormance
+#### 3.3.2.4 Performance
 
 - Throughput (eg: queries per second)
 - Latency (time to get a response after a request issue)
@@ -1633,6 +1633,11 @@ Kubernetes supports multi-tenancy, but a namespace alone is not a complete secur
 | Virtual clusters                         | Separate logical API servers and etcd | Usually shared     | Stronger control-plane isolation | Platforms offering Kubernetes to many teams        |
 | Separate clusters                        | Separate                              | Separate           | Strongest                        | Untrusted customers, regulated workloads           |
 
+On Accessing the cluster:
+
+- via API Server Pipeline (First stage: Authentication/Authorization)
+- Humans -> Federated (external), Identity Provider (eg Google Workspaces, AD/Entra), OIDC
+- Machines -> Service Accounts (Not externally managed, eg CI/CD)
 
 #### 9.1.1.1 Architecture
 
