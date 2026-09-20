@@ -1640,12 +1640,23 @@ On Accessing the cluster:
 - Machines -> Service Accounts (Not externally managed, eg CI/CD)
 - Authorization: RBAC (k get roles --all-namespaces)
 - Mutating Admission Control: intercepts (through many plugins (*)) and potentially mutate every resources that pass through API server pipeline .
-- ValidatingAdmissionControl: yes or no (**)
+- ValidatingAdmissionControl: Makes a decision on whether accepting the request: yes or no (**)
+- Special WebHook plugins: MutatingAdmissionWebhook, ValidatingAdmissionWebhook, MutatingWebhookConfiguration, ValidatingWebhookConfiguration (***)
 
 
-(*) eg. AlwaysAdmit, AlwaysDeny, AlwaysPullImages, CertificateApproval, DefaultStorageClass, *WebHooks TODO: most commonly used?
+(*) Plugin examples: eg. AlwaysAdmit, AlwaysDeny, AlwaysPullImages, CertificateApproval, DefaultStorageClass, *WebHooks TODO: most commonly used?
 (**) eg, NamespaceLifeCycle, *WebHooks etc
+(***) Webhooks plugins are the key tech for ServiceMashes (Istio, linkerd, cilium)
 
+
+<img width="565" height="276" alt="image" src="https://github.com/user-attachments/assets/80a66781-d339-4672-8617-4e6bcebfc5a4" />
+
+
+- Admission Control webhooks in Kubernetes act as powerful extension points that let you add custom logic without modifying the core API server code.
+- There are two main types: MutatingAdmissionWebhook (which can modify resources) and ValidatingAdmissionWebhook (which can approve or reject resources).
+- These webhooks run as network services inside the Kubernetes cluster, benefiting from Kubernetes features like auto-scaling and restarting.
+- A common use case is service meshes (e.g., Istio), where the webhook automatically injects additional containers into pods,
+  keeping application YAMLs clean and separating concerns between developers and cluster admins.
 
 
 #### 9.1.1.1 Architecture
