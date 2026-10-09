@@ -114,6 +114,9 @@
         - [9.1.1.1.10 Kube-proxy](#911110-kube-proxy)
         - [9.1.1.1.11 Enduser](#911111-enduser)
       - [9.1.1.2 OpenShift](#9112-openshift)
+      - [9.1.1.3 Cost Management](#9113-cost-management)
+      - [9.1.1.3.1 Kubecost](#91131-kubecost)
+      - [9.1.1.3.1 Kubecost](#91131-kubecost-1)
     - [9.1.2 K3s Kubernetes](#912-k3s-kubernetes)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
