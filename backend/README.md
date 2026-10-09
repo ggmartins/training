@@ -1789,6 +1789,40 @@ Any implementation of the Kubernetes CRI (Container Runtime Interface).
 
 #### 9.1.1.2 OpenShift
 
+#### 9.1.1.3 Cost Management
+
+#### 9.1.1.3.1 Kubecost
+
+```
++----------+    +----------+    +----------+    +----------+    +----------+    +----------+
+| Code     |--->| Code     |--->| Code     |--->| Code     |--->| Workload |--->| Cloud    |
+| Change   |    | Review   |    | Merge    |    | Deploy   |    | Execution|    | Bill     |
++----------+    +----------+    +----------+    +----------+    +----------+    +----------+
+                       /                        |__________________________|         \
+ Resource Decisions Shaping Infrastructure          Cost Visibility Gap             Cost Impact
+```
+
+Solutions with Cost Prediction:
+
+```
+| Kubernetes Manifests:           | Kubecost Predict API:           | Estimated monthly cost:         |
+| Proposed workload configuration | Evaluates the proposed workload | Resource cost estimation        |
+|      Typically YAML             | using Kubecost cost data        | by resource type                |
+|---------------------------------|---------------------------------|---------------------------------+
+| kind: Deployment                |   - Uses resource cost data     | "costBefore": {                 |
+| spec:                           |     from target cluster         |    "totalMonthlyRate" : 110.00, |
+|   replicas: 3                   |                                 | },                              |
+|   template:                     |   - Can factor in historical    | "costAfter": {                  |
+|     spec:                       |     usage when it's available   |    "totalMonthlyRate" : 125.50, |
+|       containers:               |                                 |    "cpuMonthlyRate": 72.00,     |
+|         resources:              |   - Evaluates workloads         |    "ramMonthlyRate": 33.50,     |
+|           cpu: "2"              |     before they run             |    "gpuMonthlyRate": 33.50,     |
+|           mem: "2Gi"            |                                 | }, { "costChange": 15.50 }      |
+```
+
+
+#### 9.1.1.3.1 Kubecost
+
 ### 9.1.2 K3s Kubernetes
 
 
