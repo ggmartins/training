@@ -1651,15 +1651,24 @@ On Accessing the cluster:
 (**) eg, NamespaceLifeCycle, *WebHooks etc
 (***) Webhooks plugins are the key tech for ServiceMashes (Istio, linkerd, cilium)
 
-
 <img width="565" height="276" alt="image" src="https://github.com/user-attachments/assets/80a66781-d339-4672-8617-4e6bcebfc5a4" />
-
 
 - Admission Control webhooks in Kubernetes act as powerful extension points that let you add custom logic without modifying the core API server code.
 - There are two main types: MutatingAdmissionWebhook (which can modify resources) and ValidatingAdmissionWebhook (which can approve or reject resources).
 - These webhooks run as network services inside the Kubernetes cluster, benefiting from Kubernetes features like auto-scaling and restarting.
 - A common use case is service meshes (e.g., Istio), where the webhook automatically injects additional containers into pods,
   keeping application YAMLs clean and separating concerns between developers and cluster admins.
+
+When does the k8s makes more sense than provisioning a BaaS (backend as a Service):
+
+| Situation | Why Kubernetes helps |
+|---|---|
+| Several services deploy and scale independently | Each gets its own deployment, replicas, and resource allocation |
+| APIs, background workers, scheduled jobs, and specialized workloads coexist | One platform manages their different execution requirements |
+| You need control over networking, scheduling, or hardware | Configure network policies, node placement, and resource constraints |
+| Software must run in customers’ infrastructure or on-premises | Kubernetes provides a common deployment interface |
+| Several teams share infrastructure | Standardize deployments and allocate resources across projects |
+| You already have an operated cluster | Adding an application can have a low incremental cost |
 
 
 #### 9.1.1.1 Architecture
