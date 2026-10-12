@@ -1813,6 +1813,31 @@ Any implementation of the Kubernetes CRI (Container Runtime Interface).
  Resource Decisions Shaping Infrastructure          Cost Visibility Gap             Cost Impact
 ```
 
+Simplified view of a typical deployment:
+
+```mermaid
+flowchart TD
+    subgraph K["Kubernetes cluster"]
+        API["Kubernetes API<br/>Requests, labels, nodes, pod state"]
+        MET["Runtime metrics<br/>CPU and memory usage"]
+        AG["FinOps Agent<br/>Collect and export cluster data"]
+        STORE["Local data store"]
+        BACK["Kubecost backend<br/>Cost calculations and allocation"]
+        DB["ClickHouse<br/>Historical analytics"]
+        UI["Dashboard and APIs<br/>Costs by workload, namespace, team"]
+
+        API --> AG
+        MET --> AG
+        AG --> STORE
+        STORE --> BACK
+        BACK --> DB
+        DB --> UI
+    end
+
+    PRICE["Provider or custom prices"] --> AG
+    BILL["Optional cloud billing exports"] --> BACK
+```
+
 Solutions with Cost Prediction:
 
 ```
