@@ -1824,14 +1824,32 @@ Solutions with Cost Prediction:
 | kind: Deployment                |   - Uses resource cost data     | "costBefore": {                 |
 | spec:                           |     from target cluster         |    "totalMonthlyRate" : 110.00, |
 |   replicas: 3                   |                                 | },                              |
-|   template:                     |   - Can factor in historical    | "costAfter": {                  |
+|   template:                     |   - Can factor in historical(*) | "costAfter": {                  |
 |     spec:                       |     usage when it's available   |    "totalMonthlyRate" : 125.50, |
 |       containers:               |                                 |    "cpuMonthlyRate": 72.00,     |
 |         resources:              |   - Evaluates workloads         |    "ramMonthlyRate": 33.50,     |
 |           cpu: "2"              |     before they run             |    "gpuMonthlyRate": 33.50,     |
 |           mem: "2Gi"            |                                 | }, { "costChange": 15.50 }      |
 ```
+Configure through github actions, CI/CD it will check the thresholds:
 
+.github/workflows/cost-check.yaml
+```
+name: Kubecost Cost Check
+on:
+  pull_request:
+    branches: [ main ]
+jobs:
+  cost-check:
+    uses: kubecost/cost-prediction-action@vX
+    with:
+       path: ./k8s
+       kubecost_api_path: ${{ secrets.KUBECOST_URL }}
+       max_cost_increase: 100
+       max_cost_percentage: 10
+       fail_on_threshold: true
+```
+* comes from the kubecost allocation page of historical (TODO: manisfests or actual cost? )
 
 #### 9.1.1.3.1 Kubecost
 
