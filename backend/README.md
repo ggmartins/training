@@ -116,7 +116,6 @@
       - [9.1.1.2 OpenShift](#9112-openshift)
       - [9.1.1.3 Cost Management](#9113-cost-management)
       - [9.1.1.3.1 Kubecost](#91131-kubecost)
-      - [9.1.1.3.1 Kubecost](#91131-kubecost-1)
     - [9.1.2 K3s Kubernetes](#912-k3s-kubernetes)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -1851,7 +1850,21 @@ jobs:
 ```
 * comes from the kubecost allocation page of historical (TODO: manisfests or actual cost? )
 
-#### 9.1.1.3.1 Kubecost
+
+```
+C-CPU = max(requested CPU, used CORES)  x Hours x Price Per Core / Hour
+C-MEM = max(requested GM, used GB) x Hours x Price Per GB / Hour
+```
+
+| Resource | Request | Actual usage | Allocation basis | Illustrative rate |
+|---|---:|---:|---:|---:|
+| CPU | 1 core | 0.2 cores | 1 core | $0.03/core-hour |
+| Memory | 2 GB | 1 GB | 2 GB | $0.004/GB-hour |
+
+Its allocated compute cost is:
+- CPU: 1 x 24 x 0.03 = $0.72
+- Memory: 2 x 24 x 0.004 = $0.192
+- Total: $0.912/day, before storage, network, idle, or shared costs.
 
 ### 9.1.2 K3s Kubernetes
 
