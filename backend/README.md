@@ -456,7 +456,7 @@ Account for Security, Privacy and Accessibility
 - PCI DSS 4.0 (Payment Card Industry Data Security Standard) - Global (payment card data) - Does your app process credit card/payments?
 - CCPA (California Consumer Privacy Act) - California, USA
 - HIPAA (Health Insurance Portability and Accountability Act) - USA (healthcare)
-- NIST / FISMA (healthcare)
+- NIST / NIH / FISMA (healthcare)
 - FedRAMP (Goverment Data)
 - GDPR (General Data Protection Regulation) - European Union
 
