@@ -103,7 +103,7 @@
     - [9.1.1 K8s Kubernetes](#911-k8s-kubernetes)
       - [9.1.1.1 Architecture](#9111-architecture)
         - [9.1.1.1.1 kubectl](#91111-kubectl)
-        - [9.1.1.1.2 API Server (kube-api-server)](#91112-api-server-kube-api-server)
+        - [9.1.1.1.2 API Server (kube-apiserver)](#91112-api-server-kube-apiserver)
         - [9.1.1.1.3 ETCD Key-Value Store (Database)](#91113-etcd-key-value-store-database)
         - [9.1.1.1.4 Cloud Controller Manager](#91114-cloud-controller-manager)
         - [9.1.1.1.5 Controller Manager (kube-controller-manager)](#91115-controller-manager-kube-controller-manager)
@@ -1637,10 +1637,13 @@ Kubernetes supports multi-tenancy, but a namespace alone is not a complete secur
 
 On Accessing the cluster:
 
+The API Server we use at public cloud solution most likely has open access from the internet to allow developers to manage it.
+The authentication is handled externally via (External) Identity Provider/Cloud Identity Service.
+
 - via API Server Pipeline (1. Authentication, 2. Authorization, 3. Mutating Admission Control. 4. ValidatingAdmissionControl N. Database)
 - Humans -> Federated (external), Identity Provider (eg Google Workspaces, AD/Entra), OIDC
 - Machines -> Service Accounts (Not externally managed, eg CI/CD)
-- Authorization: RBAC (k get roles --all-namespaces)
+- Authorization: RBAC (k get roles --all-namespaces) / ABAC
 - Mutating Admission Control: intercepts (through many plugins (*)) and potentially mutate every resources that pass through API server pipeline .
 - ValidatingAdmissionControl: Makes a decision on whether accepting the request: yes or no (**)
 - Special WebHook plugins: MutatingAdmissionWebhook, ValidatingAdmissionWebhook, MutatingWebhookConfiguration, ValidatingWebhookConfiguration (***)
@@ -1677,7 +1680,7 @@ When does the k8s makes more sense than provisioning a BaaS (backend as a Servic
 Original content from [medium](https://medium.com/devops-mojo/kubernetes-architecture-overview-introduction-to-k8s-architecture-and-understanding-k8s-cluster-components-90e11eb34ccd). 
 
 ##### 9.1.1.1.1 kubectl
-##### 9.1.1.1.2 API Server (kube-api-server)
+##### 9.1.1.1.2 API Server (kube-apiserver)
 
 - API server exposes the Kubernetes API.
 - Entry point for REST/kubectl — It is the front end for the Kubernetes control plane.
@@ -1685,7 +1688,7 @@ Original content from [medium](https://medium.com/devops-mojo/kubernetes-archite
 - It is designed to scale horizontally.
 - It consumes YAML/JSON manifest files.
 - It validates and processes the requests made via API.
-- All components of a the architecture communicate via kube-api-server
+- All components of a the architecture communicate via kube-apiserver
 
 ##### 9.1.1.1.3 ETCD Key-Value Store (Database)
 
